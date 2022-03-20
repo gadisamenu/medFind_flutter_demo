@@ -1,5 +1,5 @@
 # MedFind
-Medfind is a web based application utilizing medicine tracking system that provides information to customers regarding the availability of medicines in pharmacies and provide guidance for them to optimally obtain those medicines through an interactive and responsive website. 
+Medfind is a mobile application utilizing medicine tracking system that provides information to customers regarding the availability of medicines in pharmacies and provide guidance for them to optimally obtain those medicines through an interactive mobile app. 
 
 ## Business features
 ### Core business features
