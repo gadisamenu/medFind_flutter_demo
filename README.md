@@ -16,8 +16,8 @@ Medfind is a mobile application utilizing medicine tracking system that provides
 
 # Group Members
                 Name                  Id                 Section 
-        1. Segni Dessalegn        UGR/8961/12               3
-        2. Amha Kindu             UGR/8415/12               1
-        3. Kaleab Kindu           UGR/8121/12               2
+        1. Amha Kindu             UGR/8415/12               1
+        2. Kaleab Kindu           UGR/8121/12               2
+        3. Segni Dessalegn        UGR/8961/12               3
         4. Gadisa Amanu           UGR/8440/12               2
         5. Habtamu Tsegaye        UGR/7096/12               3
