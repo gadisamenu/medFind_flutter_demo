@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.gis</groupId>
+	<artifactId>medfind</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>medfind</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>11</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- Spring MVC-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			</dependency>
+
+		<!-- Database Integration Dependencies-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-spatial -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-spatial</artifactId>
+				<version>5.4.20.Final</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/net.postgis/postgis-jdbc -->
+			<dependency>
+				<groupId>net.postgis</groupId>
+				<artifactId>postgis-jdbc</artifactId>
+				<version>2.4.0</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>42.3.3</version>
+			</dependency>
+
+		<!-- Adding Security and Validation-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.thymeleaf.extras</groupId>
+				<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+			</dependency>
+
+		<!-- For simplifying coding with Annotations-->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<optional>true</optional>
+			</dependency>
+
+		<!-- Live Reload-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<scope>runtime</scope>
+				<optional>true</optional>
+			</dependency>
+
+		<!-- For unit testing-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>	
+		
+		<!-- Spatial Datatype support-->
+		
+			<!-- https://mvnrepository.com/artifact/org.locationtech.jts/jts-core -->
+			<dependency>
+				<groupId>org.locationtech.jts</groupId>
+				<artifactId>jts-core</artifactId>
+				<version>1.16.1</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.locationtech.spatial4j/spatial4j -->
+			<dependency>
+				<groupId>org.locationtech.spatial4j</groupId>
+				<artifactId>spatial4j</artifactId>
+				<version>0.8</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.n52.jackson/jackson-datatype-jts -->
+			<dependency>
+				<groupId>org.n52.jackson</groupId>
+				<artifactId>jackson-datatype-jts</artifactId>
+				<version>1.2.9</version>
+			</dependency>
+
+		<!-- File uploading-->
+			<!-- Apache Commons FileUpload --> 
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>1.4</version>
+			</dependency>
+
+		<!-- Json parsing support-->
+			<!-- https://mvnrepository.com/artifact/org.json/json -->
+			<dependency>
+				<groupId>org.json</groupId>
+				<artifactId>json</artifactId>
+				<version>20211205</version>
+			</dependency>
+
+		<!-- Geocoding API -->
+			<!-- https://mvnrepository.com/artifact/me.atlis/nominatim-api -->
+			<dependency>
+				<groupId>me.atlis</groupId>
+				<artifactId>nominatim-api</artifactId>
+				<version>1.0.0</version>
+			</dependency>
+					<!-- External Dependencies for nominatim-api -->
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.openjfx</groupId>
+						<artifactId>javafx-base</artifactId>
+						<version>12-ea+6</version>
+					</dependency>
+					<dependency>
+						<groupId>com.google.code.gson</groupId>
+						<artifactId>gson</artifactId>
+						<version>RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>me.atlis</groupId>
+						<artifactId>atlis-location-base</artifactId>
+						<version>RELEASE</version>
+					</dependency>
+					<dependency>
+						<groupId>org.hamcrest</groupId>
+						<artifactId>hamcrest-core</artifactId>
+						<version>RELEASE</version>
+						<scope>test</scope>
+					</dependency>
+		
+		<!-- Routing dependencies-->
+			<!-- https://mvnrepository.com/artifact/com.graphhopper/graphhopper-core -->
+			<dependency>
+				<groupId>com.graphhopper</groupId>
+				<artifactId>graphhopper-core</artifactId>
+				<version>4.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.filosganga</groupId>
+				<artifactId>geogson-jts</artifactId>
+				<version>1.2.21</version>
+			</dependency>
+
+
+	</dependencies>
+		
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+		
+	</build>
+
+</project>

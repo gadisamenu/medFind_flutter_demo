@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	lang="en"
+>
+	<head>
+		<!-- head links and meta datas -->
+		<div th:replace="_fragments::heads"></div>
+	</head>
+
+	<body onresize="resize()" class="h-full flex flex-col">
+		<!-- Navigation bar fragment -->
+		<div th:replace="_fragments :: navigation"></div>
+
+		<!-- content -->
+
+		<div class="py-10 min-h-screen">
+			<div class="">
+				<form
+					method="POST"
+					th:object="${RequestForm}"
+					th:action="@{/sendRequest}"
+					enctype="multipart/form-data"
+					class="flex-1 w-4/5 sm:w-3/4 md:w-2/4 lg:w-13 mt-10 grid grid-rows-6 content-around shadow-2xl rounded-2xl mx-auto"
+				>
+					<h1 class="font-bold text-3xl text-center mt-3">Send Request</h1>
+					<div th:if="${requestSuccess}">
+						<p
+							class="px-10 font-bold"
+							style="font-size: 2em; color: green !important"
+						>
+							Request submission successfull, we will contact you soon!
+						</p>
+					</div>
+					<div th:if="${requestFailed}">
+						<p
+							class="px-10 font-bold"
+							style="font-size: 2em; color: red !important"
+						>
+							Request submission failed, please try again with a valid entry
+						</p>
+					</div>
+					<input
+						class="m-5 border-b-2 focus:outline-0"
+						type="text"
+						th:field="*{senderFullName}"
+						placeholder="Name of the pharmacy owner"
+						required
+					/>
+					<div
+						th:if="${#fields.hasErrors('senderFullName')}"
+						th:errors="*{senderFullName}"
+					></div>
+					<input
+						class="m-5 border-b-2"
+						type="email"
+						th:field="*{email}"
+						placeholder="Enter your email"
+						required
+					/>
+					<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+					<input
+						class="m-5 border-b-2 focus:outline-0"
+						type="text"
+						th:field="*{pharmacyName}"
+						placeholder="Name of the pharmacy"
+						required
+					/>
+					<div
+						th:if="${#fields.hasErrors('pharmacyName')}"
+						th:errors="*{pharmacyName}"
+					></div>
+					<input
+						class="m-5 border-b-2 focus:outline-0"
+						type="text"
+						name="pharmacyAddress"
+						placeholder="address"
+					/>
+					<div class="flex items-center space-x-6 m-5 border-b-2">
+						<label class="block">
+							<input
+								th:field="*{license}"
+								type="file"
+								class="block w-full text-sm text-slate-500 focus:outline-0 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-green-300 file: hover:file:bg-voilet-100"
+								placeholder="upload license"
+							/>
+							<div
+								th:if="${#fields.hasErrors('license')}"
+								th:errors="*{license}"
+							></div>
+						</label>
+					</div>
+
+					<button
+						type="submit"
+						class="primary-background bg-green-200 m-auto my-4 w-fit p-2 px-5 rounded-full"
+					>
+						Submit
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<div th:replace="_fragments ::footer"></div>
+		<script th:src="@{/js/home2.js}"></script>
+	</body>
+</html>

@@ -1,0 +1,3237 @@
+{
+    "version": 0.6,
+    "generator": "Overpass API 0.7.57 93a4d346",
+    "osm3s": {
+      "timestamp_osm_base": "2022-01-09T18:41:21Z",
+      "timestamp_areas_base": "2022-01-09T18:22:09Z",
+      "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+    },
+    "elements": [
+  
+  {
+    "type": "node",
+    "id": 595140098,
+    "lat": 10.6798090,
+    "lon": 37.2636700,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Gerado",
+      "name:am": "ገራዶ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 595141023,
+    "lat": 10.6802160,
+    "lon": 37.2685200,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Abaye drug store",
+      "name:am": "አባይ መድሃኒት መደብር"
+    }
+  },
+  {
+    "type": "node",
+    "id": 595144423,
+    "lat": 12.6104040,
+    "lon": 37.4696700,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Mekegewa",
+      "name:am": "መከገዋ መድሃሂት መደብር"
+    }
+  },
+  {
+    "type": "node",
+    "id": 595145639,
+    "lat": 12.6117881,
+    "lon": 37.4701795,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Goha",
+      "name:am": "ጎሃ መድሃኒት መደብር"
+    }
+  },
+  {
+    "type": "node",
+    "id": 595145673,
+    "lat": 12.6127281,
+    "lon": 37.4676999,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Rewina Drugstore",
+      "name:am": "ረዊና መድሃሂት መደብር"
+    }
+  },
+  {
+    "type": "node",
+    "id": 595146077,
+    "lat": 12.6127860,
+    "lon": 37.4636880,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Meaza pharmacy",
+      "name:am": "መዓዛ ፍርማሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 611549869,
+    "lat": 13.4939762,
+    "lon": 39.4743800,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Ethiopia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 731000113,
+    "lat": 9.0140113,
+    "lon": 38.7575924,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Ghion Pharmacy",
+      "name:am": "ዮን ቢዝነስ ሴንተር",
+      "phone": "+251115515606"
+    }
+  },
+  {
+    "type": "node",
+    "id": 774899819,
+    "lat": 9.0154353,
+    "lon": 38.7711602,
+    "tags": {
+      "amenity": "pharmacy",
+      "contact:phone": "+251 (0) 11 5156531",
+      "dispensing": "yes",
+      "name": "Kazanchis Pharmacy",
+      "name:am": "ካሳንችስ መዳኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 837433757,
+    "lat": 9.0331881,
+    "lon": 38.7084096,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "contact:phone": "+251 (0) 11 653 1057",
+      "dispensing": "yes",
+      "name": "Emanda",
+      "name:am": "ኢማንዳ",
+      "subcity": "Kolfe Keranyo"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787473,
+    "lat": 8.9976877,
+    "lon": 38.7184466,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Haron Pharmacy",
+      "name:am": "ሃሮን ፋርማሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787491,
+    "lat": 8.9629840,
+    "lon": 38.6708950,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "St. Giberiel Pharmacy",
+      "name:am": "ቅዱስ ገብርኤል መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787506,
+    "lat": 8.9986410,
+    "lon": 38.7470360,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:kebele": "10/19",
+      "addr:subcity": "Kirkos",
+      "amenity": "pharmacy",
+      "contact:phone": "+251(0) 11 515 7100",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Ambercho Pharmacy",
+      "name:am": "አምበርቾ መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787509,
+    "lat": 8.9830498,
+    "lon": 38.6994334,
+    "tags": {
+      "amenity": "pharmacy",
+      "contact:phone": "+251 (0) 114486327",
+      "dispensing": "yes",
+      "name": "Arseima Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787514,
+    "lat": 8.9757130,
+    "lon": 38.6801150,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Karakore Public Pharmacy",
+      "name:am": "ካራቆሬ የሕዝብ መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838787520,
+    "lat": 8.9942045,
+    "lon": 38.7477102,
+    "tags": {
+      "amenity": "pharmacy",
+      "contact:phone": "+251(0) 911 357 512",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "El Betel Drug store",
+      "name:am": "ኤል ቤተል መድሃኒት መደብር",
+      "subcity": "Kirkos"
+    }
+  },
+  {
+    "type": "node",
+    "id": 838832134,
+    "lat": 9.0041562,
+    "lon": 38.8118532,
+    "tags": {
+      "addr:kebele": "11/12",
+      "addr:subcity": "Bole",
+      "amenity": "pharmacy",
+      "contact:mobile": "+251 (0) 911 96 81 21",
+      "name": "Tsega Pharmacy",
+      "name:am": "ፀጋ መድኃኒት ቤት",
+      "source": "GPS Data"
+    }
+  },
+  {
+    "type": "node",
+    "id": 844577692,
+    "lat": 9.0336474,
+    "lon": 38.7295730,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:subcity": "Addis Ketema",
+      "amenity": "pharmacy",
+      "contact:phone": "+251(0) 112 750 227",
+      "dispensing": "yes",
+      "name": "Harar Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 844577700,
+    "lat": 9.0407787,
+    "lon": 38.7276493,
+    "tags": {
+      "amenity": "pharmacy",
+      "contact:phone": "+251 (0) 913 46 0055",
+      "dispensing": "yes",
+      "kebele": "16/17",
+      "name": "Zacshalom Pharmacy",
+      "name:am": "ዛክሻሎም መድሃኒት ቤት",
+      "subcity": "Addis Ketema"
+    }
+  },
+  {
+    "type": "node",
+    "id": 846950821,
+    "lat": 8.7514047,
+    "lon": 38.9653044,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "St. Mary"
+    }
+  },
+  {
+    "type": "node",
+    "id": 847291401,
+    "lat": 8.9846390,
+    "lon": 38.7498065,
+    "tags": {
+      "addr:kebele": "06",
+      "addr:subcity": "Kirkos",
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Kenema Pharmacy No 5",
+      "name:am": "ከነማ መድኃኒት ቤት ቁ.5",
+      "phone": "+251114653339",
+      "source:name": "Picture",
+      "source:name:am": "Picture"
+    }
+  },
+  {
+    "type": "node",
+    "id": 847291408,
+    "lat": 8.9843573,
+    "lon": 38.7499762,
+    "tags": {
+      "addr:kebele": "06",
+      "addr:subcity": "Kirkos",
+      "amenity": "pharmacy",
+      "contact:pobox": "5987",
+      "name": "Helina Pharmacy",
+      "name:am": "ከነማ መድኃኒት ቤት ቁ.5",
+      "phone": "+251114665118",
+      "source:name": "Picture",
+      "source:name:am": "Picture"
+    }
+  },
+  {
+    "type": "node",
+    "id": 849597017,
+    "lat": 8.8978060,
+    "lon": 38.7696300,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Kenema Pharmacy",
+      "name:am": "ከነማ መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 866550916,
+    "lat": 8.9937760,
+    "lon": 38.7662930,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:street": "Gabon Av",
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "drive_through": "yes",
+      "healthcare": "pharmacy",
+      "name": "Nile Pharmacy",
+      "name:am": "ናይል መዳኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 912018511,
+    "lat": 9.0028000,
+    "lon": 38.8178250,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Kaleab Pharmacy",
+      "name:am": "ቃልአብ መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 912018635,
+    "lat": 8.9890199,
+    "lon": 38.7926940,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Dashen",
+      "name:am": "ዳሽን መድሃኒት ቤት",
+      "phone:mobile": "+251913087836"
+    }
+  },
+  {
+    "type": "node",
+    "id": 923937672,
+    "lat": 9.0028703,
+    "lon": 38.7685339,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:housenumber": "330/04",
+      "addr:kebele": "02",
+      "addr:subcity": "Kirkos",
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Zogdom Pharmacy",
+      "name:am": "ዛግዶም መዳኒት ቤት",
+      "phone": "+25111552377,+251115502937",
+      "source:address": "from invoice paper",
+      "source:contact": "from invoice paper"
+    }
+  },
+  {
+    "type": "node",
+    "id": 923943172,
+    "lat": 9.0323970,
+    "lon": 38.7536350,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Kenema No 2 ከነማ  መድሃኒት ቤት ቁ.2",
+      "name:am": "ከነማ  መድሃኒት ቤት ቁ.2"
+    }
+  },
+  {
+    "type": "node",
+    "id": 923951331,
+    "lat": 9.0384890,
+    "lon": 38.7524870,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Alium Pharmacy",
+      "phone": "+251 (0) 111 552187"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1136376987,
+    "lat": 5.9510599,
+    "lon": 43.5506434,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1138798668,
+    "lat": 5.9520455,
+    "lon": 43.5537971,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1152530564,
+    "lat": 8.9995010,
+    "lon": 38.7796705,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Life drug store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1175729108,
+    "lat": 9.0074156,
+    "lon": 38.7947732,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "name": "Local Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1435184422,
+    "lat": 9.0143154,
+    "lon": 38.7572921,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "name": "Kenema Pharmacy",
+      "name:am": "ከነማ መድሃኒት ቤት"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1446849744,
+    "lat": 8.9963564,
+    "lon": 38.7300204,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "name": "Old Airport Pharmacy",
+      "name:am": "አሮጌዉ አየር ማረፊያ ፋርማሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1592291967,
+    "lat": 8.7487896,
+    "lon": 38.9840614,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ERCS Bishoftu Pharmarcy.Magaalaa b-Bishooftuu",
+      "source": "GPS"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1592575152,
+    "lat": 7.3574765,
+    "lon": 38.6706150,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Deme Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1674569378,
+    "lat": 9.0128420,
+    "lon": 38.7387232,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lucy Pharmacy",
+      "name:am": "ሊሲ ፋርማሲ",
+      "phone": "+251116555063"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1727969112,
+    "lat": 9.0313885,
+    "lon": 38.7465250,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Tekelehaymanot Pharmacy",
+      "name:am": "ተክለሃይማኖት መድሃኒት ቤት",
+      "name:en": "Teklehaimanot Hospital Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1829439712,
+    "lat": 10.0596845,
+    "lon": 34.5425929,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 1858934638,
+    "lat": 8.8802284,
+    "lon": 38.7681492,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "name": "Kenuma Drug Store",
+      "name:am": "ከኑማ መድሀኒት መደብር"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2424543946,
+    "lat": 9.0510644,
+    "lon": 38.6989720,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2722038556,
+    "lat": 7.1946824,
+    "lon": 38.5962396,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 2722038557,
+    "lat": 7.1952537,
+    "lon": 38.5993962,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no"
+    }
+  },
+  {
+    "type": "node",
+    "id": 3247277831,
+    "lat": 12.6072487,
+    "lon": 37.4665301,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "name": "Dirma Pharmacy",
+      "phone": "0918772215"
+    }
+  },
+  {
+    "type": "node",
+    "id": 3293032948,
+    "lat": 8.9927016,
+    "lon": 38.7813400,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "healthcare": "pharmacy",
+      "name": "Abadir Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 3293032960,
+    "lat": 9.0042402,
+    "lon": 38.7855116,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "no",
+      "healthcare": "pharmacy",
+      "name": "Nile Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4298999695,
+    "lat": 9.3473319,
+    "lon": 42.7967799,
+    "tags": {
+      "amenity": "pharmacy",
+      "email": "hosaale@hotmail.com",
+      "name": "Towfik Pharmacy",
+      "opening_hours": "Mo-Su 09:00-12:00, 13:30-21:30",
+      "operator": "Abdi Hosale",
+      "phone": "+251257752925"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4303802496,
+    "lat": 9.0210889,
+    "lon": 38.8771441,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Weramo Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4316826091,
+    "lat": 8.9739352,
+    "lon": 38.7607212,
+    "tags": {
+      "addr:street": "Debre Zeit Road",
+      "amenity": "pharmacy",
+      "name": "ከነማ ፋርማሲ ቁ.7 (ኦሊቢያ ዋና መስሪያቤት ፊት)",
+      "name:en": "Kenema Public Pharmacy (Oilibiya H.office)",
+      "phone": "+251114423175"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4316863492,
+    "lat": 8.9762157,
+    "lon": 38.7601335,
+    "tags": {
+      "addr:street": "Debre Zeit Road",
+      "amenity": "pharmacy",
+      "name": "Gotera Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4406935995,
+    "lat": 7.5281096,
+    "lon": 39.2484077,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504605391,
+    "lat": 7.0466407,
+    "lon": 38.4917956,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Shalom Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504605392,
+    "lat": 7.0373259,
+    "lon": 38.4867818,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Amen Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504605490,
+    "lat": 7.0452284,
+    "lon": 38.4781586,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Zemenawi Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504644591,
+    "lat": 7.0508028,
+    "lon": 38.4858050,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Heru Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504644592,
+    "lat": 7.0466728,
+    "lon": 38.4785199,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Getachew Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504644594,
+    "lat": 7.0375408,
+    "lon": 38.4863316,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Kidanmihiret Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4504644789,
+    "lat": 7.0465903,
+    "lon": 38.4915649,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Batamariam Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4522507795,
+    "lat": 8.5416878,
+    "lon": 39.2686941,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Fentale Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4522535490,
+    "lat": 8.5419273,
+    "lon": 39.2704521,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Red Cross Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4522535692,
+    "lat": 8.5422031,
+    "lon": 39.2819828,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Eskindir Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4558125289,
+    "lat": 13.4920916,
+    "lon": 39.4721192,
+    "tags": {
+      "amenity": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4571495889,
+    "lat": 11.5843794,
+    "lon": 37.3705972,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Haymro Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4578662204,
+    "lat": 11.5804447,
+    "lon": 37.3703521,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Mekides pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4800340438,
+    "lat": 9.5881020,
+    "lon": 41.8650357,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "ግዛው ፈርመሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4954557943,
+    "lat": 9.0141434,
+    "lon": 38.7818924,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:street": "Haile Gebresellasie Avenue",
+      "amenity": "pharmacy",
+      "name": "Napoli Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4966377121,
+    "lat": 9.0081550,
+    "lon": 38.7886098,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "GOH pharmacy",
+      "name:am": "GOH pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967346712,
+    "lat": 9.0182576,
+    "lon": 38.7973280,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "addr:street": "Equatorial Guinea Street",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Axum Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967677611,
+    "lat": 9.0194635,
+    "lon": 38.8157970,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Lem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967754425,
+    "lat": 9.0188240,
+    "lon": 38.8195936,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Ahadu Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967800859,
+    "lat": 9.0187890,
+    "lon": 38.8201262,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Effrata Pharmacy",
+      "phone": "+251911658440"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967928744,
+    "lat": 9.0187104,
+    "lon": 38.8207297,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Ethiopian Red Cross Society, Addis Ababa Pharmacy No. 3",
+      "operator": "Ethiopian Red Cross Society",
+      "phone": "+251116676578"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4967928754,
+    "lat": 9.0186684,
+    "lon": 38.8217950,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Gurd Shola Pharmacy",
+      "phone": "+251911172052"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4989485418,
+    "lat": 9.0212241,
+    "lon": 38.8395765,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "C.M.C Michael Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 4989499935,
+    "lat": 9.0211339,
+    "lon": 38.8421738,
+    "tags": {
+      "addr:city": "Addis Ababa",
+      "amenity": "pharmacy",
+      "drive_through": "no",
+      "name:en": "Altad Michael Pharmacy",
+      "phone": "+251911707310"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5056545123,
+    "lat": 9.3115400,
+    "lon": 42.1315450,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kalkas pharmacy",
+      "name:am": "Kalkas pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5100730334,
+    "lat": 9.3593908,
+    "lon": 42.8005148,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5100730335,
+    "lat": 9.3593128,
+    "lon": 42.8004059,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5100733623,
+    "lat": 9.3589065,
+    "lon": 42.8004944,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Alamagen pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5125180821,
+    "lat": 8.5407055,
+    "lon": 39.2648444,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "አማዞን መድኃኒት ቤት",
+      "name:am": "አማዞን መድኃኒት ቤት",
+      "name:en": "Amazon Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5128099025,
+    "lat": 11.1268440,
+    "lon": 39.6346984,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "በአ.ብ.ክ.መ ጤና ጥበቃ ቢሮ የቦሩ ሜዳ ሆስፒታል ማህበረሰብ አቀፍ መድሃኒት ቤት",
+      "name:en": "A.R.S Health Bureau Boru Meda Hospital Model Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5225071322,
+    "lat": 8.9983461,
+    "lon": 38.6800540,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ባምሊ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5326696522,
+    "lat": 8.9611652,
+    "lon": 38.7153365,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Bahew Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5330678921,
+    "lat": 9.0158872,
+    "lon": 38.7559042,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Rose Pharmacy",
+      "name:en": "Rose Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5424228422,
+    "lat": 8.5522855,
+    "lon": 39.2779875,
+    "tags": {
+      "addr:street": "Bole road",
+      "amenity": "pharmacy",
+      "email": "andudrugstore@gmail.com",
+      "name": "አንዱ ፋርማሲ",
+      "name:en": "Andu Pharmacy",
+      "opening_hours": "24/7",
+      "operator": "Andualegn",
+      "phone": "+251913272686"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5598413221,
+    "lat": 8.9962427,
+    "lon": 38.8240566,
+    "tags": {
+      "amenity": "pharmacy",
+      "email": "messelenigussu@yahoo.com",
+      "name": "ንጉስ መድኃኒት ቤት",
+      "name:en": "Nigus pharmacy",
+      "opening_hours": "24/7",
+      "operator": "Messele Nigussu",
+      "phone": "0911831225"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5622001923,
+    "lat": 6.4143734,
+    "lon": 38.3109473,
+    "tags": {
+      "addr:street": "Addis Ababa to Nairobi road",
+      "amenity": "pharmacy",
+      "name:en": "Dilla pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5632866825,
+    "lat": 8.9959926,
+    "lon": 38.7878989,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name:en": "Ruth Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5645355922,
+    "lat": 9.0653297,
+    "lon": 38.7717719,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "41 ኢየሱስ መድሃኒት ቤት",
+      "name:en": "41-Jesus pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5647117924,
+    "lat": 14.2806208,
+    "lon": 39.4610046,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Ethiopia Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5655760121,
+    "lat": 11.6064344,
+    "lon": 37.3700557,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ባህር ዳር ፋርማሲ",
+      "name:en": "Bahir Dar pharmacy",
+      "opening_hours": "24/7",
+      "phone": "0582206581"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5657882224,
+    "lat": 13.6244209,
+    "lon": 38.9992186,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Yirgalem Drug Shop"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5661188738,
+    "lat": 11.5875650,
+    "lon": 37.3885044,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ግሪር መድሃኒት ቤት",
+      "name:en": "Green pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5661188739,
+    "lat": 11.6064198,
+    "lon": 37.3702078,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ግዮን ፋርማሲ",
+      "name:en": "Ghion pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5661188742,
+    "lat": 11.6055056,
+    "lon": 37.3701432,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ፈቨን ፋርማሲ",
+      "name:en": "Feven pharmacy",
+      "phone": "0918779178"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5661188743,
+    "lat": 11.6058384,
+    "lon": 37.3701490,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ባታ",
+      "name:en": "Bata"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5685741123,
+    "lat": 11.5938663,
+    "lon": 37.3903801,
+    "tags": {
+      "addr:street": "Beg Tera",
+      "amenity": "pharmacy",
+      "name": "ሃይማኖት መድኃኒት መደብር",
+      "name:en": "Haymanot Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5692372422,
+    "lat": 11.0786705,
+    "lon": 37.8833508,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ቤዛ መድኃኒት መደብር",
+      "name:en": "Beza Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5696245522,
+    "lat": 10.8679891,
+    "lon": 38.2723309,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ስለሺ መድኃኒት መደብር",
+      "name:en": "Sileshi Drug Store",
+      "phone": "251918746983"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5698674323,
+    "lat": 10.8675430,
+    "lon": 38.2729822,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ምንትዋብ መድኃኒት መደብር",
+      "name:en": "Mentewab Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5698699521,
+    "lat": 10.8677416,
+    "lon": 38.2726855,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ሹመት መድኃኒት መደብር",
+      "name:en": "Shumet Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5698699529,
+    "lat": 10.3386747,
+    "lon": 37.7292492,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Natnael Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5698699622,
+    "lat": 10.3340771,
+    "lon": 37.7291131,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "አዲስ መድኃኒት መደብር",
+      "name:en": "Addis Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5698699822,
+    "lat": 10.3348439,
+    "lon": 37.7291032,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Markos Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5710765326,
+    "lat": 10.8677194,
+    "lon": 38.2727471,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Shumet"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5720103122,
+    "lat": 8.9243013,
+    "lon": 39.4211246,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ወይንሸት መድኃኒት መደብር",
+      "name:en": "Woinshet Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5720104021,
+    "lat": 8.9260962,
+    "lon": 39.4224770,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "አዲስ መድኃኒት መደብር",
+      "name:en": "Addis Drug Shop"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5827481793,
+    "lat": 9.0336009,
+    "lon": 38.7110042,
+    "tags": {
+      "addr:street": "New Ambo Road",
+      "amenity": "pharmacy",
+      "name": "ከተማ መድሀኒት ቤት",
+      "name:en": "Ketema pharmacy",
+      "opening_hours": "Mo-Su 08:00-21:00",
+      "operator": "Ato Ketema"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5899346229,
+    "lat": 12.6104718,
+    "lon": 37.4700422,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Goha Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5899346235,
+    "lat": 12.6114157,
+    "lon": 37.4575355,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Nolawi Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5901715450,
+    "lat": 12.0346654,
+    "lon": 39.0430455,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Genet Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5901715453,
+    "lat": 12.0355439,
+    "lon": 39.0466240,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5901731974,
+    "lat": 12.0364580,
+    "lon": 39.0467339,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Aemero Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5901732485,
+    "lat": 12.0364224,
+    "lon": 39.0465696,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "Birle Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 5969773387,
+    "lat": 14.2777979,
+    "lon": 39.4608770,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "መድሐኒት መደብር ኣስገዶም",
+      "name:en": "Asgedom pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6268440485,
+    "lat": 8.9901107,
+    "lon": 38.7248782,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Lidet Pharmacy",
+      "opening_hours": "Mo-Su 07:00-21:00",
+      "phone": "+251118114141"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6280109489,
+    "lat": 14.2778440,
+    "lon": 39.4633338,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "ፋርማሲ ማሕበር ቀይሕ መስቀል ኢትዮጵያ Ethiopian Red-Cross Society pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6280109491,
+    "lat": 14.2841078,
+    "lon": 39.4612121,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "ይሕደጋ ፋርማሲ Yihdega Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6295238894,
+    "lat": 9.0051679,
+    "lon": 38.7685574,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ኦልድ ኤርፖርት / አስቴር ፋርማሲ",
+      "name:en": "Old Airport (Aster) Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6301721286,
+    "lat": 14.2822044,
+    "lon": 39.4603287,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "ፊደል ፋርማሲ Fidel Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6314132786,
+    "lat": 14.2826287,
+    "lon": 39.4611138,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Fiseha Pharmacy ፍስሃ ፋርማሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6464288917,
+    "lat": 9.0491900,
+    "lon": 38.7389952,
+    "tags": {
+      "addr:housenumber": "9837",
+      "addr:postcode": "9837",
+      "addr:street": "Arbegnoch Street",
+      "amenity": "pharmacy",
+      "email": "munadwd@yahoo.com",
+      "name": "Zemuad Pharmaceutical and Medical Supplies",
+      "operator": "Munira Dawud",
+      "phone": "0973389739",
+      "website": "http://www.zemuadpharma.com"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6470001090,
+    "lat": 8.9927233,
+    "lon": 38.8601534,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Eyased"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6564386891,
+    "lat": 14.1011924,
+    "lon": 38.2804189,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Amir Drug Store",
+      "name:ar": "أمير للأدوية"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6603528409,
+    "lat": 8.9888066,
+    "lon": 38.7769385,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ze Gelia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6635288186,
+    "lat": 9.0085351,
+    "lon": 38.7807676,
+    "tags": {
+      "addr:street": "Mike Leyland Street",
+      "amenity": "pharmacy",
+      "name": "አሪቲ",
+      "name:en": "Ariti Herbal"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6695521890,
+    "lat": 9.0116371,
+    "lon": 38.7548931,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6700600971,
+    "lat": 8.9822722,
+    "lon": 38.7302506,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Abe Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715396766,
+    "lat": 9.0085589,
+    "lon": 38.7440123,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Gishen Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715397271,
+    "lat": 9.0427265,
+    "lon": 38.7648430,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Beza Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715400680,
+    "lat": 8.9492884,
+    "lon": 38.7186432,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lebu Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715407345,
+    "lat": 9.0411177,
+    "lon": 38.7671204,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Alem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715407967,
+    "lat": 8.9495117,
+    "lon": 38.7191345,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Zee Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715408223,
+    "lat": 8.9515276,
+    "lon": 38.6878471,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Naol Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715410167,
+    "lat": 8.9579639,
+    "lon": 38.6900482,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Merkeb Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715412872,
+    "lat": 9.0423641,
+    "lon": 38.7648125,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Keba Kidus Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715414603,
+    "lat": 8.9515009,
+    "lon": 38.6888885,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Elsa Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715415330,
+    "lat": 8.9575882,
+    "lon": 38.6903038,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Therapy Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715416427,
+    "lat": 9.0441456,
+    "lon": 38.7595673,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "St. Markos Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6715417895,
+    "lat": 8.9566574,
+    "lon": 38.6913261,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Afri Dan Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252288,
+    "lat": 8.9592760,
+    "lon": 38.7088593,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Robsen Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252311,
+    "lat": 8.9610214,
+    "lon": 38.7132481,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252312,
+    "lat": 8.9605696,
+    "lon": 38.7133272,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Helsiy Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252346,
+    "lat": 8.9494298,
+    "lon": 38.7212746,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252370,
+    "lat": 8.9544824,
+    "lon": 38.7448914,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yodi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252376,
+    "lat": 8.9468822,
+    "lon": 38.7452327,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Aleph Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252381,
+    "lat": 8.9468345,
+    "lon": 38.7417043,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kebron Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6716252383,
+    "lat": 8.9463218,
+    "lon": 38.7396464,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Sofeumer Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704325,
+    "lat": 8.9526390,
+    "lon": 38.7156312,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Siza Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704344,
+    "lat": 8.9573366,
+    "lon": 38.7645426,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Woyn Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704355,
+    "lat": 8.9581970,
+    "lon": 38.7719040,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yome Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704357,
+    "lat": 8.9599391,
+    "lon": 38.7694699,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Redeat Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704360,
+    "lat": 8.9606452,
+    "lon": 38.7683259,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Bloom Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704361,
+    "lat": 8.9606452,
+    "lon": 38.7682320,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Gerji Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704362,
+    "lat": 8.9601616,
+    "lon": 38.7662552,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solomon Hilu Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6718704363,
+    "lat": 8.9602504,
+    "lon": 38.7666428,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Fre-Abe Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6723122661,
+    "lat": 8.9568776,
+    "lon": 38.6970328,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Wako Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6723122662,
+    "lat": 8.9571246,
+    "lon": 38.6965325,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Habtesh Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6723128492,
+    "lat": 8.9596052,
+    "lon": 38.7100656,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Geshen Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6726216698,
+    "lat": 8.9386944,
+    "lon": 38.7349679,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lewi's Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192712,
+    "lat": 8.9841850,
+    "lon": 38.6961275,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192715,
+    "lat": 8.9999235,
+    "lon": 38.6790345,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192718,
+    "lat": 9.0010673,
+    "lon": 38.6777410,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Robera Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192719,
+    "lat": 9.0016448,
+    "lon": 38.6777108,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yomi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192721,
+    "lat": 9.0043416,
+    "lon": 38.6847979,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Siham Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192726,
+    "lat": 9.0040661,
+    "lon": 38.6892490,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Blu Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192729,
+    "lat": 9.0039780,
+    "lon": 38.6939543,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Al- Afia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6736192734,
+    "lat": 9.0118479,
+    "lon": 38.7202889,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Zamalik Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259574,
+    "lat": 9.0140546,
+    "lon": 38.7495276,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Adowa Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259906,
+    "lat": 9.0287382,
+    "lon": 38.7525049,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lion Pharmacy አንበሳ ፋርማሲ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259915,
+    "lat": 9.0301647,
+    "lon": 38.7375046,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kenema Pharmacy No 1"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259916,
+    "lat": 9.0295580,
+    "lon": 38.7374159,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "St. Lalibela Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259917,
+    "lat": 9.0163004,
+    "lon": 38.7379398,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ethio Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259938,
+    "lat": 9.0108151,
+    "lon": 38.7382567,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Abyssinia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6738259956,
+    "lat": 8.9760568,
+    "lon": 38.7056601,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Netsanet Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6742385085,
+    "lat": 8.9905856,
+    "lon": 38.7660138,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Shifa Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6742385087,
+    "lat": 9.0226362,
+    "lon": 38.7473229,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Deraretu Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6742567723,
+    "lat": 9.0601351,
+    "lon": 38.7370768,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ክነማ ፋርማሲ አዲሱ ገበያ ቅርንጫፍ",
+      "name:en": "Kenema Pharmacy No. 11 አዲሱ ገበያ ቅርንጫፍ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745397115,
+    "lat": 8.7499328,
+    "lon": 38.9702131,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lidya Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745503608,
+    "lat": 8.9536376,
+    "lon": 38.6933670,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Jemo 2 Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745503609,
+    "lat": 8.9548278,
+    "lon": 38.6922124,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Nejashi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745669994,
+    "lat": 8.9847599,
+    "lon": 38.7508795,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Rakeb Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745669995,
+    "lat": 8.9923421,
+    "lon": 38.7525988,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Robika Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745676502,
+    "lat": 9.0286852,
+    "lon": 38.7598917,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Elohim Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745676519,
+    "lat": 9.0434026,
+    "lon": 38.7452187,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Z Arsema Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745676521,
+    "lat": 9.0461389,
+    "lon": 38.7294298,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Alemtena Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6745676522,
+    "lat": 9.0494446,
+    "lon": 38.7262005,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Hayome Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6753068484,
+    "lat": 8.9736598,
+    "lon": 38.7314301,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Maphi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6753095485,
+    "lat": 8.9820802,
+    "lon": 38.7342883,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Sofi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6753372436,
+    "lat": 8.7512981,
+    "lon": 38.9582115,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Rahel Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6753372437,
+    "lat": 8.7557602,
+    "lon": 38.9532699,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Rebeka Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6753372458,
+    "lat": 8.7632088,
+    "lon": 38.9410615,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Enyew Selam Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6759928807,
+    "lat": 8.9306183,
+    "lon": 38.7428818,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Hana Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6759980899,
+    "lat": 8.9904218,
+    "lon": 38.7378582,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Diogan pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6759983060,
+    "lat": 8.9360759,
+    "lon": 38.7452490,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Halewish pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782265156,
+    "lat": 9.5985310,
+    "lon": 41.8703213,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Alfa Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782296523,
+    "lat": 8.9509300,
+    "lon": 38.6892786,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Furi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782297342,
+    "lat": 8.9835836,
+    "lon": 38.7737757,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kab Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782297663,
+    "lat": 8.9501304,
+    "lon": 38.7197253,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Anannia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782300728,
+    "lat": 9.5986629,
+    "lon": 41.8704615,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Zemzem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782305133,
+    "lat": 9.3879947,
+    "lon": 42.0166992,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Bekan Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782305594,
+    "lat": 9.5887583,
+    "lon": 41.8597849,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Abera Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782306226,
+    "lat": 9.5983312,
+    "lon": 41.8708942,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Barako Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6782306989,
+    "lat": 8.9845451,
+    "lon": 38.7747104,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Lemar Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786410565,
+    "lat": 9.3046998,
+    "lon": 42.1288629,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Shimeles Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786410567,
+    "lat": 9.3071164,
+    "lon": 42.1236527,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yohannes Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786410571,
+    "lat": 9.3120899,
+    "lon": 42.1219441,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ras Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786410573,
+    "lat": 9.3141597,
+    "lon": 42.1205051,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Hammer Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786417986,
+    "lat": 9.3549572,
+    "lon": 42.0579775,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Bole Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786418414,
+    "lat": 9.6021146,
+    "lon": 41.8419497,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Alfa Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786427828,
+    "lat": 8.7487306,
+    "lon": 38.9827591,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Mekonnen Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6786427846,
+    "lat": 8.9931700,
+    "lon": 40.1664998,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Selam Drug Store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6807135922,
+    "lat": 7.5467822,
+    "lon": 37.8519261,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "አማኑኤል",
+      "name:am": "አማኑኤል"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814279368,
+    "lat": 9.0535044,
+    "lon": 38.7200894,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Narobi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814279374,
+    "lat": 9.0439130,
+    "lon": 38.7442001,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ephoye Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814279375,
+    "lat": 9.0555761,
+    "lon": 38.6996394,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ferdwos Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814279377,
+    "lat": 9.0584656,
+    "lon": 38.7188851,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Maty Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814279378,
+    "lat": 9.0528065,
+    "lon": 38.6990170,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yasi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283287,
+    "lat": 9.0463079,
+    "lon": 38.7288595,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Helix Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283290,
+    "lat": 9.0482080,
+    "lon": 38.7264014,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Abyssinia Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283292,
+    "lat": 9.0440105,
+    "lon": 38.7440894,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Ras Desta Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283294,
+    "lat": 9.0287763,
+    "lon": 38.7327009,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Tiru Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283295,
+    "lat": 9.0461312,
+    "lon": 38.7293720,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Alemetena Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283300,
+    "lat": 9.0509553,
+    "lon": 38.7227197,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Nahim Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283305,
+    "lat": 9.0461543,
+    "lon": 38.7295641,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kebekab Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283306,
+    "lat": 9.0719152,
+    "lon": 38.6792118,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Medhanialem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283308,
+    "lat": 9.0137858,
+    "lon": 38.7578087,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Stadium Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283314,
+    "lat": 8.9794347,
+    "lon": 38.7491575,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Abyssinia Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283319,
+    "lat": 8.9946204,
+    "lon": 38.8131416,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283320,
+    "lat": 8.9488393,
+    "lon": 38.7289001,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Gelead Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283322,
+    "lat": 8.9792718,
+    "lon": 38.7491079,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solo Da Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283323,
+    "lat": 9.0337749,
+    "lon": 38.7610330,
+    "tags": {
+      "amenity": "pharmacy",
+      "healthcare": "pharmacy",
+      "name": "Solo Da Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283324,
+    "lat": 8.9585351,
+    "lon": 38.7124145,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Makda Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814283336,
+    "lat": 9.0365592,
+    "lon": 38.7522085,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Gishen Pharmacy",
+      "opening_hours": "Mo-Sa 08:00-18:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814354215,
+    "lat": 9.0719073,
+    "lon": 38.6792122,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Medhanialem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6814354219,
+    "lat": 8.9799954,
+    "lon": 38.7492443,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Uni National Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6837208435,
+    "lat": 9.0662471,
+    "lon": 38.8645756,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Metroz Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6837208436,
+    "lat": 9.0664523,
+    "lon": 38.8654956,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Adanach Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6839483193,
+    "lat": 7.1966129,
+    "lon": 35.4253027,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ቀይ መስቀል ፋርማሲ",
+      "name:en": "Red Cross pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6839483197,
+    "lat": 7.1964472,
+    "lon": 35.4260997,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "yeabsira"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6857270303,
+    "lat": 7.5519252,
+    "lon": 37.8460278,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Hayce"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6857313785,
+    "lat": 7.5505136,
+    "lon": 37.8468323,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "የሕዝብ መድሃኒት ቤት",
+      "name:en": "Community PHARMACY"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6857313885,
+    "lat": 7.5472344,
+    "lon": 37.8492605,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ቀይ መስቀል መድሀኒት ቤት",
+      "name:en": "IRC Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6857314191,
+    "lat": 7.5517758,
+    "lon": 37.8460100,
+    "tags": {
+      "amenity": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6926664785,
+    "lat": 6.6060500,
+    "lon": 38.4250651,
+    "tags": {
+      "amenity": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6937293785,
+    "lat": 8.1499884,
+    "lon": 39.3558300,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ኤርሞን መድሀኒት መደብር",
+      "name:en": "Ermon drug store"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6961326586,
+    "lat": 11.1308518,
+    "lon": 39.6335168,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Dessie Red Cross Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 6983479485,
+    "lat": 14.2840919,
+    "lon": 39.4613895,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "ይሕደጋ ፋርማሲ Yihdega Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7045992068,
+    "lat": 9.0326812,
+    "lon": 38.7754162,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7079107170,
+    "lat": 9.0326042,
+    "lon": 38.7755192,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7083540712,
+    "lat": 9.0320372,
+    "lon": 38.7656874,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kelela Pharmasy",
+      "phone": "0118131384"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7087990363,
+    "lat": 9.0252697,
+    "lon": 38.7814106,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Solomon Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7130221933,
+    "lat": 9.0390136,
+    "lon": 38.7722948,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Horizon Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7138530904,
+    "lat": 8.9934028,
+    "lon": 38.7740831,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Gelead Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7138532190,
+    "lat": 8.9947565,
+    "lon": 38.7786350,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Addis Continental Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7147901647,
+    "lat": 9.0277428,
+    "lon": 38.7836838,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Arsema pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7148653598,
+    "lat": 9.0337407,
+    "lon": 38.7617887,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Kenema Public Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7150496202,
+    "lat": 9.0313755,
+    "lon": 38.7617454,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "The Abe Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7162549170,
+    "lat": 9.0300616,
+    "lon": 38.7614628,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7305918585,
+    "lat": 8.9863613,
+    "lon": 38.8575843,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "N.pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7340441785,
+    "lat": 9.0620741,
+    "lon": 38.7614372,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "(የግል ፋርማሲ)"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7340474585,
+    "lat": 9.0744875,
+    "lon": 38.7589114,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "(የመንግስት)"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7433309010,
+    "lat": 8.9265495,
+    "lon": 38.6577170,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Maranata Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 7433309023,
+    "lat": 8.9155801,
+    "lon": 38.6374086,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Medhanialem Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8041344681,
+    "lat": 9.0159133,
+    "lon": 38.8225489,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8041853785,
+    "lat": 8.5430365,
+    "lon": 39.2710635,
+    "tags": {
+      "addr:street": "Rift valley hospital street",
+      "amenity": "pharmacy",
+      "email": "kaleabshawul@gmail.com",
+      "name": "አዳማ መድሐኒት እና የህክምና መገልገያዎች ጅምላ አከፋፋይ",
+      "name:en": "Adama drug and medical supplice wholesale",
+      "opening_hours": "Mo-Su 02:00-11:30",
+      "phone": "0221122247"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8041853786,
+    "lat": 8.5430530,
+    "lon": 39.2710677,
+    "tags": {
+      "amenity": "pharmacy",
+      "email": "kaleabshawul@gmail.com",
+      "name:en": "Adama Medicine & Medical supplies Wholesale",
+      "opening_hours": "Mo-Sa 08:00-05:30",
+      "phone": "+251221122247"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8266454717,
+    "lat": 9.6050083,
+    "lon": 41.8393871,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "ሂክማ",
+      "name:en": "HIKMA",
+      "opening_hours": "24/7",
+      "phone": "251951154767"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8333250717,
+    "lat": 8.9660605,
+    "lon": 38.7276598,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Kenema"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8339989817,
+    "lat": 7.3175515,
+    "lon": 38.0875694,
+    "tags": {
+      "addr:postcode": "1000",
+      "addr:street": "Wuibareg to Alaba Quilto",
+      "amenity": "pharmacy",
+      "email": "sitinadrugstore@gmail.com",
+      "name": "ሲቲና መድኃኒት ቤት",
+      "name:en": "Sitina Pharmacy",
+      "opening_hours": "Mo-Su 08:00-21:00",
+      "phone": "+251940199119"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8422931609,
+    "lat": 9.0016785,
+    "lon": 38.8185010,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Yerer Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8446070897,
+    "lat": 9.3482555,
+    "lon": 42.4050201,
+    "tags": {
+      "addr:city": "funyanbira",
+      "addr:street": "Gursum Road",
+      "amenity": "pharmacy",
+      "brand": "Pharmacie Principale",
+      "brand:wikidata": "Q1547749",
+      "brand:wikipedia": "fr:Groupe PP Holding",
+      "dispensing": "yes",
+      "drive_through": "no",
+      "healthcare": "pharmacy",
+      "name": "ibro Pharmacie",
+      "opening_hours": "Mo-Su 09:00-18:00",
+      "opening_hours:covid19": "open",
+      "operator": "health",
+      "phone": "+251921170295"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8474698118,
+    "lat": 8.4515805,
+    "lon": 39.2218888,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Sena pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8559299292,
+    "lat": 9.0032981,
+    "lon": 38.7801774,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Olive pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8559328226,
+    "lat": 9.0105507,
+    "lon": 38.7811438,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Komar pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8582201007,
+    "lat": 9.3550483,
+    "lon": 42.3984281,
+    "tags": {
+      "addr:city": "funyanbira",
+      "addr:housenumber": "1",
+      "addr:street": "Gursum Road",
+      "amenity": "pharmacy",
+      "brand": "Pharmacie Principale",
+      "brand:wikidata": "Q1547749",
+      "brand:wikipedia": "fr:Groupe PP Holding",
+      "dispensing": "yes",
+      "healthcare": "pharmacy",
+      "name": "ilalami pharmacy",
+      "opening_hours": "Mo-Su 09:00-21:00"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8656431817,
+    "lat": 8.9949660,
+    "lon": 38.8093961,
+    "tags": {
+      "addr:housenumber": "Block 17",
+      "addr:postcode": "0000",
+      "addr:street": "Gerj Taxi Tera",
+      "amenity": "pharmacy",
+      "email": "lidiakassaye7@gmail.com",
+      "name": "ውዳሴ ፋርማሲ",
+      "name:en": "Wudassie pharmacy",
+      "opening_hours": "24/7",
+      "phone": "0911857588"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8696780133,
+    "lat": 7.2009290,
+    "lon": 38.5912765,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Olyad"
+    }
+  },
+  {
+    "type": "node",
+    "id": 8711696363,
+    "lat": 9.0206341,
+    "lon": 38.7950151,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Alem pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9128783796,
+    "lat": 9.0313475,
+    "lon": 38.7842892,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Melkam Getaneh"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9137041821,
+    "lat": 9.0053724,
+    "lon": 38.7809820,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Haven pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9151972990,
+    "lat": 9.0322518,
+    "lon": 38.7722865,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Mahi Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9199669775,
+    "lat": 9.0002369,
+    "lon": 38.7796896,
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Life Pharmacy"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9217538317,
+    "lat": 8.8705115,
+    "lon": 38.8218958,
+    "tags": {
+      "amenity": "pharmacy",
+      "name:en": "Kenema public pharmacy Tuludimtu ከነማ የህዝብ መድኃኒት ቤት ቱሉዲምቱ"
+    }
+  },
+  {
+    "type": "node",
+    "id": 9379954540,
+    "lat": 7.0506405,
+    "lon": 38.4720830,
+    "tags": {
+      "amenity": "pharmacy",
+      "dispensing": "yes",
+      "healthcare": "pharmacy"
+    }
+  },
+  {
+    "type": "way",
+    "id": 58252855,
+    "nodes": [
+      722475187,
+      722475182,
+      722475184,
+      722475185,
+      722475187
+    ],
+    "tags": {
+      "amenity": "pharmacy",
+      "name": "Axum Pharmacy #4",
+      "name:am": "አክሱም መድሃኒት ቤት ቁ.4"
+    }
+  },
+  {
+    "type": "way",
+    "id": 310053489,
+    "nodes": [
+      3153999622,
+      3153999623,
+      3153999624,
+      3153999625,
+      3153999622
+    ],
+    "tags": {
+      "amenity": "pharmacy",
+      "building": "yes"
+    }
+  },
+  {
+    "type": "node",
+    "id": 3153999622,
+    "lat": 6.0354770,
+    "lon": 37.5566730
+  },
+  {
+    "type": "node",
+    "id": 3153999623,
+    "lat": 6.0353333,
+    "lon": 37.5566786
+  },
+  {
+    "type": "node",
+    "id": 3153999624,
+    "lat": 6.0353418,
+    "lon": 37.5569000
+  },
+  {
+    "type": "node",
+    "id": 3153999625,
+    "lat": 6.0354855,
+    "lon": 37.5568944
+  },
+  {
+    "type": "node",
+    "id": 722475182,
+    "lat": 9.0122380,
+    "lon": 38.7465406
+  },
+  {
+    "type": "node",
+    "id": 722475184,
+    "lat": 9.0121655,
+    "lon": 38.7465953
+  },
+  {
+    "type": "node",
+    "id": 722475185,
+    "lat": 9.0121294,
+    "lon": 38.7465411
+  },
+  {
+    "type": "node",
+    "id": 722475187,
+    "lat": 9.0122026,
+    "lon": 38.7464858
+  }
+  
+    ]
+  }
+  

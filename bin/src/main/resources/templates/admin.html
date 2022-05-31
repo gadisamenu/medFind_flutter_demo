@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	lang="en"
+>
+	<head>
+		<!-- links and meta datas -->
+		<div th:replace="_fragments::heads"></div>
+	</head>
+	<body class="flex flex-col h-screen">
+		<!-- navigation -->
+		<div th:replace="_fragments::navigation"></div>
+		<!-- content -->
+
+		<div class="flex-grow flex flex-col md:flex-row w-11/12 m-auto mt-10">
+			<div class="flex relative p-5 w-full shadow h-5/6 min-h-screen">
+				<div class="flex flex-col w-1/4 h-full">
+					<div class="h-full border-2 text-xs md:text-sm lg:text-xl">
+						<form th:action="@{/admin/users}">
+							<input
+								type="submit"
+								value="Users"
+								class="ml-1 md:ml-2 mt-2 px-1 md:px-3 border-2 rounded"
+							/>
+						</form>
+						<form th:action="@{/admin/pharmacies}">
+							<input
+								type="submit"
+								value="Pharmacies"
+								class="ml-1 md:ml-2 mt-2 px-1 md:px-3 border-2 rounded"
+							/>
+						</form>
+					</div>
+				</div>
+				<div class="bg-cyan-200 w-3/4 relative overflow-scroll">
+					<!-- <div> -->
+					<div th:if="${users}">
+						<div th:each="user:${users}" class="mb-3 border-b-2 border-black">
+							<div>
+								<span
+									th:text="${user.firstName}"
+									class="px-2 mx-5 border-x-2"
+								></span>
+								<span
+									th:text="${user.lastName}"
+									class="px-2 mx-5 border-x-2"
+								></span>
+								<span
+									th:text="${user.email}"
+									class="px-2 mx-5 border-x-2"
+								></span>
+								<!-- <form
+									th:action="@{/admin/delete/user/__${user.id}__}"
+									,
+									method="post"
+								>
+									<input
+										type="submit"
+										class="w-fit px-2 bg-red-500 rounded"
+										value="Delete"
+									/>
+								</form> -->
+							</div>
+						</div>
+					</div>
+					<!-- </div> -->
+
+					<!-- <div> -->
+					<div th:if="${pharmacies}" class="w-full">
+						<div
+							th:each="pharmacy:${pharmacies}"
+							class="mb-3 border-b-2 border-black"
+						>
+							<div>
+								<div th:text="${pharmacy.name}" class="px-2 border-x-2"></div>
+								<!-- <span th:text="${pharmacy.owner}" class="px-2 border-x-2"></span> -->
+								<div
+									th:text="${pharmacy.address}"
+									class="px-2 border-x-2"
+								></div>
+								<!-- <span th:text="${ph}" class="px-2border-x-2"></span> -->
+								<!-- <button class="w-fit px-2 bg-green-500 rounded">
+									Update info
+								</button>
+								<form th:action="@{/admin/delete/pharmacy/{}">
+									<input
+										type="submit"
+										class="w-fit px-2 bg-red-500 rounded"
+										value="Delete"
+									/>
+								</form> -->
+							</div>
+						</div>
+					</div>
+					<!-- </div> -->
+				</div>
+			</div>
+			<div class="float">
+				<form
+					th:action="@{/admin/register}"
+					method="post"
+					class="w-52 mt-10 md:mt-0 grid grid-rows-6 mb-10 md:mb-none content-around shadow-2xl rounded-2xl mx-auto md:ml-10"
+					th:object="${RegistrationForm}"
+				>
+					<!-- <h1 class="text-center text-2xl sm:text-3xl mt-2">Sign up</h1> -->
+
+					<!-- <div class="flex flex-col"> -->
+					<div class="text-red-500 w-fit m-auto" th:if="${UserAlreadyExist}">
+						An Account with This Email Already Exists!!!
+					</div>
+					<input
+						class="m-5 border-b-2 focus:outline-none"
+						type="text"
+						placeholder="first name"
+						th:field="*{firstName}"
+					/>
+					<div
+						class="error"
+						th:if="${#fields.hasErrors('firstName')}"
+						th:errors="*{firstName}"
+					></div>
+					<input
+						class="m-5 border-b-2 focus:outline-none"
+						type="text"
+						placeholder="last name"
+						th:field="*{lastName}"
+					/>
+					<div
+						class="error"
+						th:if="${#fields.hasErrors('lastName')}"
+						th:errors="*{lastName}"
+					></div>
+					<input
+						class="m-5 border-b-2 focus:outline-none"
+						type="email"
+						placeholder="Enter your email"
+						th:field="*{email}"
+					/>
+					<div
+						class="error"
+						th:if="${#fields.hasErrors('email')}"
+						th:errors="*{email}"
+					></div>
+
+					<input
+						class="m-5 border-b-2 focus:outline-none"
+						type="password"
+						placeholder="Password"
+						th:field="*{password}"
+					/>
+					<div
+						class="error"
+						th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}"
+					></div>
+					<input
+						type="submit"
+						class="bg-green-200 m-auto mt-4 w-fit p-2 px-5 rounded-full"
+						value="Add User"
+					/>
+				</form>
+			</div>
+		</div>
+		<!-- footer -->
+		<div th:replace="_fragments :: footer"></div>
+		<script th:src="@{/js/home2.js}"></script>
+	</body>
+</html>

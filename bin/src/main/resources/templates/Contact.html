@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	lang="en"
+>
+	<head>
+		<!-- head links and meta datas -->
+		<div th:replace="_fragments::heads"></div>
+	</head>
+
+	<body onresize="resize()" class="md:h-screen">
+		<!-- Navigation bar fragment -->
+		<div th:replace="_fragments::navigation"></div>
+
+		<!-- content -->
+		<div
+			class="flex flex-col justify-start items-center md:w-8/12 sm:w-10/12 w-11/12 mx-auto p-5 my-10 rounded-lg shadow-2xl"
+		>
+			<div th:if="${messageRecorded}">
+				<p class="font-collor-green font-size-1.5em">
+					your message is succesfully recorded
+				</p>
+			</div>
+
+			<form
+				action="contact"
+				class="flex flex-col justify-start items-center w-full p-5"
+			>
+				<label for="comment" class="sm:m-5">Send your comment</label>
+				<textarea
+					name="comment"
+					id="comment"
+					placeholder="type your comment here"
+					class="border-black border-2 focus:outline-none md:w-1/2 sm:w-2/3 w-4/5 h-28 md:h-32 max-h-40 transition:ease-out duration-300 focus:w-5/6 focus:sm:w-3/4 focus:md:w-2/3"
+				></textarea>
+				<button
+					type="submit"
+					class="bg-green-300 px-5 my-3 lg:px-10 sm:px-10 p-1 sm:mx-5 hover:bg-cyan-200 rounded-full"
+				>
+					Send comment
+				</button>
+			</form>
+			<div class="w-8/12 px-10">
+				<div class="flex flex-col justify-center items-center">
+					<div>
+						<p>follow us on</p>
+						<a href="#">
+							<img
+								class="md:h-7 h-5 m-3 inline-block"
+								src="/src/main/resources/static/images/github.png"
+								alt=""
+							/>
+						</a>
+						<a href="#">
+							<img
+								class="md:h-7 h-5 m-3 inline-block"
+								src="/src/main/resources/static/images/linkedin.png"
+								alt=""
+							/>
+						</a>
+					</div>
+					<div>
+						<p>Contact us on</p>
+						<a href="#">
+							<img
+								class="md:h-7 h-5 m-3 inline-block"
+								src="/src/main/resources/static/images/gmail.png"
+								alt=""
+						/></a>
+						<a href="#">
+							<img
+								class="md:h-7 h-5 m-3 inline-block"
+								src="/src/main/resources/static/images/telegram.png"
+								alt=""
+							/>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="_fragments ::footer"></div>
+		<script th:src="@{/js/home2.js}"></script>
+	</body>
+</html>

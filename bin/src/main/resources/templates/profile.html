@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	lang="en"
+>
+	<head>
+		<!-- head links and meta datas -->
+		<div th:replace="_fragments::heads"></div>
+		<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	</head>
+
+	<body onresize="resize()" class="p-0 m-0">
+		<!-- Navigation bar fragment -->
+		<div th:replace="_fragments :: navigation"></div>
+
+		<!-- content -->
+		<div class="well ml-auto mr-auto w-1/2 mt-10">
+			<ul class="nav nav-tabs">
+				<li class="active text-center">
+					<a href="#home" data-toggle="tab">Profile</a>
+				</li>
+				<!-- <li><a href="#profile" data-toggle="tab">Password</a></li> -->
+			</ul>
+			<div id="myTabContent" class="tab-content min-h-screen">
+				<div class="tab-pane active in mt-2" id="home">
+					<form
+						id="tab1"
+						class="flex flex-col justify-center items-center space-y-5"
+						onsubmit="event.preventDefault()"
+						th:action="@{/changeCredential}"
+						th:object="${profileForm}"
+					>
+						<div class="w-full">
+							<span th:text="${currentUser.getFirstName}">First Name</span>
+							<label class="mt-5" hidden>First Name:</label
+							><input
+								type="text"
+								class="input-text w-full"
+								placeholder="change first name"
+								th:field="*{firstName}"
+							/>
+						</div>
+						<div class="w-full">
+							<span th:text="${currentUser.getLastName}">Last Name</span>
+							<label class="" hidden>Last Name:</label
+							><input
+								type="text"
+								class="input-text w-full"
+								placeholder="change last name"
+								th:field="*{lastName}"
+							/>
+						</div>
+						<div class="w-full">
+							<span th:text="${currentUser.getEmail}">Email</span>
+							<label class="" hidden>Email:</label
+							><input
+								type="text"
+								class="input-text w-full"
+								placeholder="change email"
+								th:field="*{email}"
+							/>
+						</div>
+						<label hidden>Old Password</label
+						><input
+							type="password"
+							class="input-text w-full"
+							placeholder="Old passworld"
+							th:field="*{oldPassword}"
+						/>
+						<label hidden>New Password</label
+						><input
+							type="password"
+							class="input-text w-full"
+							placeholder="new password"
+							th:field="*{newPassword}"
+						/>
+						<label hidden>Confirm Password</label
+						><input
+							type="password"
+							class="input-text w-full"
+							placeholder="confirm passwrod"
+						/>
+						<div class="flex justify-center items-center">
+							<button
+								class="px-10 p-3 primary-background rounded-full mt-5"
+								th:onclick="profileUpdate()"
+							>
+								Update
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div th:replace="_fragments ::footer"></div>
+		<script th:src="@{/js/home2.js}"></script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	lang="en"
+>
+	<head>
+		<!-- head links and meta datas -->
+		<div th:replace="_fragments::heads"></div>
+
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+			integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+			crossorigin=""
+		/>
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+		/>
+	</head>
+
+	<body onresize="resize()">
+		<!-- Navigation bar fragment -->
+		<div th:replace="_fragments :: navigation"></div>
+	
+		<!-- content -->
+		<div class="searching mt-5 ">
+			<form method="POST" th:object="${searchForm}" onsubmit="event.preventDefault();" th:action="@{/region}" id="form123" name="form" class="flex  md:flex-row flex-col justify-around items-center">
+				<input id="medicineName" th:field="*{medicineName}" type="text" class="sm:ml-20 input-text  transition:ease-out duration-300  mx-4 w-2/3  border-b-4 border-blue-500 focus:outline-0  focus:text-blue-900 " placeholder='Type your medicine here' required></input>
+				<div class="w-2/3" id="suggestions"></div>
+				<div id ="dd" class="flex justify-around sm:flex-row flex-col items-center  mt-3 md:w-9/12 lg:w-2/3 min-w-fit">
+					<input type="hidden" id="xhidden" th:field="*{userlat}"></input>
+                            <input type="hidden" id="yhidden" th:field="*{userlong}"></input>
+                            <input type="hidden" id="regionhidden" name="regionName"></input>
+					<div id="dd" class="relative flex flex-col justify-center items-center rounded-full">
+								<button id="regionOptions" class="my-5  md:px-6  hover:drop-shadow-xl  h-10 primary-background bg-green-300 mx-1 px-3 sm:px-5 py-2 sm:mx-5 hover:bg-cyan-200 rounded-full">search in a region </button>
+								<div id="list"  class="absolute top-0 h-52 overflow-y-scroll overflow-x-hidden w-full bg-green-200">
+										<button th:each="region : ${regionNames}" th:text="${region}" th:value="${region}" th:onclick="sendForm(/*[[${region}]]*/)" th:formaction="@{/region}"  class="region w-full mr-5 mx-1 p-1 hover:drop-shadow-xl border primary-background">region</button>
+								</div>
+						</div>
+						<button id="byLocation" class="my-5 mx-2 py-2 px-6 md:px-10 rounded-full primary-background hover:drop-shadow-xl border border-cyan-200">search closest to me</button>
+				</div>
+		</form>
+    	</div>
+
+		<div class="absolute top-32 w-full h-4/6 flex justify-center items-center flex-col bg-white z-0 opacity-90" id="loading">
+			<div class="loader"></div>
+			<h1 class="block secondary text-2xl opacity-100">Searching your medicine</h1>
+		</div>
+			
+			
+
+		<div >
+			<div
+				th:if="not ${pharmaList}"
+				class="items-center mt-10 py-5 rounded-xl shadow-lg md:mx-16 lg:mx-40 h-2/4"
+			>
+				<p class="text-2xl text-red-500 m-auto w-fit">
+					The medicine you searched for in not found!
+				</p>
+			</div>
+			<div
+				th:if="${pharmaList}"
+				class="flex flex-col justify-center items-center mt-10 py-5 rounded-xl shadow-lg md:mx-16 lg:mx-52"
+			>
+				<script th:inline="javascript">
+					/*<![CDATA[*/
+					var route = /*[[${route}]]*/ "";
+					
+					var coordinates = [];
+					var user_lat = /*[[${user_lat}]]*/ "0.0";
+					var user_lon = /*[[${user_lon}]]*/ "0.0";
+					/*]]>*/
+				</script>
+				<div
+					th:each="pharmacy : ${pharmaList}"
+					class="flex flex-col justify-between items-center w-10/12 rounded-xl my-2 bg-cyan-100"
+				>
+					<div class="ml-3" th:text="${pharmacy.name}">Pharmacy name</div>
+					<div class="flex justify-between items-center w-full rounded-xl">
+						<div
+							class="flex flex-col justify-center items-center rounded-xl m-2"
+						>
+						<div th:text="${pharmacy.address}"> Address</div>
+					</div>
+						<div
+							class="overflow-hidden w-2/5 h-40 bg-yellow-400 rounded-xl mt-0 m-3"
+							th:id="map+(${pharmacy.Id})"
+						></div>
+						<script th:inline="javascript" type="text/javascript">
+							/*<![CDATA[*/
+							var name = /*[[${pharmacy.name}]]*/ "Unknown";
+						
+							var id = String(/*[[${pharmacy.id}]]*/);
+							var coordsLat = /*[[${pharmacy.location.getX()}]]*/"0.0";
+							var coordsLon = /*[[${pharmacy.location.getY()}]]*/"0.0";
+							coordinates.push([name, coordsLat, coordsLon, id]);
+							/*]]>*/
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<div th:replace="_fragments ::footer"></div>
+		<script
+			src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+			integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+			crossorigin=""
+		></script>
+		<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+		<script th:src="@{/js/home2.js}"></script>
+	</body>
+</html>

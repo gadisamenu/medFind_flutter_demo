@@ -1,0 +1,3004 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-ide",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2022-01-21T12:42:52Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/58252855",
+        "amenity": "pharmacy",
+        "name": "Axum Pharmacy #4",
+        "name:am": "አክሱም መድሃኒት ቤት ቁ.4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+              38.7464858,
+              9.0122026
+        ]
+      },
+      "id": "way/58252855"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/731000113",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Ghion Pharmacy",
+        "name:am": "ዮን ቢዝነስ ሴንተር",
+        "phone": "+251115515606"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7575924,
+          9.0140113
+        ]
+      },
+      "id": "node/731000113"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/774899819",
+        "amenity": "pharmacy",
+        "contact:phone": "+251 (0) 11 5156531",
+        "dispensing": "yes",
+        "name": "Kazanchis Pharmacy",
+        "name:am": "ካሳንችስ መዳኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7711602,
+          9.0154353
+        ]
+      },
+      "id": "node/774899819"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/837433757",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "contact:phone": "+251 (0) 11 653 1057",
+        "dispensing": "yes",
+        "name": "Emanda",
+        "name:am": "ኢማንዳ",
+        "subcity": "Kolfe Keranyo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7084096,
+          9.0331881
+        ]
+      },
+      "id": "node/837433757"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787473",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Haron Pharmacy",
+        "name:am": "ሃሮን ፋርማሲ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7184466,
+          8.9976877
+        ]
+      },
+      "id": "node/838787473"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787491",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "St. Giberiel Pharmacy",
+        "name:am": "ቅዱስ ገብርኤል መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.670895,
+          8.962984
+        ]
+      },
+      "id": "node/838787491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787506",
+        "addr:city": "Addis Ababa",
+        "addr:kebele": "10/19",
+        "addr:subcity": "Kirkos",
+        "amenity": "pharmacy",
+        "contact:phone": "+251(0) 11 515 7100",
+        "dispensing": "yes",
+        "healthcare": "pharmacy",
+        "name": "Ambercho Pharmacy",
+        "name:am": "አምበርቾ መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.747036,
+          8.998641
+        ]
+      },
+      "id": "node/838787506"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787509",
+        "amenity": "pharmacy",
+        "contact:phone": "+251 (0) 114486327",
+        "dispensing": "yes",
+        "name": "Arseima Drug Store"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6994334,
+          8.9830498
+        ]
+      },
+      "id": "node/838787509"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787514",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Karakore Public Pharmacy",
+        "name:am": "ካራቆሬ የሕዝብ መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.680115,
+          8.975713
+        ]
+      },
+      "id": "node/838787514"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838787520",
+        "amenity": "pharmacy",
+        "contact:phone": "+251(0) 911 357 512",
+        "dispensing": "yes",
+        "healthcare": "pharmacy",
+        "name": "El Betel Drug store",
+        "name:am": "ኤል ቤተል መድሃኒት መደብር",
+        "subcity": "Kirkos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7477102,
+          8.9942045
+        ]
+      },
+      "id": "node/838787520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/838832134",
+        "addr:kebele": "11/12",
+        "addr:subcity": "Bole",
+        "amenity": "pharmacy",
+        "contact:mobile": "+251 (0) 911 96 81 21",
+        "name": "Tsega Pharmacy",
+        "name:am": "ፀጋ መድኃኒት ቤት",
+        "source": "GPS Data"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8118532,
+          9.0041562
+        ]
+      },
+      "id": "node/838832134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/844577692",
+        "addr:city": "Addis Ababa",
+        "addr:subcity": "Addis Ketema",
+        "amenity": "pharmacy",
+        "contact:phone": "+251(0) 112 750 227",
+        "dispensing": "yes",
+        "name": "Harar Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.729573,
+          9.0336474
+        ]
+      },
+      "id": "node/844577692"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/844577700",
+        "amenity": "pharmacy",
+        "contact:phone": "+251 (0) 913 46 0055",
+        "dispensing": "yes",
+        "kebele": "16/17",
+        "name": "Zacshalom Pharmacy",
+        "name:am": "ዛክሻሎም መድሃኒት ቤት",
+        "subcity": "Addis Ketema"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7276493,
+          9.0407787
+        ]
+      },
+      "id": "node/844577700"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/847291401",
+        "addr:kebele": "06",
+        "addr:subcity": "Kirkos",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Kenema Pharmacy No 5",
+        "name:am": "ከነማ መድኃኒት ቤት ቁ.5",
+        "phone": "+251114653339",
+        "source:name": "Picture",
+        "source:name:am": "Picture"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7498065,
+          8.984639
+        ]
+      },
+      "id": "node/847291401"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/847291408",
+        "addr:kebele": "06",
+        "addr:subcity": "Kirkos",
+        "amenity": "pharmacy",
+        "contact:pobox": "5987",
+        "name": "Helina Pharmacy",
+        "name:am": "ከነማ መድኃኒት ቤት ቁ.5",
+        "phone": "+251114665118",
+        "source:name": "Picture",
+        "source:name:am": "Picture"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7499762,
+          8.9843573
+        ]
+      },
+      "id": "node/847291408"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/849597017",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Kenema Pharmacy",
+        "name:am": "ከነማ መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.76963,
+          8.897806
+        ]
+      },
+      "id": "node/849597017"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/866550916",
+        "addr:city": "Addis Ababa",
+        "addr:street": "Gabon Av",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "drive_through": "yes",
+        "healthcare": "pharmacy",
+        "name": "Nile Pharmacy",
+        "name:am": "ናይል መዳኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.766293,
+          8.993776
+        ]
+      },
+      "id": "node/866550916"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/912018511",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Kaleab Pharmacy",
+        "name:am": "ቃልአብ መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.817825,
+          9.0028
+        ]
+      },
+      "id": "node/912018511"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/912018635",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Dashen",
+        "name:am": "ዳሽን መድሃኒት ቤት",
+        "phone:mobile": "+251913087836"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.792694,
+          8.9890199
+        ]
+      },
+      "id": "node/912018635"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/923937672",
+        "addr:city": "Addis Ababa",
+        "addr:housenumber": "330/04",
+        "addr:kebele": "02",
+        "addr:subcity": "Kirkos",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Zogdom Pharmacy",
+        "name:am": "ዛግዶም መዳኒት ቤት",
+        "phone": "+25111552377,+251115502937",
+        "source:address": "from invoice paper",
+        "source:contact": "from invoice paper"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7685339,
+          9.0028703
+        ]
+      },
+      "id": "node/923937672"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/923943172",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Kenema No 2 ከነማ  መድሃኒት ቤት ቁ.2",
+        "name:am": "ከነማ  መድሃኒት ቤት ቁ.2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.753635,
+          9.032397
+        ]
+      },
+      "id": "node/923943172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/923951331",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Alium Pharmacy",
+        "phone": "+251 (0) 111 552187"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.752487,
+          9.038489
+        ]
+      },
+      "id": "node/923951331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1152530564",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Life drug store"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7796705,
+          8.999501
+        ]
+      },
+      "id": "node/1152530564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1175729108",
+        "amenity": "pharmacy",
+        "dispensing": "no",
+        "name": "Local Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7947732,
+          9.0074156
+        ]
+      },
+      "id": "node/1175729108"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1435184422",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "name": "Kenema Pharmacy",
+        "name:am": "ከነማ መድሃኒት ቤት"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7572921,
+          9.0143154
+        ]
+      },
+      "id": "node/1435184422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1446849744",
+        "amenity": "pharmacy",
+        "dispensing": "no",
+        "name": "Old Airport Pharmacy",
+        "name:am": "አሮጌዉ አየር ማረፊያ ፋርማሲ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7300204,
+          8.9963564
+        ]
+      },
+      "id": "node/1446849744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1674569378",
+        "amenity": "pharmacy",
+        "name": "Lucy Pharmacy",
+        "name:am": "ሊሲ ፋርማሲ",
+        "phone": "+251116555063"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7387232,
+          9.012842
+        ]
+      },
+      "id": "node/1674569378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1727969112",
+        "amenity": "pharmacy",
+        "name": "Tekelehaymanot Pharmacy",
+        "name:am": "ተክለሃይማኖት መድሃኒት ቤት",
+        "name:en": "Teklehaimanot Hospital Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.746525,
+          9.0313885
+        ]
+      },
+      "id": "node/1727969112"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1858934638",
+        "amenity": "pharmacy",
+        "dispensing": "no",
+        "name": "Kenuma Drug Store",
+        "name:am": "ከኑማ መድሀኒት መደብር"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7681492,
+          8.8802284
+        ]
+      },
+      "id": "node/1858934638"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2424543946",
+        "amenity": "pharmacy",
+        "name": "pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.698972,
+          9.0510644
+        ]
+      },
+      "id": "node/2424543946"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3293032948",
+        "amenity": "pharmacy",
+        "dispensing": "no",
+        "healthcare": "pharmacy",
+        "name": "Abadir Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.78134,
+          8.9927016
+        ]
+      },
+      "id": "node/3293032948"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3293032960",
+        "amenity": "pharmacy",
+        "dispensing": "no",
+        "healthcare": "pharmacy",
+        "name": "Nile Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7855116,
+          9.0042402
+        ]
+      },
+      "id": "node/3293032960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4303802496",
+        "amenity": "pharmacy",
+        "name": "Weramo Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8771441,
+          9.0210889
+        ]
+      },
+      "id": "node/4303802496"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4316826091",
+        "addr:street": "Debre Zeit Road",
+        "amenity": "pharmacy",
+        "name": "ከነማ ፋርማሲ ቁ.7 (ኦሊቢያ ዋና መስሪያቤት ፊት)",
+        "name:en": "Kenema Public Pharmacy (Oilibiya H.office)",
+        "phone": "+251114423175"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7607212,
+          8.9739352
+        ]
+      },
+      "id": "node/4316826091"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4316863492",
+        "addr:street": "Debre Zeit Road",
+        "amenity": "pharmacy",
+        "name": "Gotera Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7601335,
+          8.9762157
+        ]
+      },
+      "id": "node/4316863492"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4954557943",
+        "addr:city": "Addis Ababa",
+        "addr:street": "Haile Gebresellasie Avenue",
+        "amenity": "pharmacy",
+        "name": "Napoli Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7818924,
+          9.0141434
+        ]
+      },
+      "id": "node/4954557943"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4966377121",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "GOH pharmacy",
+        "name:am": "GOH pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7886098,
+          9.008155
+        ]
+      },
+      "id": "node/4966377121"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967346712",
+        "addr:city": "Addis Ababa",
+        "addr:street": "Equatorial Guinea Street",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Axum Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.797328,
+          9.0182576
+        ]
+      },
+      "id": "node/4967346712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967677611",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Lem Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.815797,
+          9.0194635
+        ]
+      },
+      "id": "node/4967677611"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967754425",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Ahadu Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8195936,
+          9.018824
+        ]
+      },
+      "id": "node/4967754425"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967800859",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Effrata Pharmacy",
+        "phone": "+251911658440"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8201262,
+          9.018789
+        ]
+      },
+      "id": "node/4967800859"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967928744",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Ethiopian Red Cross Society, Addis Ababa Pharmacy No. 3",
+        "operator": "Ethiopian Red Cross Society",
+        "phone": "+251116676578"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8207297,
+          9.0187104
+        ]
+      },
+      "id": "node/4967928744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4967928754",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Gurd Shola Pharmacy",
+        "phone": "+251911172052"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.821795,
+          9.0186684
+        ]
+      },
+      "id": "node/4967928754"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4989485418",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "C.M.C Michael Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8395765,
+          9.0212241
+        ]
+      },
+      "id": "node/4989485418"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4989499935",
+        "addr:city": "Addis Ababa",
+        "amenity": "pharmacy",
+        "drive_through": "no",
+        "name:en": "Altad Michael Pharmacy",
+        "phone": "+251911707310"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8421738,
+          9.0211339
+        ]
+      },
+      "id": "node/4989499935"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5225071322",
+        "amenity": "pharmacy",
+        "name": "ባምሊ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.680054,
+          8.9983461
+        ]
+      },
+      "id": "node/5225071322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5326696522",
+        "amenity": "pharmacy",
+        "name:en": "Bahew Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7153365,
+          8.9611652
+        ]
+      },
+      "id": "node/5326696522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5330678921",
+        "amenity": "pharmacy",
+        "name": "Rose Pharmacy",
+        "name:en": "Rose Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7559042,
+          9.0158872
+        ]
+      },
+      "id": "node/5330678921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5598413221",
+        "amenity": "pharmacy",
+        "email": "messelenigussu@yahoo.com",
+        "name": "ንጉስ መድኃኒት ቤት",
+        "name:en": "Nigus pharmacy",
+        "opening_hours": "24/7",
+        "operator": "Messele Nigussu",
+        "phone": "0911831225"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8240566,
+          8.9962427
+        ]
+      },
+      "id": "node/5598413221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5632866825",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name:en": "Ruth Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7878989,
+          8.9959926
+        ]
+      },
+      "id": "node/5632866825"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5645355922",
+        "amenity": "pharmacy",
+        "name": "41 ኢየሱስ መድሃኒት ቤት",
+        "name:en": "41-Jesus pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7717719,
+          9.0653297
+        ]
+      },
+      "id": "node/5645355922"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5827481793",
+        "addr:street": "New Ambo Road",
+        "amenity": "pharmacy",
+        "name": "ከተማ መድሀኒት ቤት",
+        "name:en": "Ketema pharmacy",
+        "opening_hours": "Mo-Su 08:00-21:00",
+        "operator": "Ato Ketema"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7110042,
+          9.0336009
+        ]
+      },
+      "id": "node/5827481793"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6268440485",
+        "amenity": "pharmacy",
+        "name:en": "Lidet Pharmacy",
+        "opening_hours": "Mo-Su 07:00-21:00",
+        "phone": "+251118114141"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7248782,
+          8.9901107
+        ]
+      },
+      "id": "node/6268440485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6295238894",
+        "amenity": "pharmacy",
+        "name": "ኦልድ ኤርፖርት / አስቴር ፋርማሲ",
+        "name:en": "Old Airport (Aster) Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7685574,
+          9.0051679
+        ]
+      },
+      "id": "node/6295238894"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6464288917",
+        "addr:housenumber": "9837",
+        "addr:postcode": "9837",
+        "addr:street": "Arbegnoch Street",
+        "amenity": "pharmacy",
+        "email": "munadwd@yahoo.com",
+        "name": "Zemuad Pharmaceutical and Medical Supplies",
+        "operator": "Munira Dawud",
+        "phone": "0973389739",
+        "website": "http://www.zemuadpharma.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7389952,
+          9.04919
+        ]
+      },
+      "id": "node/6464288917"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6470001090",
+        "amenity": "pharmacy",
+        "name": "Eyased"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8601534,
+          8.9927233
+        ]
+      },
+      "id": "node/6470001090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6603528409",
+        "amenity": "pharmacy",
+        "name": "Ze Gelia Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7769385,
+          8.9888066
+        ]
+      },
+      "id": "node/6603528409"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6635288186",
+        "addr:street": "Mike Leyland Street",
+        "amenity": "pharmacy",
+        "name": "አሪቲ",
+        "name:en": "Ariti Herbal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7807676,
+          9.0085351
+        ]
+      },
+      "id": "node/6635288186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6695521890",
+        "amenity": "pharmacy",
+        "name": "Solo Da pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7548931,
+          9.0116371
+        ]
+      },
+      "id": "node/6695521890"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6700600971",
+        "amenity": "pharmacy",
+        "name": "Abe Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7302506,
+          8.9822722
+        ]
+      },
+      "id": "node/6700600971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715396766",
+        "amenity": "pharmacy",
+        "name": "Gishen Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7440123,
+          9.0085589
+        ]
+      },
+      "id": "node/6715396766"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715397271",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Beza Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.764843,
+          9.0427265
+        ]
+      },
+      "id": "node/6715397271"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715400680",
+        "amenity": "pharmacy",
+        "name": "Lebu Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7186432,
+          8.9492884
+        ]
+      },
+      "id": "node/6715400680"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715407345",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Alem Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7671204,
+          9.0411177
+        ]
+      },
+      "id": "node/6715407345"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715407967",
+        "amenity": "pharmacy",
+        "name": "Zee Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7191345,
+          8.9495117
+        ]
+      },
+      "id": "node/6715407967"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715408223",
+        "amenity": "pharmacy",
+        "name": "Naol Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6878471,
+          8.9515276
+        ]
+      },
+      "id": "node/6715408223"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715410167",
+        "amenity": "pharmacy",
+        "name": "Merkeb Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6900482,
+          8.9579639
+        ]
+      },
+      "id": "node/6715410167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715412872",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Keba Kidus Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7648125,
+          9.0423641
+        ]
+      },
+      "id": "node/6715412872"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715414603",
+        "amenity": "pharmacy",
+        "name": "Elsa Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6888885,
+          8.9515009
+        ]
+      },
+      "id": "node/6715414603"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715415330",
+        "amenity": "pharmacy",
+        "name": "Therapy Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6903038,
+          8.9575882
+        ]
+      },
+      "id": "node/6715415330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715416427",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "St. Markos Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7595673,
+          9.0441456
+        ]
+      },
+      "id": "node/6715416427"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6715417895",
+        "amenity": "pharmacy",
+        "name": "Afri Dan Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6913261,
+          8.9566574
+        ]
+      },
+      "id": "node/6715417895"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252288",
+        "amenity": "pharmacy",
+        "name": "Robsen Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7088593,
+          8.959276
+        ]
+      },
+      "id": "node/6716252288"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252311",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7132481,
+          8.9610214
+        ]
+      },
+      "id": "node/6716252311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252312",
+        "amenity": "pharmacy",
+        "name": "Helsiy Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7133272,
+          8.9605696
+        ]
+      },
+      "id": "node/6716252312"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252346",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7212746,
+          8.9494298
+        ]
+      },
+      "id": "node/6716252346"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252370",
+        "amenity": "pharmacy",
+        "name": "Yodi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7448914,
+          8.9544824
+        ]
+      },
+      "id": "node/6716252370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252376",
+        "amenity": "pharmacy",
+        "name": "Aleph Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7452327,
+          8.9468822
+        ]
+      },
+      "id": "node/6716252376"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252381",
+        "amenity": "pharmacy",
+        "name": "Kebron Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7417043,
+          8.9468345
+        ]
+      },
+      "id": "node/6716252381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6716252383",
+        "amenity": "pharmacy",
+        "name": "Sofeumer Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7396464,
+          8.9463218
+        ]
+      },
+      "id": "node/6716252383"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704325",
+        "amenity": "pharmacy",
+        "name": "Siza Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7156312,
+          8.952639
+        ]
+      },
+      "id": "node/6718704325"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704344",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Woyn Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7645426,
+          8.9573366
+        ]
+      },
+      "id": "node/6718704344"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704355",
+        "amenity": "pharmacy",
+        "name": "Yome Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.771904,
+          8.958197
+        ]
+      },
+      "id": "node/6718704355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704357",
+        "amenity": "pharmacy",
+        "name": "Redeat Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7694699,
+          8.9599391
+        ]
+      },
+      "id": "node/6718704357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704360",
+        "amenity": "pharmacy",
+        "name": "Bloom Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7683259,
+          8.9606452
+        ]
+      },
+      "id": "node/6718704360"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704361",
+        "amenity": "pharmacy",
+        "name": "Gerji Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.768232,
+          8.9606452
+        ]
+      },
+      "id": "node/6718704361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704362",
+        "amenity": "pharmacy",
+        "name": "Solomon Hilu Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7662552,
+          8.9601616
+        ]
+      },
+      "id": "node/6718704362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6718704363",
+        "amenity": "pharmacy",
+        "name": "Fre-Abe Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7666428,
+          8.9602504
+        ]
+      },
+      "id": "node/6718704363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6723122661",
+        "amenity": "pharmacy",
+        "name": "Wako Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6970328,
+          8.9568776
+        ]
+      },
+      "id": "node/6723122661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6723122662",
+        "amenity": "pharmacy",
+        "name": "Habtesh Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6965325,
+          8.9571246
+        ]
+      },
+      "id": "node/6723122662"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6723128492",
+        "amenity": "pharmacy",
+        "name": "Geshen Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7100656,
+          8.9596052
+        ]
+      },
+      "id": "node/6723128492"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6726216698",
+        "amenity": "pharmacy",
+        "name": "Lewi's Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7349679,
+          8.9386944
+        ]
+      },
+      "id": "node/6726216698"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192712",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6961275,
+          8.984185
+        ]
+      },
+      "id": "node/6736192712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192715",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6790345,
+          8.9999235
+        ]
+      },
+      "id": "node/6736192715"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192718",
+        "amenity": "pharmacy",
+        "name": "Robera Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.677741,
+          9.0010673
+        ]
+      },
+      "id": "node/6736192718"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192719",
+        "amenity": "pharmacy",
+        "name": "Yomi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6777108,
+          9.0016448
+        ]
+      },
+      "id": "node/6736192719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192721",
+        "amenity": "pharmacy",
+        "name": "Siham Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6847979,
+          9.0043416
+        ]
+      },
+      "id": "node/6736192721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192726",
+        "amenity": "pharmacy",
+        "name": "Blu Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.689249,
+          9.0040661
+        ]
+      },
+      "id": "node/6736192726"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192729",
+        "amenity": "pharmacy",
+        "name": "Al- Afia Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6939543,
+          9.003978
+        ]
+      },
+      "id": "node/6736192729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6736192734",
+        "amenity": "pharmacy",
+        "name": "Zamalik Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7202889,
+          9.0118479
+        ]
+      },
+      "id": "node/6736192734"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259574",
+        "amenity": "pharmacy",
+        "name": "Adowa Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7495276,
+          9.0140546
+        ]
+      },
+      "id": "node/6738259574"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259906",
+        "amenity": "pharmacy",
+        "name": "Lion Pharmacy አንበሳ ፋርማሲ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7525049,
+          9.0287382
+        ]
+      },
+      "id": "node/6738259906"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259915",
+        "amenity": "pharmacy",
+        "name": "Kenema Pharmacy No 1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7375046,
+          9.0301647
+        ]
+      },
+      "id": "node/6738259915"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259916",
+        "amenity": "pharmacy",
+        "name": "St. Lalibela Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7374159,
+          9.029558
+        ]
+      },
+      "id": "node/6738259916"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259917",
+        "amenity": "pharmacy",
+        "name": "Ethio Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7379398,
+          9.0163004
+        ]
+      },
+      "id": "node/6738259917"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259938",
+        "amenity": "pharmacy",
+        "name": "Abyssinia Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7382567,
+          9.0108151
+        ]
+      },
+      "id": "node/6738259938"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6738259956",
+        "amenity": "pharmacy",
+        "name": "Netsanet Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7056601,
+          8.9760568
+        ]
+      },
+      "id": "node/6738259956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6742385085",
+        "amenity": "pharmacy",
+        "name": "Shifa Drug Store"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7660138,
+          8.9905856
+        ]
+      },
+      "id": "node/6742385085"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6742385087",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Deraretu Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7473229,
+          9.0226362
+        ]
+      },
+      "id": "node/6742385087"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6742567723",
+        "amenity": "pharmacy",
+        "name": "ክነማ ፋርማሲ አዲሱ ገበያ ቅርንጫፍ",
+        "name:en": "Kenema Pharmacy No. 11 አዲሱ ገበያ ቅርንጫፍ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7370768,
+          9.0601351
+        ]
+      },
+      "id": "node/6742567723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745503608",
+        "amenity": "pharmacy",
+        "name": "Jemo 2 Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.693367,
+          8.9536376
+        ]
+      },
+      "id": "node/6745503608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745503609",
+        "amenity": "pharmacy",
+        "name": "Nejashi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6922124,
+          8.9548278
+        ]
+      },
+      "id": "node/6745503609"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745669994",
+        "amenity": "pharmacy",
+        "name": "Rakeb Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7508795,
+          8.9847599
+        ]
+      },
+      "id": "node/6745669994"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745669995",
+        "amenity": "pharmacy",
+        "name": "Robika Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7525988,
+          8.9923421
+        ]
+      },
+      "id": "node/6745669995"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745676502",
+        "amenity": "pharmacy",
+        "name": "Elohim Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7598917,
+          9.0286852
+        ]
+      },
+      "id": "node/6745676502"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745676519",
+        "amenity": "pharmacy",
+        "name": "Z Arsema Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7452187,
+          9.0434026
+        ]
+      },
+      "id": "node/6745676519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745676521",
+        "amenity": "pharmacy",
+        "name": "Alemtena Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7294298,
+          9.0461389
+        ]
+      },
+      "id": "node/6745676521"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6745676522",
+        "amenity": "pharmacy",
+        "name": "Hayome Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7262005,
+          9.0494446
+        ]
+      },
+      "id": "node/6745676522"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6753068484",
+        "amenity": "pharmacy",
+        "name": "Maphi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7314301,
+          8.9736598
+        ]
+      },
+      "id": "node/6753068484"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6753095485",
+        "amenity": "pharmacy",
+        "name": "Sofi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7342883,
+          8.9820802
+        ]
+      },
+      "id": "node/6753095485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6759928807",
+        "amenity": "pharmacy",
+        "name": "Hana Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7428818,
+          8.9306183
+        ]
+      },
+      "id": "node/6759928807"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6759980899",
+        "amenity": "pharmacy",
+        "name": "Diogan pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7378582,
+          8.9904218
+        ]
+      },
+      "id": "node/6759980899"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6759983060",
+        "amenity": "pharmacy",
+        "name": "Halewish pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.745249,
+          8.9360759
+        ]
+      },
+      "id": "node/6759983060"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6782296523",
+        "amenity": "pharmacy",
+        "name": "Furi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6892786,
+          8.95093
+        ]
+      },
+      "id": "node/6782296523"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6782297342",
+        "amenity": "pharmacy",
+        "name": "Kab Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7737757,
+          8.9835836
+        ]
+      },
+      "id": "node/6782297342"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6782297663",
+        "amenity": "pharmacy",
+        "name": "Anannia Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7197253,
+          8.9501304
+        ]
+      },
+      "id": "node/6782297663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6782306989",
+        "amenity": "pharmacy",
+        "name": "Lemar Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7747104,
+          8.9845451
+        ]
+      },
+      "id": "node/6782306989"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814279368",
+        "amenity": "pharmacy",
+        "name": "Narobi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7200894,
+          9.0535044
+        ]
+      },
+      "id": "node/6814279368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814279374",
+        "amenity": "pharmacy",
+        "name": "Ephoye Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7442001,
+          9.043913
+        ]
+      },
+      "id": "node/6814279374"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814279375",
+        "amenity": "pharmacy",
+        "name": "Ferdwos Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.6996394,
+          9.0555761
+        ]
+      },
+      "id": "node/6814279375"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814279377",
+        "amenity": "pharmacy",
+        "name": "Maty Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7188851,
+          9.0584656
+        ]
+      },
+      "id": "node/6814279377"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814279378",
+        "amenity": "pharmacy",
+        "name": "Yasi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.699017,
+          9.0528065
+        ]
+      },
+      "id": "node/6814279378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283287",
+        "amenity": "pharmacy",
+        "name": "Helix Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7288595,
+          9.0463079
+        ]
+      },
+      "id": "node/6814283287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283290",
+        "amenity": "pharmacy",
+        "name": "Abyssinia Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7264014,
+          9.048208
+        ]
+      },
+      "id": "node/6814283290"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283292",
+        "amenity": "pharmacy",
+        "name": "Ras Desta Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7440894,
+          9.0440105
+        ]
+      },
+      "id": "node/6814283292"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283294",
+        "amenity": "pharmacy",
+        "name": "Tiru Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7327009,
+          9.0287763
+        ]
+      },
+      "id": "node/6814283294"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283295",
+        "amenity": "pharmacy",
+        "name": "Alemetena Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.729372,
+          9.0461312
+        ]
+      },
+      "id": "node/6814283295"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283300",
+        "amenity": "pharmacy",
+        "name": "Nahim Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7227197,
+          9.0509553
+        ]
+      },
+      "id": "node/6814283300"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283305",
+        "amenity": "pharmacy",
+        "name": "Kebekab Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7295641,
+          9.0461543
+        ]
+      },
+      "id": "node/6814283305"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283308",
+        "amenity": "pharmacy",
+        "name": "Stadium Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7578087,
+          9.0137858
+        ]
+      },
+      "id": "node/6814283308"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283314",
+        "amenity": "pharmacy",
+        "name": "Abyssinia Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7491575,
+          8.9794347
+        ]
+      },
+      "id": "node/6814283314"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283319",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8131416,
+          8.9946204
+        ]
+      },
+      "id": "node/6814283319"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283320",
+        "amenity": "pharmacy",
+        "name": "Gelead Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7289001,
+          8.9488393
+        ]
+      },
+      "id": "node/6814283320"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283322",
+        "amenity": "pharmacy",
+        "name": "Solo Da Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7491079,
+          8.9792718
+        ]
+      },
+      "id": "node/6814283322"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283323",
+        "amenity": "pharmacy",
+        "healthcare": "pharmacy",
+        "name": "Solo Da Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.761033,
+          9.0337749
+        ]
+      },
+      "id": "node/6814283323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283324",
+        "amenity": "pharmacy",
+        "name": "Makda Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7124145,
+          8.9585351
+        ]
+      },
+      "id": "node/6814283324"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814283336",
+        "amenity": "pharmacy",
+        "name": "Gishen Pharmacy",
+        "opening_hours": "Mo-Sa 08:00-18:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7522085,
+          9.0365592
+        ]
+      },
+      "id": "node/6814283336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6814354219",
+        "amenity": "pharmacy",
+        "name": "Uni National Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7492443,
+          8.9799954
+        ]
+      },
+      "id": "node/6814354219"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6837208435",
+        "amenity": "pharmacy",
+        "name": "Metroz Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8645756,
+          9.0662471
+        ]
+      },
+      "id": "node/6837208435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6837208436",
+        "amenity": "pharmacy",
+        "name": "Adanach Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8654956,
+          9.0664523
+        ]
+      },
+      "id": "node/6837208436"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7045992068",
+        "amenity": "pharmacy",
+        "name": "Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7754162,
+          9.0326812
+        ]
+      },
+      "id": "node/7045992068"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7079107170",
+        "amenity": "pharmacy",
+        "name": "Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7755192,
+          9.0326042
+        ]
+      },
+      "id": "node/7079107170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7083540712",
+        "amenity": "pharmacy",
+        "name": "Kelela Pharmasy",
+        "phone": "0118131384"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7656874,
+          9.0320372
+        ]
+      },
+      "id": "node/7083540712"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7087990363",
+        "amenity": "pharmacy",
+        "name": "Solomon Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7814106,
+          9.0252697
+        ]
+      },
+      "id": "node/7087990363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7130221933",
+        "amenity": "pharmacy",
+        "name": "Horizon Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7722948,
+          9.0390136
+        ]
+      },
+      "id": "node/7130221933"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7138530904",
+        "amenity": "pharmacy",
+        "name": "Gelead Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7740831,
+          8.9934028
+        ]
+      },
+      "id": "node/7138530904"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7138532190",
+        "amenity": "pharmacy",
+        "name": "Addis Continental Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.778635,
+          8.9947565
+        ]
+      },
+      "id": "node/7138532190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7147901647",
+        "amenity": "pharmacy",
+        "name": "Arsema pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7836838,
+          9.0277428
+        ]
+      },
+      "id": "node/7147901647"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7148653598",
+        "amenity": "pharmacy",
+        "name": "Kenema Public Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7617887,
+          9.0337407
+        ]
+      },
+      "id": "node/7148653598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7150496202",
+        "amenity": "pharmacy",
+        "name": "The Abe Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7617454,
+          9.0313755
+        ]
+      },
+      "id": "node/7150496202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7162549170",
+        "amenity": "pharmacy",
+        "name": "Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7614628,
+          9.0300616
+        ]
+      },
+      "id": "node/7162549170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7305918585",
+        "amenity": "pharmacy",
+        "name:en": "N.pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8575843,
+          8.9863613
+        ]
+      },
+      "id": "node/7305918585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7340441785",
+        "amenity": "pharmacy",
+        "name": "(የግል ፋርማሲ)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7614372,
+          9.0620741
+        ]
+      },
+      "id": "node/7340441785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7340474585",
+        "amenity": "pharmacy",
+        "name": "(የመንግስት)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7589114,
+          9.0744875
+        ]
+      },
+      "id": "node/7340474585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8041344681",
+        "amenity": "pharmacy",
+        "dispensing": "yes",
+        "healthcare": "pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8225489,
+          9.0159133
+        ]
+      },
+      "id": "node/8041344681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8333250717",
+        "amenity": "pharmacy",
+        "name:en": "Kenema"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7276598,
+          8.9660605
+        ]
+      },
+      "id": "node/8333250717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8422931609",
+        "amenity": "pharmacy",
+        "name": "Yerer Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.818501,
+          9.0016785
+        ]
+      },
+      "id": "node/8422931609"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8559299292",
+        "amenity": "pharmacy",
+        "name": "Olive pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7801774,
+          9.0032981
+        ]
+      },
+      "id": "node/8559299292"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8559328226",
+        "amenity": "pharmacy",
+        "name": "Komar pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7811438,
+          9.0105507
+        ]
+      },
+      "id": "node/8559328226"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8656431817",
+        "addr:housenumber": "Block 17",
+        "addr:postcode": "0000",
+        "addr:street": "Gerj Taxi Tera",
+        "amenity": "pharmacy",
+        "email": "lidiakassaye7@gmail.com",
+        "name": "ውዳሴ ፋርማሲ",
+        "name:en": "Wudassie pharmacy",
+        "opening_hours": "24/7",
+        "phone": "0911857588"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8093961,
+          8.994966
+        ]
+      },
+      "id": "node/8656431817"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8711696363",
+        "amenity": "pharmacy",
+        "name": "Alem pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7950151,
+          9.0206341
+        ]
+      },
+      "id": "node/8711696363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9128783796",
+        "amenity": "pharmacy",
+        "name": "Melkam Getaneh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7842892,
+          9.0313475
+        ]
+      },
+      "id": "node/9128783796"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9137041821",
+        "amenity": "pharmacy",
+        "name": "Haven pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.780982,
+          9.0053724
+        ]
+      },
+      "id": "node/9137041821"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9151972990",
+        "amenity": "pharmacy",
+        "name": "Mahi Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7722865,
+          9.0322518
+        ]
+      },
+      "id": "node/9151972990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9199669775",
+        "amenity": "pharmacy",
+        "name": "Life Pharmacy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.7796896,
+          9.0002369
+        ]
+      },
+      "id": "node/9199669775"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9217538317",
+        "amenity": "pharmacy",
+        "name:en": "Kenema public pharmacy Tuludimtu ከነማ የህዝብ መድኃኒት ቤት ቱሉዲምቱ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8218958,
+          8.8705115
+        ]
+      },
+      "id": "node/9217538317"
+    }
+  ]
+}
