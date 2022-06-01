@@ -12,8 +12,8 @@ import javax.persistence.*;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-@Data
 
+@Data
 @RequiredArgsConstructor
 @Entity
 public class Reservation {
@@ -25,13 +25,20 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "fk_pharmacy", referencedColumnName = "pharmacy_id" ,nullable = false)
     private Pharmacy pharmacy;
+
     @ManyToOne
-    @JoinColumn(name = "fk_user", referencedColumnName = "user_id",nullable = false)
+    @JoinColumn(name = "fk_user", referencedColumnName = "id",nullable = false)
     private User user;
 
-    @OneToOne
-    @JoinColumn(name = "fk_medpack", referencedColumnName = "medpack_id",nullable =false)
-    private  List<MedPack>  medPacks = new ArrayList<> ();
+    @OneToMany
+    @JoinTable(
+        name= "reservation_pack",
+        joinColumns = @JoinColumn(name="reservation_id",referencedColumnName = "reservation_id"),
+        inverseJoinColumns=@JoinColumn(name = "medpack_id", referencedColumnName = "medpack_id"))
+    private  List<MedPack>  medPacks = new ArrayList<MedPack> ();
 
+    public void add_medpack(MedPack new_medpack){
+        this.medPacks.add(new_medpack);
+    }
 
 }

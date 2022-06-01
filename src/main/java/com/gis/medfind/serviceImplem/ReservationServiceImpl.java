@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -30,12 +31,11 @@ public class ReservationServiceImpl implements ReservationService{
         User user = userRepo.findById(user_id).orElseThrow();
         Pharmacy pharmacy = pharmacyRepo.findById(pharmacy_id).orElseThrow();
         MedPack medPack = medPackRepo.findById( medpack_id).orElseThrow();
+
         Reservation reservation = new Reservation();
         reservation.setUser(user);
         reservation.setPharmacy(pharmacy);
-        List<MedPack> medpacks = reservation.getMedPacks();
-        medpacks.add(medPack);
-        reservation.setMedPacks(medpacks);
+        reservation.add_medpack(medPack);
         return reservationRepo.save(reservation);
     }
 
@@ -67,12 +67,20 @@ public class ReservationServiceImpl implements ReservationService{
        reservation.setMedPacks(medpacks);
        reservationRepo.save(reservation);
    }
+
    public  void removeMedpackFromReservation(Long reservation_id , Long medpack_id) {
 
        Reservation reservation = reservationRepo.getById(reservation_id);
        List<MedPack> medPacks = reservation.getMedPacks();
-       MedPack medpack = medPackRepo.getById(medpack_id);
-       medPacks.remove(medpack);
+
+       Predicate<MedPack>  pred = new Predicate<MedPack>() {
+           @Override
+           public boolean test (MedPack mdpk ){
+               return mdpk.getId() == medpack_id;
+           }
+       };
+       
+       medPacks.removeIf(pred); 
        reservation.setMedPacks(medPacks);
        reservationRepo.save(reservation);
    }

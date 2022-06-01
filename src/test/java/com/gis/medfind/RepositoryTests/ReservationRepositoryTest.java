@@ -9,20 +9,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.MatcherAssert.assertThat;
+
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(true)
 public class ReservationRepositoryTest {
-    @Autowired
-    private TestEntityManager entityManager;
+  
     @Autowired
     private ReservationRepository reservationRepo;
     @Autowired
@@ -30,17 +27,12 @@ public class ReservationRepositoryTest {
     @Autowired
     private PharmacyRepository pharmRepo;
     @Autowired
-    private MedicineRepository medRepo;
-    @Autowired
-    private PillRepository pillRepo;
-    @Autowired
     private MedPackRepository medpackRepo;
 
 
 
     @Test
     public void testCreateReservation() {
-
         long initial_count = reservationRepo.count();
 
         Reservation reservation = new Reservation();
@@ -51,17 +43,13 @@ public class ReservationRepositoryTest {
         reservation.setUser(user1);
 
         MedPack md = new MedPack();
-        List<MedPack> medp = reservation.getMedPacks();
-        medp.add(md);
-        reservation.setMedPacks(medp);
+        medpackRepo.save(md);
 
+        reservation.add_medpack(md);
 
         reservationRepo.save(reservation);
 
         assertThat(reservationRepo.count()).isEqualTo(initial_count +1);
-
-
-
 
     }
 }

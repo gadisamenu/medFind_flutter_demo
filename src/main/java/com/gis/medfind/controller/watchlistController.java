@@ -114,7 +114,7 @@ public class watchlistController {
 
         System.out.println(pharm.size());
         System.out.println(form.getMedicineName());
-        Map<Integer, String> routes = new HashMap<>();
+        Map<Long, String> routes = new HashMap<>();
         pharm.forEach(
             i->{
                 routes.put(i.getId(),

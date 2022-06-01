@@ -2,26 +2,31 @@ package com.gis.medfind.ServiceImplementationTests;
 
 import com.gis.medfind.entity.*;
 import com.gis.medfind.repository.*;
-import com.gis.medfind.service.ReservationService;
 import com.gis.medfind.serviceImplem.ReservationServiceImpl;
+
+
 import org.junit.jupiter.api.Test;
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(true)
 public class ReservationServiceImplTests {
+
+    @Autowired
+    private GeometryFactory geometryFactory;
+
     @Autowired
     private ReservationRepository reservationRepo;
 
@@ -34,8 +39,6 @@ public class ReservationServiceImplTests {
     @Autowired
     private UserRepository userRepo;
 
-    @Autowired
-    private MedicineRepository medRepo;
 
     @Autowired
     private ReservationServiceImpl reservationService;
@@ -61,10 +64,21 @@ public class ReservationServiceImplTests {
         pharm.setPharmacyServer(new Server());
         return pharmRepo.save(pharm);
     }
-    @Test
+
+    private Reservation createTestReservation(){
+        Reservation res = new Reservation();
+        res.setUser(createTestUser("medfind@gmail.com"));
+        List<MedPack>  medpack = new ArrayList<MedPack>();
+        medpack.add(createTestMedPack());
+        res.setMedPacks(medpack);
+        res.setPharmacy(createTestPharmacy());
+        return reservationRepo.save(res);
+    }
+
     public MedPack createTestMedPack() {
 
-        long initial_count = medpackRepo.count();
+        // long initial_count = medpackRepo.count();
+
         Medicine md = new Medicine();
         Pill pl = new Pill();
         pl.setMedicine(md);
@@ -101,20 +115,17 @@ public class ReservationServiceImplTests {
 
         MedPack mp = new MedPack();
         mp.setPills(pills);
-       return  medpackRepo.save(mp);
+        return medpackRepo.save(mp);
     }
 
     @Test
 // create
-    public void test_createReservation(Long user_id , Long pharmacy_id,Long  medpack_id){
+    public void test_createReservation(){
             User ur = createTestUser("habte@gmail.com");
             Pharmacy pharm = createTestPharmacy();
-            MedPack medPack = createTestMedPack();
+
             int initial_count = (int)reservationRepo.count();
-
-
-            reservationService.createReservation(ur.getId(),pharm.getId(),medPack.getId());//
-
+            reservationService.createReservation(ur.getId(),pharm.getId(),createTestMedPack().getId());//
 
             assertThat(initial_count +1).isEqualTo(reservationRepo.count());
 
@@ -122,34 +133,41 @@ public class ReservationServiceImplTests {
 
 @Test
     // Read
-    public void test_getAllReservationByUserId(Long user_id){
+    public void test_getAllReservationByUserId(){
     User user = createTestUser("habte@gmail.com");
     Pharmacy pharm = createTestPharmacy();
-    MedPack medPack = createTestMedPack();
-    int no_of_reservations_before = (int)reservationRepo.count();
-
-   Reservation reservation = reservationService.createReservation(user.getId(),pharm.getId(),medPack.getId());
-   List<Reservation> feched_reservation = reservationRepo.findAllReservationByUserId(user.getId());
-   int no_of_reservations_after = feched_reservation.size();
-   assertThat(no_of_reservations_before + 1).isEqualTo(no_of_reservations_after);
-
+   
+    List<Reservation> reserves = new ArrayList<>();
+    for (int i = 0 ; i< 2; i++){
+        reserves.add(reservationService.createReservation(user.getId(),pharm.getId(),createTestMedPack().getId()));
+    }
+    
+    List<Reservation> fetched_reservation = reservationRepo.findAllReservationByUserId(user.getId());
+    int no_of_reservations_after = fetched_reservation.size();
+    assertThat(2).isEqualTo(no_of_reservations_after);
+    assertThat(reserves.containsAll(fetched_reservation)).isTrue();
 }
 @Test
-    public void  test_getAllReservationByPharmacyId(Long pharmacy_id){
+    public void  test_getAllReservationByPharmacyId(){
     User user = createTestUser("habte@gmail.com");
     Pharmacy pharm = createTestPharmacy();
-    MedPack medPack = createTestMedPack();
-    int no_of_reservations_before = (int)reservationRepo.count();
+    List<Reservation> reserves = new ArrayList<>();
 
-    Reservation reservation = reservationService.createReservation(user.getId(),pharm.getId(),medPack.getId());
-    List<Reservation> feched_reservation = reservationRepo.findAllReservationByPharmacyId(pharm.getId());
-    int no_of_reservations_after = feched_reservation.size();
-    assertThat(no_of_reservations_before + 1).isEqualTo(no_of_reservations_after);
+    for (int i = 0 ; i< 2; i++){
+        reserves.add(reservationService.createReservation(user.getId(),pharm.getId(),createTestMedPack().getId()));
+    }
+
+    List<Reservation> fetched_reservation = reservationRepo.findAllReservationByPharmacyId(pharm.getId());
+    int no_of_reservations_after = fetched_reservation.size();
+
+    assertThat(reserves.containsAll(fetched_reservation)).isTrue();
+    assertThat(2).isEqualTo(no_of_reservations_after);
+
 }
 
     // delete
     @Test
-    public void test_deleteReservation(Long reservation_id){
+    public void test_deleteReservation(){
         User user = createTestUser("habte@gmail.com");
         Pharmacy pharm = createTestPharmacy();
         MedPack medPack = createTestMedPack();
@@ -163,42 +181,47 @@ public class ReservationServiceImplTests {
 
         assertThat(opt_reservation.isPresent()).isFalse();
     }
+
+    
     //Update
     @Test
-    public  void test_addMedpackToReservation (Long reservation_id, Long medpack_id){
-    MedPack medPack = new MedPack();
-    Reservation reservation = reservationRepo.getById(reservation_id);
-    int amount_before = reservation.getMedPacks().size();
-
-    reservationService.addMedpackToReservation(reservation.getId(),medPack.getId());
-    int amount_after = reservation.getMedPacks().size();
-
-    assertThat(amount_before + 1).isEqualTo(amount_after);
-
-    }
-    @Test
-    public  void test_removeMedpackFromReservation(Long reservation_id , Long medpack_id){
-        MedPack medPack = createTestMedPack();
-        Reservation reservation = reservationRepo.getById(reservation_id);
+    public void test_addMedpackToReservation (){
+        Reservation reservation = createTestReservation();
         int amount_before = reservation.getMedPacks().size();
 
-        reservationService.removeMedpackFromReservation(reservation.getId(),medPack.getId());
+        reservationService.addMedpackToReservation(reservation.getId(),createTestMedPack().getId());
         int amount_after = reservation.getMedPacks().size();
 
-        assertThat(amount_before - 1).isEqualTo(amount_after)
+        assertThat(amount_before + 1).isEqualTo(amount_after);
+    }
+
+
+    @Test
+    public  void test_removeMedpackFromReservation(){
+        
+        Reservation reservation = reservationRepo.getById(createTestReservation().getId());
+        MedPack md = createTestMedPack();
+        reservationService.addMedpackToReservation(reservation.getId(), md.getId()); 
+        int amount_before = reservation.getMedPacks().size();
+
+        reservationService.removeMedpackFromReservation(reservation.getId(),md.getId());
+
+
+        int amount_after = reservation.getMedPacks().size();
+        assertThat(amount_before - 1).isEqualTo(amount_after);
     }
 
 // check reservation exist bofore
 @Test
-    public void test_isExistBefore(Long pharmacy_id, Long user_id,Long reservation_id){
-    User ur = createTestUser("habte@gmail.com");
-    Pharmacy pharm = createTestPharmacy();
-    MedPack medPack = createTestMedPack();
+    public void test_isExistBefore(){
+        User ur = createTestUser("habte@gmail.com");
+        Pharmacy pharm = createTestPharmacy();
+        MedPack medPack = createTestMedPack();
 
 
-    Reservation reservation = reservationService.createReservation(ur.getId(),pharm.getId(),medPack.getId());
-    boolean check= reservationService.isExistBefore(pharm.getId(),ur.getId(),reservation.getId());
-    assertThat(check).isTrue();
-}
+        Reservation reservation = reservationService.createReservation(ur.getId(),pharm.getId(),medPack.getId());
+        boolean check= reservationService.isExistBefore(pharm.getId(),ur.getId(),reservation.getId());
+        assertThat(check).isTrue();
+   }
 
 }

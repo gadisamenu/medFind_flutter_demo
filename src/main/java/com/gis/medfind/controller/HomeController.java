@@ -92,7 +92,7 @@ public class HomeController {
             return "homeResult";
         }
         
-        Map<Integer, String> routes = new HashMap<>();
+        Map<Long, String> routes = new HashMap<>();
         pharm.forEach(
             i->{
                 routes.put(i.getId(),

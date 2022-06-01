@@ -28,7 +28,7 @@ public class Pharmacy{
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "pharmacy_id")
-    private int id;
+    private Long id;
 
     @Column(name = "pharmacy_name" ,nullable = true, length = 255)
     private String name;
