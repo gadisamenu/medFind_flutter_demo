@@ -1,6 +1,7 @@
 package com.gis.medfind.restController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,6 @@ import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Pharmacy;
 import com.gis.medfind.entity.Pill;
 import com.gis.medfind.entity.User;
-import com.gis.medfind.entity.WatchList;
 import com.gis.medfind.jwt.JwtTokenUtil;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.service.WatchListService;
@@ -41,15 +41,20 @@ public class WatchListController {
     public ResponseEntity<?> searchMedPack(@RequestParam(name = "medpack_id") String medpack_id,@RequestBody Map<String,String> location){
         try{
           List<Pharmacy> pharmacies =   watchListServ.findMedicinesCloseToUser(Long.parseLong(medpack_id), Double.parseDouble(location.get("userlat")), Double.parseDouble(location.get("userlong")));
-          List<String[]> sizedPharm  = new ArrayList<>();
+
+          List<Map<String,String>> sizedPharm  = new ArrayList<>();
+
         
            pharmacies.forEach(
             i->{
-                String[] phar = {i.getId().toString(),i.getName(),i.getAddress()};
+                Map<String,String>  phar = new HashMap<>();
+                phar.put("id", i.getId().toString());
+                phar.put("name",i.getName());
+                phar.put("address",i.getAddress());
                 sizedPharm.add(phar);
             }
         );
-          return new ResponseEntity<List<String[]>>(sizedPharm, HttpStatus.OK);
+          return new ResponseEntity<List<Map<String,String>>>(sizedPharm, HttpStatus.OK);
         }
         catch (Exception e) {
             return new ResponseEntity<String>("searchFailed ", HttpStatus.BAD_REQUEST);
@@ -61,12 +66,11 @@ public class WatchListController {
     public ResponseEntity<?> watchList(@RequestHeader(name ="Authorization") String token){
         try{
             String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
-        User user = userRepo.findByEmail(email);
-
-        WatchList watchlist =  watchListServ.findWatchListByUserId(user.getId());
-        List<MedPack> medpacks =  watchListServ.getMedpacksFromWatchlist(watchlist.getId());
-        
-        return new ResponseEntity<List<MedPack>>(medpacks,HttpStatus.OK);
+            User user = userRepo.findByEmail(email);
+            
+            List<MedPack> medpacks =  watchListServ.getMedpacksFromWatchlist(user.getId());
+            
+            return new ResponseEntity<List<MedPack>>(medpacks,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found ", HttpStatus.NOT_FOUND);
@@ -94,17 +98,15 @@ public class WatchListController {
     @RequestMapping(value = "/api/v1/watchlist/medpacks",method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteMedpack(@RequestParam(name="id") String id,@RequestHeader(name ="Authorization") String token){
         try{
-        String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
-        User user = userRepo.findByEmail(email);
-        WatchList watchlist =  watchListServ.findWatchListByUserId(user.getId());
+            String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
+            User user = userRepo.findByEmail(email);
 
 
-        if (watchListServ.deleteMedpack(Long.parseLong(id),watchlist.getId())){
-            new ResponseEntity<String >("Delete success",HttpStatus.ACCEPTED);
-        }
+            if (watchListServ.deleteMedpack(user.getId(),Long.parseLong(id))){
+                return new ResponseEntity<String >("Delete success",HttpStatus.ACCEPTED);
+            }
 
-
-        return new ResponseEntity<String >("Delete failed",HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity<String >("Delete failed",HttpStatus.NOT_ACCEPTABLE);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found", HttpStatus.NOT_FOUND);
@@ -132,6 +134,7 @@ public class WatchListController {
 
     @RequestMapping(value="/api/v1/watchlist/medpacks/pills",method = RequestMethod.DELETE)
     public ResponseEntity<?> deletePill(@RequestParam(name="medpack_id") String medpack_id, @RequestParam(name = "pill_id") String pill_id){
+        System.out.println(medpack_id + " "+ pill_id);
         if (watchListServ.removePillFromMedpack(Long.parseLong(pill_id), Long.parseLong(medpack_id)))
             return new ResponseEntity<String>("Deletion successful", HttpStatus.OK);
         return new ResponseEntity<String>("pill not found", HttpStatus.NOT_FOUND);

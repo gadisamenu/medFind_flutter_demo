@@ -1,5 +1,6 @@
-package com.gis.medfind.jwt;
+package com.gis.medfind.security;
 
+import com.gis.medfind.jwt.JwtRequestFilter;
 import com.gis.medfind.serviceImplem.CustomUserDetailServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
             // .antMatchers("/api/handle_request/**").hasAuthority("STAFF")
             .antMatchers("/api/v1/watchlist/**").hasAuthority("USER")
-            .antMatchers("/api/v1/user/**").hasAnyAuthority("USER","STAFF","ADMIN")
+            .antMatchers("/api/v1/user/**","/api/v1/reservations/**").hasAnyAuthority("USER","PHARMACY","ADMIN")
             // .antMatchers("/profile").access("hasAuthority('USER') || hasAuthority('STAFF')")
             // .antMatchers("/", "/**").permitAll()
             .anyRequest().authenticated()

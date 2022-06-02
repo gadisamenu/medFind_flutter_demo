@@ -1,6 +1,9 @@
 package com.gis.medfind.restController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -55,9 +58,11 @@ public class ReservationController {
     @RequestMapping(value="/api/v1/reservations", method = RequestMethod.GET)
     public ResponseEntity<?> getReservations(@RequestHeader(name ="Authorization") String token){
         try{
-            String email = jwtTokenUtil.getUsernameFromToken(token);
+            String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
             User user = userRepo.findByEmail(email);
             Role userRole = roleRepo.findByName("USER");
+
+           
 
             List<Reservation>  reservations ;
 
@@ -68,22 +73,37 @@ public class ReservationController {
             else{
                 reservations = reservationServ.getAllReservationByPharmacyId(pharmRepo.findByOwner(user).getId());
             }
+            List<Map<String,String>> reservation = new ArrayList<>();
+            reservations.forEach(
+                i->{
+                    Map<String,String>  resr = new HashMap<>();
+                    resr.put("id",i.getId().toString());
+                    resr.put("medpack",i.getMedPacks().toString());
+                    resr.put("user",i.getUser().getFirstName());
+                    resr.put("pharmacy",i.getPharmacy().getName());
+                    i.getPharmacy().getName();
+                    reservation.add(resr);
+                }
+            );
             
-            return new ResponseEntity<List<Reservation>>(reservations,HttpStatus.OK);
+            
+            return new ResponseEntity<List<Map<String,String>>>(reservation,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping(value ="/api/v1/reservations",method = RequestMethod.POST)
+    @RequestMapping(value ="/api/v1/reservations",method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<?> createReservation(@RequestBody List<ReservationForm> reservationFroms ,@RequestParam(name ="pharm_id") String pharm_id, @RequestHeader(name="Authorization") String  token){
         try{
-            String email = jwtTokenUtil.getUsernameFromToken(token);
+            String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
             User user = userRepo.findByEmail(email);
 
+            // System.out.println(reservationFroms);
             Reservation reservation = null;
             if ( !reservationServ.isExistBefore(Long.parseLong(pharm_id), user.getId())){
+                System.out.println("here");
                 MedPack medpk =  reservationServ.createMedPack(reservationFroms.get(0).getTag());
                 reservation = reservationServ.createReservation(user.getId(),Long.parseLong(pharm_id),medpk.getId());
             }
@@ -100,12 +120,10 @@ public class ReservationController {
             if (reservation != null)
                 for(int i  = 1; i<  reservationFroms.size();i++){
                     MedPack medpk =  reservationServ.createMedPack(reservationFroms.get(i).getTag());
-                    watchlistServ.addPillToMedpack(medpk.getId(), reservationFroms.get(i).getMedicineName(), reservationFroms.get(i).getStrength(), reservationFroms.get(i).getAmount());
+                    watchlistServ.addPillToMedpack(medpk.getId(), reservationFroms.get(i).getMedicineName(), Integer.parseInt(reservationFroms.get(i).getStrength()),Integer.parseInt(reservationFroms.get(i).getAmount()));
                 
                     reservationServ.addMedpackToReservation(reservation.getId(), medpk.getId());
-                }
-
-               
+            }
 
             return new ResponseEntity<Reservation >(reservation ,HttpStatus.ACCEPTED);
         }
@@ -117,17 +135,18 @@ public class ReservationController {
     @RequestMapping(value ="/api/v1/reservations",method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteReservation(@RequestParam(name ="id") String id){
         try{
-            reservationServ.deleteReservation(Long.parseLong(id));
-            return new ResponseEntity<String >("delete success",HttpStatus.ACCEPTED);
+            if (reservationServ.deleteReservation(Long.parseLong(id)))
+                return new ResponseEntity<String >("delete success",HttpStatus.ACCEPTED);
+            return new ResponseEntity<String>("reservation not found",HttpStatus.NOT_FOUND);
         }
         catch (EntityNotFoundException e){
-            return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("reservation not found",HttpStatus.NOT_FOUND);
         }
     }
 
 
     @RequestMapping(value = "/api/v1/reservations/medpacks",method=RequestMethod.DELETE)
-    public ResponseEntity<?> removeMedpack(@RequestParam(name ="medPack_id") String medPack_id ,@RequestParam(name ="reserv_id") String reserv_id ){
+    public ResponseEntity<?> removeMedpack(@RequestParam(name ="medpack_id") String medPack_id ,@RequestParam(name ="reserv_id") String reserv_id ){
 
         if (reservationServ.removeMedpackFromReservation(Long.parseLong(reserv_id),Long.parseLong(medPack_id)))
             return new ResponseEntity<String >("delete success",HttpStatus.ACCEPTED);

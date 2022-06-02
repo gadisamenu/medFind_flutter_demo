@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.function.Predicate;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -102,26 +101,21 @@ public class WatchListServiceImpl implements WatchListService{
     }
 
     public boolean removePillFromMedpack(Long pill_id, Long medpack_id){
-        MedPack medpack = medPackRepo.getById(medpack_id);
+        try{
+            MedPack medpack = medPackRepo.getById(medpack_id);
         List<Pill> pills = medpack.getPills();
 
-        Predicate<Pill> pill_filter = new Predicate<Pill>(){
-
-            @Override
-            public boolean test(Pill arg0) {
-                return arg0.getId() == pill_id;
-            }
-
-        }; 
-
-        boolean removed = pills.removeIf(pill_filter);
-        if(!removed)
-            return false;
+        pills.remove(pillRepo.getById(pill_id));
 
         medpack.setPills(pills);
         medPackRepo.save(medpack);
         return true;
+        }
+        catch (Exception e){
+            return false;
+        }
     }
+
 
     public MedPack editMedpackTag(Long medpack_id, String new_tag){
         MedPack medpack = medPackRepo.getById(medpack_id);
@@ -146,13 +140,7 @@ public class WatchListServiceImpl implements WatchListService{
             WatchList watch_list = findWatchListByUserId(user_id);
             List<MedPack> medpack = watch_list.getMedPacks();
 
-            Predicate<MedPack> medpack_filter = new Predicate<>(){
-                @Override
-                public boolean test(MedPack arg0) {
-                    return arg0.getId() == medpack_id;
-                }
-            };
-            medpack.removeIf(medpack_filter);
+            medpack.remove(medPackRepo.getById(medpack_id));
             watch_list.setMedPacks(medpack);
             watchlist_repo.save(watch_list);
 

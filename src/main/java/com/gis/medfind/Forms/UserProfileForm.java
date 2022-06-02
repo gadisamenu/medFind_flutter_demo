@@ -33,24 +33,18 @@ public class UserProfileForm {
 
     public boolean saveData(User user,UserRepository userRepo,PasswordEncoder passEncode){
         if (this.getNewPassword() != null ){
-            if (passEncode.encode(this.getOldPassword()) == user.getPassword()){
-            user.setPassword(passEncode.encode(this.getNewPassword()));
+            if ( passEncode.matches(this.getOldPassword(),user.getPassword())){
+                user.setPassword(passEncode.encode(this.getNewPassword()));
             }
-            else { return false;
+            else {
+                return false;
+            }
         }
 
         if (this.getLastName() != null) user.setLastName(this.getLastName());
         if (this.getFirstName() != null) user.setFirstName(this.getFirstName());
         if (this.getEmail() != null) user.setEmail(this.getEmail());
         userRepo.save(user);
-        user.setEmail(this.email);
-        user.setFirstName(this.firstName);
-        user.setLastName(this.lastName);
-        user.setPassword(passEncode.encode(this.newPassword));
-
-        userRepo.save(user);
-        }
-
         return true;
 
     }

@@ -2,10 +2,12 @@ package com.gis.medfind.serviceImplem;
 
 import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Pharmacy;
+import com.gis.medfind.entity.Pill;
 import com.gis.medfind.entity.Reservation;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.repository.MedPackRepository;
 import com.gis.medfind.repository.PharmacyRepository;
+import com.gis.medfind.repository.PillRepository;
 import com.gis.medfind.repository.ReservationRepository;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.service.ReservationService;
@@ -14,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -29,11 +30,17 @@ public class ReservationServiceImpl implements ReservationService{
     @Autowired
     private MedPackRepository medPackRepo;
 
+    @Autowired
+    private PillRepository pillRepo;
+
     public Reservation createReservation(Long user_id , Long pharmacy_id,Long  medpack_id){
 
-        User user = userRepo.findById(user_id).orElseThrow();
-        Pharmacy pharmacy = pharmacyRepo.findById(pharmacy_id).orElseThrow();
-        MedPack medPack = medPackRepo.findById( medpack_id).orElseThrow();
+        User user = userRepo.findById(user_id).get();
+        // System.out.println("1rd");
+        Pharmacy pharmacy = pharmacyRepo.findById(pharmacy_id).get();
+        // System.out.println("2rd");
+        MedPack medPack = medPackRepo.findById( medpack_id).get();
+        // System.out.println("3rd");
 
         Reservation reservation = new Reservation();
         reservation.setUser(user);
@@ -76,7 +83,14 @@ public class ReservationServiceImpl implements ReservationService{
        MedPack medpack = medPackRepo.getById(medpack_id);
        MedPack copied =  new MedPack();
        copied.setTag(medpack.getTag());
-       copied.setPills(medpack.getPills());
+       for (Pill p : medpack.getPills()){
+           Pill pill = new Pill();
+           pill.setAmount(p.getAmount());
+           pill.setMedicine(p.getMedicine());
+           pill.setStrength(p.getStrength());
+           pillRepo.save(pill);
+           copied.addPill(pill);
+       }
        medPackRepo.save(copied);
        medpacks.add(copied);
        reservation.setMedPacks(medpacks);
@@ -85,18 +99,11 @@ public class ReservationServiceImpl implements ReservationService{
 
    public boolean removeMedpackFromReservation(Long reservation_id , Long medpack_id) {
        try{
-           System.out.println(reservation_id +"________impl" + medpack_id);
+        //    System.out.println(reservation_id +"________impl" + medpack_id);
            Reservation reservation = reservationRepo.getById(reservation_id);
            List<MedPack> medPacks = reservation.getMedPacks();
 
-           Predicate<MedPack>  pred = new Predicate<MedPack>() {
-            @Override
-                public boolean test (MedPack mdpk ){
-                    return mdpk.getId() == medpack_id;
-                }
-            };
-       
-            medPacks.removeIf(pred); 
+            medPacks.remove(medPackRepo.getById(medpack_id));
             reservation.setMedPacks(medPacks);
             reservationRepo.save(reservation);
             return true;

@@ -12,7 +12,7 @@ public class ReservationForm {
 
     String medicineName;
 
-    int strength;
+    String strength;
 
-    int amount;
+    String amount;
 }

@@ -52,13 +52,13 @@ public class UserController {
                     return new ResponseEntity<User>(user,HttpStatus.ACCEPTED);
                 }
                 else{
-                    return new ResponseEntity<String>("Wrong old password",HttpStatus.NOT_MODIFIED);
+                    return new ResponseEntity<String>("Wrong old password",HttpStatus.NOT_ACCEPTABLE);
                 }
             }
             catch (EntityNotFoundException e ){
                 new ResponseEntity<>("User not found",HttpStatus.NOT_FOUND);
             }
-            return new ResponseEntity<String>("Empty",HttpStatus.NOT_MODIFIED);
+            return new ResponseEntity<String>("Empty",HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value="/api/v1/user", method= RequestMethod.DELETE)

@@ -1,6 +1,5 @@
 package com.gis.medfind.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,7 @@ public class Pill{
     @Column(name = "pill_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "fk_medicine", referencedColumnName = "medicine_id")
     private Medicine medicine;
 

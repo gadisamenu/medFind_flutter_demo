@@ -13,7 +13,7 @@ public class JwtAuthenticationSuccessHandler implements AuthenticationSuccessHan
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
-        // TODO Auto-generated method stub
+        System.out.println("Authentication success");
         
     }
     

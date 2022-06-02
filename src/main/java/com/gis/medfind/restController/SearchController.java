@@ -1,7 +1,10 @@
 package com.gis.medfind.restController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.gis.medfind.serviceImplem.RoutingServiceImpl;
 import com.gis.medfind.serviceImplem.SearchByUserLocationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +41,19 @@ class SearchController{
       
         List<Pharmacy> pharm = searchloc.findPharmaciesByUserLocation(form.getMedicineName(), userLat, userLon);
         
-        List<String[]> sizedPharm  = new ArrayList<>();
+        List<Map<String,String>> sizedPharm  = new ArrayList<>();
+
         
-        pharm.forEach(
+           pharm.forEach(
             i->{
-                String[] phar = {i.getId().toString(),i.getName(),i.getAddress()};
+                Map<String,String>  phar = new HashMap<>();
+                phar.put("id", i.getId().toString());
+                phar.put("name",i.getName());
+                phar.put("address",i.getAddress());
                 sizedPharm.add(phar);
             }
         );
-    
-        return new ResponseEntity<List<String[]>>(sizedPharm,HttpStatus.OK);
+          return new ResponseEntity<List<Map<String,String>>>(sizedPharm, HttpStatus.OK);
     }
 
 }

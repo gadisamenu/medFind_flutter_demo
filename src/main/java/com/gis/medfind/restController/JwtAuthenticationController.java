@@ -1,4 +1,4 @@
-package com.gis.medfind.jwt;
+package com.gis.medfind.restController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gis.medfind.entity.JwtRequest;
 import com.gis.medfind.entity.JwtResponse;
+import com.gis.medfind.jwt.JwtTokenUtil;
 import com.gis.medfind.serviceImplem.CustomUserDetailServices;
 
 
@@ -31,7 +32,7 @@ public class JwtAuthenticationController {
 	@Autowired
 	private CustomUserDetailServices userDetailsService;
 
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/v1/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
 		
 		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
