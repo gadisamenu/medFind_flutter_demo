@@ -6,7 +6,14 @@ import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Infrastructure/Shared/api_constants.dart';
 
-class RemoteWatchListDataProvider {
+abstract class RemoteWatchListDataProvider {
+  Future<List<MedPack>?> getMedPacks();
+  Future<MedPack?> addNewMedpack(String description);
+  Future<void> removeMedpack(int medpackId);
+}
+
+class HttpRemoteWatchListDataProvider implements RemoteWatchListDataProvider {
+  @override
   Future<List<MedPack>?> getMedPacks() async {
     try {
       var url =
@@ -21,6 +28,7 @@ class RemoteWatchListDataProvider {
     }
   }
 
+  @override
   Future<MedPack?> addNewMedpack(String description) async {
     try {
       var url =
@@ -44,6 +52,7 @@ class RemoteWatchListDataProvider {
     }
   }
 
+  @override
   Future<void> removeMedpack(int medpackId) async {
     try {
       var url =

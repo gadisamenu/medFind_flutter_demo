@@ -8,7 +8,7 @@ import 'package:medfind_flutter/Domain/WatchList/watch_list.dart';
 import 'package:medfind_flutter/Infrastructure/WatchList/Repository/watchlist_repository.dart';
 
 class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
-  final WatchListRepository wr = HttpWatchListRepository();
+  final WatchListRepository wr = WatchListRepository();
 
   late WatchListState watchListState;
 
