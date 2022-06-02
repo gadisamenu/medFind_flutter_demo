@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Pill {
   int pillId;
 
@@ -9,10 +7,17 @@ class Pill {
 
   Pill(this.pillId, this.medicineName, this.strength, this.amount);
 
-  // static Pill fromJson(Map<String, String> pillJson){
+  factory Pill.fromJson(Map<String, dynamic> medpackJson) {
+    return Pill(medpackJson['id'], medpackJson['medicine']['name'],
+        medpackJson['strength'], medpackJson['amount']);
+  }
 
-  // }
-  // static Map<String, String> toJson(){
-
-  // }
+  Map<String, Object> toJson() {
+    return {
+      'id': pillId,
+      'medicineName': medicineName,
+      'strength': strength,
+      'amount': amount
+    };
+  }
 }

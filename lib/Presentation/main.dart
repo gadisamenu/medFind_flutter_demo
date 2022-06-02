@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medfind_flutter/Presentation/Screens/config/size_config.dart';
 
-import 'Shared/theme.dart';
-import 'Shared/routes.dart';
+import '_Shared/theme.dart';
+import '_Shared/routes.dart';
 
 void main() {
   runApp(const MedFindApp());

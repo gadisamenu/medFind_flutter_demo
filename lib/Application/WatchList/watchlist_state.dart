@@ -1,12 +1,18 @@
+import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
+import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 import 'package:medfind_flutter/Domain/WatchList/watch_list.dart';
 
-class WatchListState {
-  late WatchList watchListState;
 
-  void setState(WatchList watchlist) {
-    watchListState = watchlist;
+class WatchListState extends WatchList {
+
+  void update(int medpackId, MedPack newMedpack) {
+    medpacks.update(medpackId, (value) => newMedpack);
   }
 
-  WatchList getState() => watchListState;
-  
+  void addPillToMedpack(int medpackId, Pill newPill) {
+    MedPack? updatedMedpack = medpacks[medpackId];
+    updatedMedpack!.addPill(newPill);
+
+    update(medpackId, updatedMedpack);
+  }
 }
