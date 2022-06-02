@@ -1,11 +1,19 @@
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 
 class MedPack {
-  int medpackId;
+  late int medpackId;
 
   List<Pill> pills = [];
-  String description;
-  MedPack(this.medpackId, this.description);
+  late String description;
+  MedPack();
+
+  void setMedpackId(int medpackId) {
+    this.medpackId = medpackId;
+  }
+
+  void setDescription(String description) {
+    this.description = description;
+  }
 
   List<Pill> getPills() => pills;
 
@@ -17,10 +25,11 @@ class MedPack {
     pills.addAll(newPills);
   }
 
-  // static MedPack fromJson(Map<String, String> medpackJson){
+  factory MedPack.fromJson(String medpackJson) {
+    return MedPack();
+  }
 
-  // }
-  // static Map<String, String> toJson(){
-    
-  // }
+  static Map<String, dynamic> toJson() {
+    return <String, dynamic>{};
+  }
 }
