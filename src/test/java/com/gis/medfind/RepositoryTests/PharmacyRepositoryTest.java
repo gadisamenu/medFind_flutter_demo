@@ -11,6 +11,7 @@ import com.gis.medfind.entity.Server;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.repository.PharmacyRepository;
 // import com.gis.medfind.repository.RegionRepository;
+import com.gis.medfind.repository.UserRepository;
 
 import org.junit.jupiter.api.Test;
 import org.locationtech.jts.geom.Coordinate;
@@ -37,9 +38,33 @@ public class PharmacyRepositoryTest {
      
     // @Autowired
     // private RegionRepository regionRepo;
+
+    @Autowired
+    private UserRepository userRepo;
      
     @Autowired
     private GeometryFactory geometryFactory;
+
+    public User createTestUser() {
+        User user = new User();
+        user.setEmail("kkmichaelThor@gmail.com");
+        user.setPassword("@michael0958267");
+        user.setFirstName("Kaleab");
+        user.setLastName("Kindu");
+        return  userRepo.save(user);
+    }
+
+    public Pharmacy createTestPharmacy(User user) {
+    
+        Pharmacy pharm = new Pharmacy();
+        Coordinate loc = new Coordinate(52.003, 25.478);
+        pharm.setLocation(geometryFactory.createPoint(loc));
+        pharm.setAddress("Addis Ababa");
+        pharm.setName("ST. Markos");
+        pharm.setOwner(user);
+        pharm.setPharmacyServer(new Server());
+        return pharmRepo.save(pharm);
+    }
      
     @Test
     public void testCreatePharmacy() {
@@ -99,5 +124,14 @@ public class PharmacyRepositoryTest {
         List<Double> sorted = distances;
         sorted.sort((a, b) -> Double.compare(b, a));
         assertThat(distances).isEqualTo(sorted);
+    }
+
+    @Test 
+    public void testFindPharmacyByOwner(){
+        User user = createTestUser();
+        createTestPharmacy(user);
+        Pharmacy fetchedPharm = pharmRepo.findByOwner(user);
+        
+        assertThat(user.getId()).isEqualTo(fetchedPharm.getOwner().getId());
     }
 }

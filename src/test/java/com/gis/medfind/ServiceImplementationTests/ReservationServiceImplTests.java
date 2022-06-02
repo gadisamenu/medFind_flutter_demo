@@ -199,29 +199,30 @@ public class ReservationServiceImplTests {
     @Test
     public  void test_removeMedpackFromReservation(){
         
-        Reservation reservation = reservationRepo.getById(createTestReservation().getId());
+        Reservation reservation = createTestReservation();
         MedPack md = createTestMedPack();
-        reservationService.addMedpackToReservation(reservation.getId(), md.getId()); 
+        reservation.add_medpack(md);
+        reservationRepo.save(reservation);
         int amount_before = reservation.getMedPacks().size();
 
-        reservationService.removeMedpackFromReservation(reservation.getId(),md.getId());
-
+        System.out.println( reservationService.removeMedpackFromReservation(reservation.getId(),md.getId()));
 
         int amount_after = reservation.getMedPacks().size();
+        
         assertThat(amount_before - 1).isEqualTo(amount_after);
     }
 
 // check reservation exist bofore
-@Test
-    public void test_isExistBefore(){
-        User ur = createTestUser("habte@gmail.com");
-        Pharmacy pharm = createTestPharmacy();
-        MedPack medPack = createTestMedPack();
+    @Test
+        public void test_isExistBefore(){
+            User ur = createTestUser("habte@gmail.com");
+            Pharmacy pharm = createTestPharmacy();
+            MedPack medPack = createTestMedPack();
 
 
-        Reservation reservation = reservationService.createReservation(ur.getId(),pharm.getId(),medPack.getId());
-        boolean check= reservationService.isExistBefore(pharm.getId(),ur.getId(),reservation.getId());
-        assertThat(check).isTrue();
-   }
+            reservationService.createReservation(ur.getId(),pharm.getId(),medPack.getId());
+            boolean check= reservationService.isExistBefore(pharm.getId(),ur.getId());
+            assertThat(check).isTrue();
+    }
 
 }

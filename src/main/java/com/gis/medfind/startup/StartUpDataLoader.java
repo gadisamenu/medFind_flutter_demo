@@ -112,7 +112,7 @@ public class StartUpDataLoader implements ApplicationListener<ContextRefreshedEv
 
         getOrCreateRoleIfNotFound("ADMIN", adminPrivileges);
         getOrCreateRoleIfNotFound("USER", userPrivileges);
-        getOrCreateRoleIfNotFound("STAFF", staffPrivileges);
+        getOrCreateRoleIfNotFound("PHARMACY", staffPrivileges);
         //...other roles
 
         //Create an Admin User
@@ -129,7 +129,7 @@ public class StartUpDataLoader implements ApplicationListener<ContextRefreshedEv
             userRepo.save(user);
 
         //Create Validator 
-        Role staffrole = roleRepo.findByName("STAFF");
+        Role staffrole = roleRepo.findByName("PHARMACY");
         user = new User();
             user.setEmail("amhakindu@gmail.com");
             user.setFirstName("Gabriel");

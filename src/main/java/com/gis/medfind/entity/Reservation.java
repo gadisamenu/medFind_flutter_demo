@@ -30,7 +30,7 @@ public class Reservation {
     @JoinColumn(name = "fk_user", referencedColumnName = "id",nullable = false)
     private User user;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name= "reservation_pack",
         joinColumns = @JoinColumn(name="reservation_id",referencedColumnName = "reservation_id"),

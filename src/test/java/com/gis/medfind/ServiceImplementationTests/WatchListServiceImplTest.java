@@ -202,7 +202,7 @@ public class WatchListServiceImplTest {
         int old_amount = pill.getAmount();
         int new_amount = 15;
         //////////////////////////////////////////////////////////////////////////////
-        watchListService.updatePillAmount(medpack.getId(), pill.getId(), new_amount);//
+        watchListService.updatePillAmount(pill.getId(), new_amount);//
         //////////////////////////////////////////////////////////////////////////////
 
         assertThat(old_amount).isNotEqualTo(pill.getAmount());
@@ -219,7 +219,7 @@ public class WatchListServiceImplTest {
         int new_strength = 93;
 
         ///////////////////////////////////////////////////////////////////////////////////
-        watchListService.updatePillStrength(medpack.getId(), pill.getId(), new_strength);//
+        watchListService.updatePillStrength(pill.getId(), new_strength);//
         ///////////////////////////////////////////////////////////////////////////////////
         
         assertThat(old_strength).isNotEqualTo(pill.getStrength());

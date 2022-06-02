@@ -2,6 +2,7 @@ package com.gis.medfind.repository;
 
 import java.util.List;
 import com.gis.medfind.entity.Pharmacy;
+import com.gis.medfind.entity.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +36,8 @@ public interface PharmacyRepository extends JpaRepository<Pharmacy,Long> {
     
     @Query(value = "SELECT pcy FROM pharmacy pcy WHERE pcy.name = :name", nativeQuery = true)
     Pharmacy getByName(@Param("name") String name);
+
+
+    Pharmacy findByOwner(User owner);
     
 }

@@ -1,4 +1,4 @@
-package com.gis.medfind.jwt;
+package com.gis.medfind.entity;
 
 import java.io.Serializable;
 

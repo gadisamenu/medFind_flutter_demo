@@ -9,11 +9,14 @@ import com.gis.medfind.repository.PharmacyRepository;
 import com.gis.medfind.repository.ReservationRepository;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.service.ReservationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.function.Predicate;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 public class ReservationServiceImpl implements ReservationService{
@@ -53,41 +56,60 @@ public class ReservationServiceImpl implements ReservationService{
        };
 
     // delete
-    public void deleteReservation(Long reservation_id) {
-        reservationRepo.deleteById(reservation_id);
-       };
+    public boolean deleteReservation(Long reservation_id) {
+        try{
+            reservationRepo.deleteById(reservation_id);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+        
+    };
 
 
    // update
-   public  void addMedpackToReservation (Long reservation_id, Long medpack_id){
+   public Reservation addMedpackToReservation (Long reservation_id, Long medpack_id){
+
        Reservation reservation = reservationRepo.getById(reservation_id);
        List<MedPack> medpacks = reservation.getMedPacks();
        MedPack medpack = medPackRepo.getById(medpack_id);
-       medpacks.add(medpack);
+       MedPack copied =  new MedPack();
+       copied.setTag(medpack.getTag());
+       copied.setPills(medpack.getPills());
+       medPackRepo.save(copied);
+       medpacks.add(copied);
        reservation.setMedPacks(medpacks);
-       reservationRepo.save(reservation);
+       return reservationRepo.save(reservation);
    }
 
-   public  void removeMedpackFromReservation(Long reservation_id , Long medpack_id) {
+   public boolean removeMedpackFromReservation(Long reservation_id , Long medpack_id) {
+       try{
+           System.out.println(reservation_id +"________impl" + medpack_id);
+           Reservation reservation = reservationRepo.getById(reservation_id);
+           List<MedPack> medPacks = reservation.getMedPacks();
 
-       Reservation reservation = reservationRepo.getById(reservation_id);
-       List<MedPack> medPacks = reservation.getMedPacks();
-
-       Predicate<MedPack>  pred = new Predicate<MedPack>() {
-           @Override
-           public boolean test (MedPack mdpk ){
-               return mdpk.getId() == medpack_id;
-           }
-       };
+           Predicate<MedPack>  pred = new Predicate<MedPack>() {
+            @Override
+                public boolean test (MedPack mdpk ){
+                    return mdpk.getId() == medpack_id;
+                }
+            };
        
-       medPacks.removeIf(pred); 
-       reservation.setMedPacks(medPacks);
-       reservationRepo.save(reservation);
+            medPacks.removeIf(pred); 
+            reservation.setMedPacks(medPacks);
+            reservationRepo.save(reservation);
+            return true;
+       }
+       catch (EntityNotFoundException e){
+           return false;
+       }
+       
    }
 
    // check if it exist before
 
-    public boolean isExistBefore(Long pharmacy_id, Long user_id,Long reservation_id ){
+    public boolean isExistBefore(Long pharmacy_id, Long user_id){
        List<Reservation> reservations = getAllReservationByUserId(user_id);
        int no_of_reservations = reservations.size();
 
@@ -101,6 +123,15 @@ public class ReservationServiceImpl implements ReservationService{
        }
        return false;
     }
-    };
+
+
+        @Override
+        public MedPack createMedPack(String tag) {
+            MedPack medPack = new MedPack();
+            medPack.setTag(tag);
+            return medPackRepo.save(medPack);
+
+        }
+};
 
 

@@ -1,5 +1,6 @@
 package com.gis.medfind.service;
 
+import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Reservation;
 
 import java.util.List;
@@ -14,12 +15,14 @@ public interface ReservationService {
     public List<Reservation> getAllReservationByPharmacyId(Long pharmacy_id);
 
     // delete
-    public void deleteReservation(Long reservation_id);
+    public boolean deleteReservation(Long reservation_id);
     //Update
-    public  void addMedpackToReservation (Long reservation_id, Long medpack_id);
-    public  void removeMedpackFromReservation(Long reservation_id , Long medpack_id);
+    public  Reservation addMedpackToReservation (Long reservation_id, Long medpack_id);
+    public  boolean removeMedpackFromReservation(Long reservation_id , Long medpack_id);
 
 // check reservation exist bofore
 
-    public boolean isExistBefore(Long pharmacy_id, Long user_id,Long reservation_id);
+    public boolean isExistBefore(Long pharmacy_id, Long user_id);
+
+    public MedPack createMedPack(String tag);
 }

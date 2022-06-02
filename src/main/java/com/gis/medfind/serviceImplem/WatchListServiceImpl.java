@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
+import javax.persistence.EntityNotFoundException;
+
 import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Pharmacy;
 import com.gis.medfind.entity.Pill;
@@ -121,67 +123,46 @@ public class WatchListServiceImpl implements WatchListService{
         return true;
     }
 
-    public void editMedpackTag(Long medpack_id, String new_tag){
+    public MedPack editMedpackTag(Long medpack_id, String new_tag){
         MedPack medpack = medPackRepo.getById(medpack_id);
         medpack.setTag(new_tag);
-        medPackRepo.save(medpack);
+       return medPackRepo.save(medpack);
     }
 
-    public boolean updatePillAmount(Long medpack_id, Long pill_id, int amount){
-        MedPack medpack = medPackRepo.getById(medpack_id);
-
-        List<Pill> pills = medpack.getPills();
-        boolean updated = false;
-
-        for(Pill pill: pills){
-            if(pill.getId() == pill_id){
-                pill.setAmount(amount);
-                pillRepo.save(pill);
-                updated = true;
-                break;
-            }
-        }
-        medpack.setPills(pills);
-        medPackRepo.save(medpack);
-
-        return updated;
+    public Pill updatePillAmount(Long pill_id, int amount){
+        Pill pill = pillRepo.getById(pill_id);
+        pill.setAmount(amount);
+        return pillRepo.save(pill);
     }
 
-    public boolean updatePillStrength(Long medpack_id, Long pill_id, int strength){
-        MedPack medpack = medPackRepo.getById(medpack_id);
-
-        List<Pill> pills = medpack.getPills();
-        boolean updated = false;
-
-        for(Pill pill: pills){
-            if(pill.getId() == pill_id){
-                pill.setStrength(strength);
-                pillRepo.save(pill);
-                updated = true;
-                break;
-            }
-        }
-        medpack.setPills(pills);
-        medPackRepo.save(medpack);
-
-        return updated;
+    public Pill updatePillStrength( Long pill_id, int strength){
+        Pill pill = pillRepo.getById(pill_id);
+        pill.setStrength(strength);
+        return pillRepo.save(pill);
     }
     //Delete
-    public void deleteMedpack(Long user_id, Long medpack_id){
-        WatchList watch_list = findWatchListByUserId(user_id);
-        List<MedPack> medpack = watch_list.getMedPacks();
+    public boolean deleteMedpack(Long user_id, Long medpack_id){
+        try{
+            WatchList watch_list = findWatchListByUserId(user_id);
+            List<MedPack> medpack = watch_list.getMedPacks();
 
-        Predicate<MedPack> medpack_filter = new Predicate<>(){
-            @Override
-            public boolean test(MedPack arg0) {
-                return arg0.getId() == medpack_id;
-            }
-        };
-        medpack.removeIf(medpack_filter);
-        watch_list.setMedPacks(medpack);
-        watchlist_repo.save(watch_list);
+            Predicate<MedPack> medpack_filter = new Predicate<>(){
+                @Override
+                public boolean test(MedPack arg0) {
+                    return arg0.getId() == medpack_id;
+                }
+            };
+            medpack.removeIf(medpack_filter);
+            watch_list.setMedPacks(medpack);
+            watchlist_repo.save(watch_list);
 
-        medPackRepo.deleteById(medpack_id);
+            medPackRepo.deleteById(medpack_id);
+
+            return true;
+        }
+        catch (EntityNotFoundException e) {
+            return false;
+        }
     }
 
     public List<Pharmacy> findMedicinesCloseToUser(Long medpack_id, double user_lat, double user_lon)
@@ -215,4 +196,5 @@ public class WatchListServiceImpl implements WatchListService{
         pharmacies_with_medicines.sort(new PharmacyDistanceComparator(new Coordinate(user_lon, user_lat)));
         return pharmacies_with_medicines;
     }
+    
 }
