@@ -3,6 +3,8 @@ package com.gis.medfind.security;
 import com.gis.medfind.jwt.JwtRequestFilter;
 import com.gis.medfind.serviceImplem.CustomUserDetailServices;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -92,10 +94,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("");
+        config.setAllowedOrigins(List.of("*"));
         config.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-//         config.addAllowedHeader("*");
-        config.addAllowedMethod(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+        config.addExposedHeader("Authorization");
         source.registerCorsConfiguration("/**",config);
         return new CorsFilter(source);
     }
