@@ -1,5 +1,6 @@
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
+import 'package:medfind_flutter/Domain/_Shared/common.dart';
 
 class MedPack {
   late int medpackId;
@@ -7,14 +8,24 @@ class MedPack {
   Map<int, Pill> pills = {};
 
   late String description;
-  MedPack(this.description, this.pills);
+  MedPack(this.pills);
 
   void setMedpackId(int medpackId) {
     this.medpackId = medpackId;
   }
 
   void setDescription(String description) {
+    if (validateDescription(description)) {
+      throw InvalidValueError();
+    }
     this.description = description;
+  }
+
+  bool validateDescription(String description) {
+    if (description.length < 200) {
+      return true;
+    }
+    return false;
   }
 
   List<Pill> getPills() => pills.values.toList();
@@ -41,7 +52,9 @@ class MedPack {
       Pill parsedPill = Pill.fromJson(pill);
       pills.putIfAbsent(parsedPill.pillId, () => parsedPill);
     }
-    return MedPack(medpackJson['tag'], pills);
+    MedPack parsedMedpack = MedPack(pills);
+    parsedMedpack.setDescription(medpackJson['tag']);
+    return parsedMedpack;
   }
 
   Map<String, Object> toJson() {

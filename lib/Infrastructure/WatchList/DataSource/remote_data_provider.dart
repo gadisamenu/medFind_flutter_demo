@@ -5,6 +5,7 @@ import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
+import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
 import 'package:medfind_flutter/Infrastructure/_Shared/api_constants.dart';
 
 import '_watchlist_data_provider.dart';
@@ -109,7 +110,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<Pill?> addNewPill(
-      int medpackId, String name, int strength, int amount,{int? pillId}) async {
+      int medpackId, MedicineName name, int strength, int amount,{int? pillId}) async {
     Pill? _pill;
     try {
       var url = Uri.parse(ApiConstants.watchListEndpoint +
@@ -123,7 +124,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode(<String, String>{
-          'medicine_name': name,
+          'medicine_name': name.get(),
           'strength': strength.toString(),
           'amount': amount.toString()
         }),
