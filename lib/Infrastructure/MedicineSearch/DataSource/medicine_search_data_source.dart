@@ -6,9 +6,6 @@ import 'package:http/http.dart' as http;
 class MedicineSearchDataSource {
   Future<http.Response> getPharmacy(
       double latitude, double longitude, String medicineName) async {
-    print(
-        "-------- data in the datasource: ${latitude}, ${longitude}, ${medicineName}");
-
     http.Response result = await http.post(
       Uri.parse('http://192.168.43.190:8080/api/v1/search'),
       headers: {
@@ -20,7 +17,6 @@ class MedicineSearchDataSource {
         'medicineName': medicineName
       }),
     );
-    // print("-----------the response body ${result.body}");
     return result;
   }
 }

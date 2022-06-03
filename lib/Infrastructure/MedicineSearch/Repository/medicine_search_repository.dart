@@ -18,7 +18,6 @@ class MedicineSearchRepository {
           (p) => pharmacies.add(Pharmacy(p['id'], p['name'], p['address'])));
       return Result(val: pharmacies);
     } catch (e) {
-      print("The error is $e");
       return Result(error: "cann't find the result");
     }
   }
