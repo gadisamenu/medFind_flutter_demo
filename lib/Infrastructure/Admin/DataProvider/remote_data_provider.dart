@@ -4,8 +4,8 @@ import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.
 
 class RemoteDataProvider extends DataProvider {
   @override
-  Future<bool> changeRole(String role) {
-    // TODO: implement changeRole
+  Future<bool> changeRole(String role) async {
+    // / TODO: implement deletePharmacy
     throw UnimplementedError();
   }
 
