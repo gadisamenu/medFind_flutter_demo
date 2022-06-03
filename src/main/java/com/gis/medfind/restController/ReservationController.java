@@ -126,7 +126,7 @@ public class ReservationController {
                     reservationServ.addMedpackToReservation(reservation.getId(), medpk.getId());
             }
 
-            return new ResponseEntity<Reservation >(reservation ,HttpStatus.ACCEPTED);
+            return new ResponseEntity<Reservation >(reservation ,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
@@ -137,7 +137,7 @@ public class ReservationController {
     public ResponseEntity<?> deleteReservation(@RequestParam(name ="id") String id){
         try{
             if (reservationServ.deleteReservation(Long.parseLong(id)))
-                return new ResponseEntity<String >("delete success",HttpStatus.ACCEPTED);
+                return new ResponseEntity<String >("delete success",HttpStatus.OK);
             return new ResponseEntity<String>("reservation not found",HttpStatus.NOT_FOUND);
         }
         catch (EntityNotFoundException e){
@@ -150,7 +150,7 @@ public class ReservationController {
     public ResponseEntity<?> removeMedpack(@RequestParam(name ="medpack_id") String medPack_id ,@RequestParam(name ="reserv_id") String reserv_id ){
 
         if (reservationServ.removeMedpackFromReservation(Long.parseLong(reserv_id),Long.parseLong(medPack_id)))
-            return new ResponseEntity<String >("delete success",HttpStatus.ACCEPTED);
+            return new ResponseEntity<String >("delete success",HttpStatus.OK);
 
         return new ResponseEntity<String>("delete failed",HttpStatus.NOT_FOUND);
         

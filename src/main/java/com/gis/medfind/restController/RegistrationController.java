@@ -52,7 +52,7 @@ public class RegistrationController {
             Form.toUser(UserRepository,passwordEncoder,roleRepo,watchListRepo);
 
 
-            return new ResponseEntity<>("Successfull Registration",HttpStatus.CREATED);
+            return new ResponseEntity<>("Successfull Registration",HttpStatus.OK);
           
         };
         return new ResponseEntity<>("UserAlreadyExist",HttpStatus.NOT_ACCEPTABLE);

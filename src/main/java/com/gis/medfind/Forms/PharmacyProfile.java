@@ -10,7 +10,7 @@ public class PharmacyProfile {
 
     private String name;
 
-    private Long  owner_id;
+    private String  owner_id;
 
     private String address;
 }

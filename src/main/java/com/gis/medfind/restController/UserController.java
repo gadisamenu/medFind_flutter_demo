@@ -50,7 +50,7 @@ public class UserController {
     
 
                 if (profile.saveData(user, userRepo, passEncoder)){
-                    return new ResponseEntity<User>(user,HttpStatus.ACCEPTED);
+                    return new ResponseEntity<User>(user,HttpStatus.OK);
                 }
                 else{
                     return new ResponseEntity<String>("Wrong old password",HttpStatus.NOT_ACCEPTABLE);
@@ -70,7 +70,7 @@ public class UserController {
             
             watchRepo.delete(watchRepo.findWatchListByUserId(user.getId()));
 
-            return new ResponseEntity<String>("Successfully deleted",HttpStatus.ACCEPTED);
+            return new ResponseEntity<String>("Successfully deleted",HttpStatus.OK);
 
         }
         catch  (Exception e){

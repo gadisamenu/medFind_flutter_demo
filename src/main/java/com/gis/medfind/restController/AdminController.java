@@ -85,7 +85,7 @@ public class AdminController {
                 User user = userRepo.findById(Long.parseLong(id)).get();
 
                 if (profile.saveData(user, userRepo, passEncoder)){
-                    return new ResponseEntity<User>( user,HttpStatus.ACCEPTED);
+                    return new ResponseEntity<User>( user,HttpStatus.OK);
                 }
                 else{
                     return new ResponseEntity<String>("Wrong old password",HttpStatus.NOT_ACCEPTABLE);
@@ -108,7 +108,7 @@ public class AdminController {
            user.setRoles(roles);
            userRepo.save(user);
 
-        return new ResponseEntity<String>("role change success",HttpStatus.ACCEPTED);
+        return new ResponseEntity<String>("role change success",HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found", HttpStatus.NOT_FOUND);
@@ -159,9 +159,9 @@ public class AdminController {
             Pharmacy pharmacy = pharmRepo.findById(Long.parseLong(id)).get();
             if (body.getAddress() != null) pharmacy.setAddress(body.getAddress());
             if (body.getName() != null) pharmacy.setName(body.getName());
-            if (body.getOwner_id() != null) pharmacy.setOwner(userRepo.getById(body.getOwner_id()));
+            if (body.getOwner_id() != null) pharmacy.setOwner(userRepo.getById(Long.parseLong(body.getOwner_id())));
             pharmRepo.save(pharmacy);
-            return new ResponseEntity<Pharmacy>(pharmacy,HttpStatus.ACCEPTED);
+            return new ResponseEntity<Pharmacy>(pharmacy,HttpStatus.OK);
         }catch (EntityNotFoundException e){
             return new ResponseEntity<>("pharmacy not found",HttpStatus.NOT_FOUND);
         }
