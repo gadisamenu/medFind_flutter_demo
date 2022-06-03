@@ -41,6 +41,7 @@ dependencies:
   equatable: ^2.0.0
   sqflite:
   path:
+  shared_preferences: 
 
 dev_dependencies:
   flutter_test:

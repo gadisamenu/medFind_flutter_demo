@@ -13,6 +13,11 @@ class MedfindRouter {
             const SplashScreen(),
       ),
       GoRoute(
+        path: '/Home',
+        builder: (BuildContext context, GoRouterState state) =>
+            const SplashScreen(),
+      ),
+      GoRoute(
         path: '/search',
         builder: (BuildContext context, GoRouterState state) =>
             const SplashScreen(),

@@ -1,12 +1,12 @@
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
+import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
 import 'package:medfind_flutter/Infrastructure/WatchList/DataSource/_watchlist_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/_Shared/local_database.dart';
 import 'package:sqflite/sqflite.dart';
 
 class LocalWatchListDataProvider extends SqliteDBProvider
     implements WatchListDataProvider {
-
   @override
   Future<MedPack?> addNewMedpack(String description, {int? medpackId}) async {
     MedPack newMedpack = MedPack(description, {});
@@ -20,7 +20,13 @@ class LocalWatchListDataProvider extends SqliteDBProvider
   @override
   Future<Pill?> addNewPill(int medpackId, String name, int strength, int amount,
       {int? pillId}) async {
-    Pill newPill = Pill(pillId!, name, strength, amount);
+    MedicineName medName = MedicineName(name);
+
+//
+//
+//
+//
+    Pill newPill = Pill(pillId!, medName, strength, amount);
 
     final db = await initializeDB();
     final id = await db.insert('medpacks', newPill.toJson());
