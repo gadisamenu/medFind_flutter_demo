@@ -1,17 +1,10 @@
-import 'package:equatable/equatable.dart';
-import 'model.dart';
+import "package:medfind_flutter/Domain/_Shared/shared.dart";
+import "package:medfind_flutter/Domain/Reservation/model.dart";
 
-class Identity extends Equatable {
-  final String id;
-  factory Identity.fromString(String id) {
-    return Identity._internal(id);
-  }
-  Identity._internal(this.id);
-  @override
-  List<Object> get props => [id];
+class VOPharmacy extends ValueObject<Pharmacy> {
+  const VOPharmacy(Pharmacy value) : super(value);
 }
 
-class Pharmacy extends Equatable {
-  final Pharmacy pharmacy;
-  
+class VOMedPack extends ValueObject<MedPack> {
+  const VOMedPack(MedPack value) : super(value);
 }
