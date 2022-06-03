@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(consumes = "application/json",produces = "application/json")
 public class WatchListController {
     @Autowired
     UserRepository userRepo;

@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
+@RequestMapping(consumes = "application/json",produces = "application/json")
 public class RegistrationController {
   @Autowired
   private RoleRepository roleRepo;

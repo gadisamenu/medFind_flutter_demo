@@ -31,6 +31,7 @@ import com.gis.medfind.service.ReservationService;
 import com.gis.medfind.service.WatchListService;
 
 @RestController
+@RequestMapping(consumes = "application/json",produces = "application/json")
 public class ReservationController {
 
     @Autowired

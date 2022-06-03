@@ -22,6 +22,7 @@ import com.gis.medfind.entity.Pharmacy;
 
 
 @RestController
+@RequestMapping(consumes = "application/json",produces = "application/json")
 class SearchController{
     @Autowired
     RoutingServiceImpl routingService;
