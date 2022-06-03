@@ -1,16 +1,21 @@
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 
 class WatchList {
-  List<MedPack> medpacks = [];
+  Map<int, MedPack> medpacks = {};
 
-  // factory WatchList.fromJson(Map<String, dynamic> watchlistJson) {
-  // return WatchList(watchlistJson['description']);
-  // }
-  void addMedpack(MedPack new_medpack) {
-    medpacks.add(new_medpack);
+  void addMedpack(MedPack newMedpack) {
+    medpacks.putIfAbsent(newMedpack.medpackId, () => newMedpack);
+  }
+
+  Map<int, MedPack> getMedpack() => medpacks;
+
+  void removeMedpack(int medpackId) {
+    medpacks.remove(medpackId);
   }
 
   void addAllMedpacks(List<MedPack>? newMedpacks) {
-    medpacks.addAll(newMedpacks!);
+    for (MedPack medpack in newMedpacks!) {
+      medpacks.putIfAbsent(medpack.medpackId, () => medpack);
+    }
   }
 }

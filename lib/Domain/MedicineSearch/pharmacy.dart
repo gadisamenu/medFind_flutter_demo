@@ -1,13 +1,12 @@
 class Pharmacy {
-  String address;
-  String name;
-  int id;
-  Pharmacy(this.address, this.name, this.id);
-}
+  int pharmacyId;
+  String pharmacyName;
+  String location;
 
-class Todo {
-  int userId;
-  int id;
-  String title;
-  Todo(this.userId, this.id, this.title);
+  Pharmacy(this.pharmacyId, this.pharmacyName, this.location);
+
+  factory Pharmacy.fromJson(Map<String, dynamic> pharmacyJson) {
+    return Pharmacy(
+        pharmacyJson['id'], pharmacyJson['name'], pharmacyJson['address']);
+  }
 }
