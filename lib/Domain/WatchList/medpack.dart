@@ -1,4 +1,5 @@
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
+import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
 
 class MedPack {
   late int medpackId;
@@ -23,7 +24,12 @@ class MedPack {
   }
 
   void updatePill(int pillId, String medicineName, int strength, int amount) {
-    pills[pillId]!.medicineName = medicineName;
+    MedicineName medName = MedicineName(medicineName);
+//
+//
+//
+//
+    pills[pillId]!.name = medName;
     pills[pillId]!.strength = strength;
     pills[pillId]!.amount = amount;
   }

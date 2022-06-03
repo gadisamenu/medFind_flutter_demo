@@ -62,6 +62,7 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
   }
 
   Future<void> _addPill(AddPill event, Emitter emit) async {
+    
     Pill? newPill = await wr.addPill(
         event.medpackID, event.name, event.strength, event.amount);
 
