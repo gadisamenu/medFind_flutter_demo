@@ -21,7 +21,7 @@ class LocalDataProvider extends AdminProvider {
   }
 
   @override
-  Future<List> loadPharmacies() async {
+  Future<List<Pharmacy>> loadPharmacies() async {
     return [];
   }
 
@@ -32,11 +32,15 @@ class LocalDataProvider extends AdminProvider {
 
   @override
   Future<User> loadUser(int id) async {
-    return User(email: "email", firstName: "firstname", lastName: "lastname");
+    return User(
+        role: "role",
+        email: "email",
+        firstName: "firstname",
+        lastName: "lastname");
   }
 
   @override
-  Future<List> loadUsers() async {
+  Future<List<User>> loadUsers() async {
     return [];
   }
 

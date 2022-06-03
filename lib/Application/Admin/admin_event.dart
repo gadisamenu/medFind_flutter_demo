@@ -20,8 +20,9 @@ class DeleteUser extends AdminEvent {
 }
 
 class ChangerRole extends AdminEvent {
+  final int id;
   final String role;
-  ChangerRole(this.role);
+  ChangerRole(this.role, this.id);
 }
 
 class LoadPharmacies extends AdminEvent {}

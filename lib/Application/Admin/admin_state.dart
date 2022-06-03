@@ -11,14 +11,19 @@ class UsersLoaded extends AdminState {
   UsersLoaded(this.users);
 }
 
-class PharmaciesLoaded extends AdminState {
-  final List<Pharmacy> users;
-  PharmaciesLoaded(this.users);
-}
-
 class UserLoaded extends AdminState {
   final User user;
   UserLoaded(this.user);
+}
+
+class UserDeleted extends AdminState {
+  final int id;
+  UserDeleted(this.id);
+}
+
+class RoleChanged extends AdminState {
+  String role;
+  RoleChanged(this.role);
 }
 
 class PharmacyLoaded extends AdminState {
@@ -26,7 +31,29 @@ class PharmacyLoaded extends AdminState {
   PharmacyLoaded(this.user);
 }
 
+class PharmacyDeleted extends AdminState {
+  final int id;
+  PharmacyDeleted(this.id);
+}
+
+class PharmaciesLoaded extends AdminState {
+  final List<Pharmacy> users;
+  PharmaciesLoaded(this.users);
+}
+
+class UpdateFailed extends AdminState {
+  String? msg;
+  UpdateFailed({msg});
+}
+
 class LoadingFailed extends AdminState {
   String? msg;
-  LoadingFailed({msg});
+  LoadingFailed({this.msg});
 }
+
+class DeleteFailed extends AdminState {
+  String? msg;
+  DeleteFailed({this.msg});
+}
+
+class ChangeFailed extends AdminState {}

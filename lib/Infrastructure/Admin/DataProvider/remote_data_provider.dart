@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
@@ -13,14 +12,15 @@ class RemoteDataProvider extends AdminProvider {
 
   //fetch all users
   @override
-  Future<List> loadUsers() async {
+  Future<List<User>> loadUsers() async {
     final response = await http.get(
       Uri.parse(ApiConstants.adminEndpoint + ApiConstants.usersEndpoint),
     );
 
     if (response.statusCode == 200) {
       List respon = jsonDecode(response.body);
-      List users = respon.map((e) => User.fromJson(jsonDecode(e))).toList();
+      List<User> users =
+          respon.map((e) => User.fromJson(jsonDecode(e))).toList();
       return users;
     } else {
       throw Exception(response.body);
