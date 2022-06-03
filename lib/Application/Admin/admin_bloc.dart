@@ -6,9 +6,9 @@ import 'package:medfind_flutter/Infrastructure/_Shared/return_data_type.dart';
 part 'admin_event.dart';
 part 'admin_state.dart';
 
-class AdminBlock extends Bloc<AdminEvent, AdminState> {
+class AdminBloc extends Bloc<AdminEvent, AdminState> {
   final AdminRepository adminRepo;
-  AdminBlock(this.adminRepo) : super(Idle()) {
+  AdminBloc(this.adminRepo) : super(Idle()) {
     on<LoadUsers>(_loadUsers);
     on<LoadUser>(_loadUser);
     on<UpdateUser>(_updateUser);

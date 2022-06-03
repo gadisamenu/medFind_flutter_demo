@@ -7,7 +7,7 @@ import 'package:medfind_flutter/Infrastructure/_Shared/api_constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:medfind_flutter/Infrastructure/_Shared/token.dart';
 
-class RemoteDataProvider extends AdminProvider {
+class AdminRemoteProvider extends AdminProvider {
   //User
 
   //fetch all users

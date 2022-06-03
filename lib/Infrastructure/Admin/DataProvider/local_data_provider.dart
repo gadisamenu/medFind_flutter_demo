@@ -4,7 +4,7 @@ import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 
-class LocalDataProvider extends AdminProvider {
+class AdminLocalProvider extends AdminProvider {
   @override
   Future<bool> changeRole(int id, String role) async {
     return true;

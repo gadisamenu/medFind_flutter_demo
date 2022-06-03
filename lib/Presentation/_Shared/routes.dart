@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 
 import 'package:medfind_flutter/Presentation/splash_screen.dart';
 
+import '../Screens/Admin/admin_screen.dart';
+
 class MedfindRouter {
-  // ignore: unused_field
+  // ignore: unused_fiel
   static final GoRouter router = GoRouter(
+    initialLocation: "/admin",
     routes: <GoRoute>[
       GoRoute(
         path: '/',
@@ -37,6 +40,11 @@ class MedfindRouter {
         builder: (BuildContext context, GoRouterState state) =>
             const SplashScreen(),
       ),
+      GoRoute(
+        path: "/admin",
+        builder: (BuildContext context, GoRouterState state) =>
+            const AdminScreen(),
+      )
     ],
   );
 }
