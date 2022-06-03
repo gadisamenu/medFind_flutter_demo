@@ -50,7 +50,7 @@ TextTheme getTextTheme() {
 AppBarTheme getAppBarTheme() {
   return const AppBarTheme(
     centerTitle: true,
-    color: Color.fromARGB(255, 18, 6, 245),
+    color: Colors.blue,
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     iconTheme: IconThemeData(
@@ -60,5 +60,6 @@ AppBarTheme getAppBarTheme() {
       color: Color(0xFF000000),
       fontSize: 20,
     ),
+    foregroundColor: Colors.white,
   );
 }

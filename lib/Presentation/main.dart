@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
-import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/test_screen.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
 import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
 import 'package:medfind_flutter/Infrastructure/MedicineSearch/DataSource/medicine_search_data_source.dart';
 import 'package:medfind_flutter/Infrastructure/MedicineSearch/Repository/medicine_search_repository.dart';
@@ -33,7 +34,7 @@ class MedFindApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'MedFind',
         theme: getAppTheme(),
-        builder: (context, child) => SearchResult(),
+        // builder: (context, child) => const Home(),
       ),
     );
   }
