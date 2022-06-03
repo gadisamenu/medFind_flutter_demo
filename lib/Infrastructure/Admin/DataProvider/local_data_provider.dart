@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 
-class LocalDataProvider extends DataProvider {
+class LocalDataProvider extends AdminProvider {
   @override
-  Future<bool> changeRole(String role) async {
+  Future<bool> changeRole(int id, String role) async {
     return true;
   }
 
@@ -25,12 +27,12 @@ class LocalDataProvider extends DataProvider {
 
   @override
   Future<Pharmacy> loadPharmacy(int id) async {
-    return Pharmacy(1, "th", "here");
+    return Pharmacy(1, "updated ", "here");
   }
 
   @override
   Future<User> loadUser(int id) async {
-    return User("email", "firstname", "lastname");
+    return User(email: "email", firstName: "firstname", lastName: "lastname");
   }
 
   @override
@@ -39,12 +41,12 @@ class LocalDataProvider extends DataProvider {
   }
 
   @override
-  Future<Pharmacy> updatePharmacy(int id) async {
-    return Pharmacy(1, "updated ", "here");
+  Future<Pharmacy> updatePharmacy(int id, Pharmacy pharmacy) async {
+    return Pharmacy.fromJson(jsonDecode(pharmacy.toString()));
   }
 
   @override
-  Future<User> updateUser(int id) async {
-    return User("email", "updated", "Here");
+  Future<User> updateUser(int id, User user) async {
+    return user;
   }
 }
