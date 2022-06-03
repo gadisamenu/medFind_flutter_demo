@@ -1,9 +1,9 @@
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
+import 'package:medfind_flutter/Domain/_Shared/common.dart';
 
 class Pill {
   int pillId;
 
-  // String medicineName;
   MedicineName name;
   int strength;
   int amount;
@@ -12,8 +12,12 @@ class Pill {
 
   factory Pill.fromJson(Map<String, dynamic> medpackJson) {
     MedicineName medName = MedicineName(medpackJson['medicine']['name']);
-    return Pill(medpackJson['id'], medName,
-        medpackJson['strength'], medpackJson['amount']);
+
+    if (medName.isValid()) {
+      throw InvalidValueError();
+    }
+    return Pill(medpackJson['id'], medName, medpackJson['strength'],
+        medpackJson['amount']);
   }
 
   Map<String, Object> toJson() {
