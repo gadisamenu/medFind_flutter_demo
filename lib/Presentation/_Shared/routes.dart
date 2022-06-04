@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Domain/Admin/APharamcy.dart';
+import 'package:medfind_flutter/Domain/Admin/User.dart';
+import 'package:medfind_flutter/Presentation/Screens/Admin/pharmacy_detail_update.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
 
 import 'package:medfind_flutter/Presentation/splash_screen.dart';
 
 import '../Screens/Admin/admin_screen.dart';
+import '../Screens/Admin/user_detail_update.dart';
 
 class MedfindRouter {
   // ignore: unused_fiel
@@ -16,14 +22,13 @@ class MedfindRouter {
             const SplashScreen(),
       ),
       GoRoute(
-        path: '/Home',
-        builder: (BuildContext context, GoRouterState state) =>
-            const SplashScreen(),
+        path: '/home',
+        builder: (BuildContext context, GoRouterState state) => const Home(),
       ),
       GoRoute(
         path: '/search',
         builder: (BuildContext context, GoRouterState state) =>
-            const SplashScreen(),
+            const SearchResult(),
       ),
       GoRoute(
         path: '/watch_list',
@@ -44,7 +49,21 @@ class MedfindRouter {
         path: "/admin",
         builder: (BuildContext context, GoRouterState state) =>
             const AdminScreen(),
-      )
+      ),
+      GoRoute(
+        path: "/admin/user_details",
+        builder: (BuildContext context, GoRouterState state) =>
+            UserDetailUpdateScreen(
+          user: state.extra! as User,
+        ),
+      ),
+      GoRoute(
+        path: "/admin/pharmacy_details",
+        builder: (BuildContext context, GoRouterState state) =>
+            PharmacyDetailUpdateScreen(
+          pharmacy: state.extra! as APharmacy,
+        ),
+      ),
     ],
   );
 }

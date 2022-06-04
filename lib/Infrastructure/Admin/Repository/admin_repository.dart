@@ -1,7 +1,7 @@
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 
+import '../../../Domain/Admin/APharamcy.dart';
 import '../../../Domain/Admin/User.dart';
-import '../../../Domain/MedicineSearch/pharmacy.dart';
 import '../../_Shared/return_data_type.dart';
 
 class AdminRepository {
@@ -15,6 +15,7 @@ class AdminRepository {
   Future<Return> getUsers() async {
     try {
       final List<User> users = await dataProvider.loadUsers();
+
       return Return(value: users);
     } catch (exp) {
       return Return(error: exp);
@@ -25,16 +26,18 @@ class AdminRepository {
   Future<Return> getUser(int id) async {
     try {
       final User user = await dataProvider.loadUser(id);
+      // print(user.firstName);
       return Return(value: user);
     } catch (exp) {
+      print(exp.toString());
       return Return(error: exp);
     }
   }
 
   //update a user
-  Future<Return> updateUser(int id, User user) async {
+  Future<Return> updateUser(User user) async {
     try {
-      final User newUser = await dataProvider.updateUser(id, user);
+      final User newUser = await dataProvider.updateUser(user);
       return Return(value: newUser);
     } catch (exp) {
       return Return(error: exp);
@@ -65,7 +68,7 @@ class AdminRepository {
   // get list of pharmacies
   Future<Return> getPharmacies() async {
     try {
-      final List<User> users = await dataProvider.loadUsers();
+      final List<APharmacy> users = await dataProvider.loadPharmacies();
       return Return(value: users);
     } catch (exp) {
       return Return(error: exp);
@@ -75,7 +78,7 @@ class AdminRepository {
   //get a user
   Future<Return> getPharmacy(int id) async {
     try {
-      final Pharmacy pharmacy = await dataProvider.loadPharmacy(id);
+      final APharmacy pharmacy = await dataProvider.loadPharmacy(id);
       return Return(value: pharmacy);
     } catch (exp) {
       return Return(error: exp);
@@ -83,10 +86,9 @@ class AdminRepository {
   }
 
   //update a Pharmacy
-  Future<Return> updatePharmacy(int id, Pharmacy pharmacy) async {
+  Future<Return> updatePharmacy(APharmacy pharmacy) async {
     try {
-      final Pharmacy newPharmacy =
-          await dataProvider.updatePharmacy(id, pharmacy);
+      final APharmacy newPharmacy = await dataProvider.updatePharmacy(pharmacy);
       return Return(value: newPharmacy);
     } catch (exp) {
       return Return(error: exp);

@@ -4,5 +4,5 @@ class Return<T, String> {
 
   Return({this.value, this.error});
 
-  bool get hasError => error == null;
+  bool get hasError => error != null;
 }

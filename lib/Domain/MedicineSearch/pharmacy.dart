@@ -6,7 +6,7 @@ class Pharmacy {
   Pharmacy(this.pharmacyId, this.pharmacyName, this.location);
 
   factory Pharmacy.fromJson(Map<String, dynamic> pharmacyJson) {
-    return Pharmacy(
-        pharmacyJson['id'], pharmacyJson['name'], pharmacyJson['address']);
+    return Pharmacy(int.parse(pharmacyJson['id']), pharmacyJson['name'],
+        pharmacyJson['address']);
   }
 }

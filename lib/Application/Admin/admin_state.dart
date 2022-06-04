@@ -27,8 +27,8 @@ class RoleChanged extends AdminState {
 }
 
 class PharmacyLoaded extends AdminState {
-  final Pharmacy user;
-  PharmacyLoaded(this.user);
+  final APharmacy pharmacy;
+  PharmacyLoaded(this.pharmacy);
 }
 
 class PharmacyDeleted extends AdminState {
@@ -37,8 +37,8 @@ class PharmacyDeleted extends AdminState {
 }
 
 class PharmaciesLoaded extends AdminState {
-  final List<Pharmacy> users;
-  PharmaciesLoaded(this.users);
+  final List<APharmacy> pharmacies;
+  PharmaciesLoaded(this.pharmacies);
 }
 
 class UpdateFailed extends AdminState {

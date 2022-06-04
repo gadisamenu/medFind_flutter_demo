@@ -1,11 +1,11 @@
 import 'dart:convert';
-
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/_Shared/api_constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:medfind_flutter/Infrastructure/_Shared/token.dart';
+
+import '../../../Domain/Admin/APharamcy.dart';
 
 class AdminRemoteProvider extends AdminProvider {
   //User
@@ -14,13 +14,27 @@ class AdminRemoteProvider extends AdminProvider {
   @override
   Future<List<User>> loadUsers() async {
     final response = await http.get(
-      Uri.parse(ApiConstants.adminEndpoint + ApiConstants.usersEndpoint),
-    );
+        Uri.parse(ApiConstants.adminEndpoint + ApiConstants.usersEndpoint),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
+
+    print(response.statusCode);
 
     if (response.statusCode == 200) {
-      List respon = jsonDecode(response.body);
-      List<User> users =
-          respon.map((e) => User.fromJson(jsonDecode(e))).toList();
+      final respon = jsonDecode(response.body);
+      // print(respon);
+
+      List<User> users = [];
+      respon.forEach((element) {
+        try {
+          users.add(User.fromJson(element));
+        } catch (erro) {
+          print("decoding errro " + erro.toString());
+        }
+      });
+      print('passed');
       return users;
     } else {
       throw Exception(response.body);
@@ -29,9 +43,15 @@ class AdminRemoteProvider extends AdminProvider {
 
   @override
   Future<User> loadUser(int id) async {
-    final response = await http.get(Uri.parse(
-        ApiConstants.adminEndpoint + ApiConstants.usersEndpoint + "?id=$id"));
-
+    final response = await http.get(
+        Uri.parse(ApiConstants.adminEndpoint +
+            ApiConstants.usersEndpoint +
+            "?id=$id"),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
+    print(response.statusCode);
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
     } else {
@@ -40,14 +60,18 @@ class AdminRemoteProvider extends AdminProvider {
   }
 
   @override
-  Future<User> updateUser(int id, User user) async {
-    final response = await http.post(
+  Future<User> updateUser(User user) async {
+    final response = await http.put(
         Uri.parse(ApiConstants.adminEndpoint +
             ApiConstants.usersEndpoint +
             "?id=${user.id}"),
-        headers: {"Authorization": Token().token},
-        body: jsonEncode(user));
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        },
+        body: jsonEncode(user.toJson()));
 
+    print(response.statusCode);
     if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
     } else {
@@ -57,8 +81,14 @@ class AdminRemoteProvider extends AdminProvider {
 
   @override
   Future<bool> deleteUser(int id) async {
-    final response = await http.delete(Uri.parse(
-        ApiConstants.adminEndpoint + ApiConstants.usersEndpoint + "?id=$id"));
+    final response = await http.delete(
+        Uri.parse(ApiConstants.adminEndpoint +
+            ApiConstants.usersEndpoint +
+            "?id=$id"),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
 
     if (response.statusCode == 200) {
       return true;
@@ -73,7 +103,13 @@ class AdminRemoteProvider extends AdminProvider {
         Uri.parse(ApiConstants.adminEndpoint +
             ApiConstants.usersEndpoint +
             "?id=$id"),
-        body: {"role": role});
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        },
+        body: {
+          "role": role
+        });
 
     if (response.statusCode == 200) {
       return true;
@@ -84,14 +120,24 @@ class AdminRemoteProvider extends AdminProvider {
 
   // Pharmacy
   @override
-  Future<List<Pharmacy>> loadPharmacies() async {
+  Future<List<APharmacy>> loadPharmacies() async {
     final response = await http.get(
-        Uri.parse(ApiConstants.adminEndpoint + ApiConstants.pharmacyEndpoint));
+        Uri.parse(ApiConstants.adminEndpoint + ApiConstants.pharmacyEndpoint),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
 
     if (response.statusCode == 200) {
       List respon = jsonDecode(response.body);
-      List<Pharmacy> pharmacies =
-          respon.map((e) => Pharmacy.fromJson(jsonDecode(e))).toList();
+      List<APharmacy> pharmacies = [];
+      respon.forEach((element) {
+        try {
+          pharmacies.add(APharmacy.fromJson(element));
+        } catch (erro) {
+          print("Decoding error" + erro.toString());
+        }
+      });
       return pharmacies;
     } else {
       throw Exception(response.body);
@@ -99,29 +145,38 @@ class AdminRemoteProvider extends AdminProvider {
   }
 
   @override
-  Future<Pharmacy> loadPharmacy(int id) async {
-    final response = await http.get(Uri.parse(ApiConstants.adminEndpoint +
-        ApiConstants.pharmacyEndpoint +
-        "?id=$id"));
+  Future<APharmacy> loadPharmacy(int id) async {
+    final response = await http.get(
+        Uri.parse(ApiConstants.adminEndpoint +
+            ApiConstants.pharmacyEndpoint +
+            "?id=$id"),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
 
     if (response.statusCode == 200) {
-      return Pharmacy.fromJson(jsonDecode(response.body));
+      return APharmacy.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(response.body);
     }
   }
 
   @override
-  Future<Pharmacy> updatePharmacy(int id, Pharmacy pharmacy) async {
-    final response = await http.post(
+  Future<APharmacy> updatePharmacy(APharmacy pharmacy) async {
+    final response = await http.put(
         Uri.parse(ApiConstants.adminEndpoint +
-            ApiConstants.usersEndpoint +
-            "?id=${pharmacy.pharmacyId}"),
-        headers: {"Authorization": Token().token},
-        body: jsonEncode(pharmacy));
+            ApiConstants.pharmacyEndpoint +
+            "?id=${pharmacy.id}"),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        },
+        body: jsonEncode(pharmacy.toJson()));
 
+    print(response.statusCode);
     if (response.statusCode == 200) {
-      return Pharmacy.fromJson(jsonDecode(response.body));
+      return APharmacy.fromJson(jsonDecode(response.body));
     } else {
       throw Exception(response.body);
     }
@@ -129,9 +184,14 @@ class AdminRemoteProvider extends AdminProvider {
 
   @override
   Future<bool> deletePharmacy(int id) async {
-    final response = await http.delete(Uri.parse(ApiConstants.adminEndpoint +
-        ApiConstants.pharmacyEndpoint +
-        "?id=$id"));
+    final response = await http.delete(
+        Uri.parse(ApiConstants.adminEndpoint +
+            ApiConstants.pharmacyEndpoint +
+            "?id=$id"),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        });
 
     if (response.statusCode == 200) {
       return true;

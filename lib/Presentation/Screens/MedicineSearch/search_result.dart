@@ -17,6 +17,7 @@ class SearchResult extends StatefulWidget {
 class _MyWidgetState extends State<SearchResult> {
   int currentIndex = 0;
   bool searchButtonPressed = false;
+  final textFieldController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,9 @@ class _MyWidgetState extends State<SearchResult> {
                     child: Center(
                       child: Text(
                         "medFind",
-                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).appBarTheme.foregroundColor),
                       ),
                     ),
                   ),
@@ -60,23 +63,14 @@ class _MyWidgetState extends State<SearchResult> {
                                 height: 30,
                                 margin: EdgeInsets.all(1),
                                 child: TextField(
+                                    controller: textFieldController,
                                     decoration: InputDecoration(
                                         hintText: "Search",
                                         hintStyle: TextStyle(fontSize: 15)
                                         // border: InputBorder(),
                                         ),
-                                    onSubmitted: (value) => {
-                                          if (value.length > 0)
-                                            {
-                                              BlocProvider.of<
-                                                          MedicineSearchBloc>(
-                                                      context)
-                                                  .add(
-                                                Search(9.0474852, 38.7596047,
-                                                    value),
-                                              ),
-                                            }
-                                        }),
+                                    onSubmitted: (value) =>
+                                        handleSubmission(value, context)),
                               ),
                             ),
                             IconButton(
@@ -85,7 +79,10 @@ class _MyWidgetState extends State<SearchResult> {
                                 color: Colors.blue,
                               ),
                               onPressed: () {
-                                print("your menu action here");
+                                if (textFieldController.text.length > 0) {
+                                  handleSubmission(
+                                      textFieldController.text, context);
+                                }
                               },
                             ),
                           ],
@@ -103,7 +100,7 @@ class _MyWidgetState extends State<SearchResult> {
                   return Center(child: CircularProgressIndicator());
                 }
                 if (state is SearchNotFound) {
-                  return Center(child: Text("medicine not found"));
+                  return Center(child: Text(state.error_message));
                 }
                 return ListView.builder(
                   itemCount: state.result.length,
@@ -116,8 +113,8 @@ class _MyWidgetState extends State<SearchResult> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: ListTile(
                         // tileColor: Colors.blue,
-                        title: Text(state.result[index].name),
-                        subtitle: Text(state.result[index].address),
+                        title: Text(state.result[index].pharmacyName),
+                        subtitle: Text(state.result[index].location),
                       ),
                     );
                   },
@@ -190,6 +187,17 @@ class _MyWidgetState extends State<SearchResult> {
     //             label: "profile",
     //           )
     //         ]));
+  }
+
+  Set<Set<void>> handleSubmission(String value, BuildContext context) {
+    return {
+      if (value.length > 0)
+        {
+          BlocProvider.of<MedicineSearchBloc>(context).add(
+            Search(9.0474852, 38.7596047, value),
+          ),
+        }
+    };
   }
 
   TextInput() => Padding(

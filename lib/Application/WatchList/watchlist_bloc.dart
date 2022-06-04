@@ -36,8 +36,14 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
     emit(watchListState);
   }
 
+//
+//  OK
   Future<void> _addMedpack(AddMedpack event, Emitter emit) async {
-    MedPack? medpack = await wr.addMedPack(event.description);
+    MedPack? medpack;
+
+    try {
+      medpack = await wr.addMedPack(event.description);
+    } catch (error) {}
 
     watchListState.addMedpack(medpack!);
 
@@ -52,19 +58,27 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
     emit(watchListState);
   }
 
+//
+//  OK
   Future<void> _updateMedpackTag(UpdateMedPackTag event, Emitter emit) async {
-    MedPack? updatedMedpack =
-        await wr.updateMedpack(event.medpackID, event.newTag);
+    MedPack? updatedMedpack;
+    try {
+      updatedMedpack = await wr.updateMedpack(event.medpackID, event.newTag);
+    } catch (error) {}
 
     watchListState.update(event.medpackID, updatedMedpack!);
 
     emit(watchListState);
   }
 
+//
+//  OK
   Future<void> _addPill(AddPill event, Emitter emit) async {
-    
-    Pill? newPill = await wr.addPill(
-        event.medpackID, event.name, event.strength, event.amount);
+    Pill? newPill;
+    try {
+      newPill = await wr.addPill(
+          event.medpackID, event.name, event.strength, event.amount);
+    } catch (error) {}
 
     watchListState.addPillToMedpack(event.medpackID, newPill!);
 
@@ -84,9 +98,15 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
     GoRouter.of(event.context).push('/search_result', extra: pharmacies);
   }
 
+//
+//
   Future<void> _updatePill(UpdatePill event, Emitter emit) async {
-    Pill? updatedPill =
-        await wr.updatePill(event.pillId, event.strength, event.amount);
+    Pill? updatedPill;
+    try {
+      updatedPill =
+          await wr.updatePill(event.pillId, event.strength, event.amount);
+    } catch (error) {}
+    
     watchListState.getMedpack().update(event.medpackId, (value) {
       value.updatePill(
           event.pillId, event.medicineName, event.strength, event.amount);

@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
+
+import '../../../Domain/Admin/APharamcy.dart';
 
 class AdminLocalProvider extends AdminProvider {
   @override
@@ -21,13 +22,18 @@ class AdminLocalProvider extends AdminProvider {
   }
 
   @override
-  Future<List<Pharmacy>> loadPharmacies() async {
+  Future<List<APharmacy>> loadPharmacies() async {
     return [];
   }
 
   @override
-  Future<Pharmacy> loadPharmacy(int id) async {
-    return Pharmacy(1, "updated ", "here");
+  Future<APharmacy> loadPharmacy(int id) async {
+    return APharmacy(
+      1,
+      "updated ",
+      "me",
+      "here",
+    );
   }
 
   @override
@@ -45,12 +51,12 @@ class AdminLocalProvider extends AdminProvider {
   }
 
   @override
-  Future<Pharmacy> updatePharmacy(int id, Pharmacy pharmacy) async {
-    return Pharmacy.fromJson(jsonDecode(pharmacy.toString()));
+  Future<APharmacy> updatePharmacy(APharmacy pharmacy) async {
+    return APharmacy.fromJson(jsonDecode(pharmacy.toString()));
   }
 
   @override
-  Future<User> updateUser(int id, User user) async {
+  Future<User> updateUser(User user) async {
     return user;
   }
 }

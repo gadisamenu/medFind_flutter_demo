@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:medfind_flutter/Domain/Admin/User.dart';
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/Repository/admin_repository.dart';
 import 'package:medfind_flutter/Infrastructure/_Shared/return_data_type.dart';
+import '../../Domain/Admin/APharamcy.dart';
 part 'admin_event.dart';
 part 'admin_state.dart';
 
@@ -25,6 +25,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
   void _loadUsers(LoadUsers event, Emitter emit) async {
     emit(Loading());
     Return result = await adminRepo.getUsers();
+    print(result.hasError);
     if (!result.hasError) {
       emit(UsersLoaded(result.value));
     } else {
@@ -36,7 +37,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
   void _loadUser(LoadUser event, Emitter emit) async {
     emit(Loading());
     Return result = await adminRepo.getUser(event.id);
-
+    print(result.hasError);
     if (!result.hasError) {
       emit(UserLoaded(result.value));
     } else {
@@ -47,8 +48,9 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
   //
   void _updateUser(UpdateUser event, Emitter emit) async {
     emit(Loading());
-    Return result = await adminRepo.updateUser(event.user.id!, event.user);
 
+    Return result = await adminRepo.updateUser(event.user);
+    print(result.hasError);
     if (!result.hasError) {
       emit(UserLoaded(result.value));
     } else {
@@ -83,7 +85,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     emit(Loading());
     Return result = await adminRepo.getPharmacies();
     if (!result.hasError) {
-      emit(UsersLoaded(result.value));
+      emit(PharmaciesLoaded(result.value));
     } else {
       emit(LoadingFailed(msg: "Error loading Pharmacies"));
     }
@@ -94,7 +96,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     Return result = await adminRepo.getPharmacy(event.id);
 
     if (!result.hasError) {
-      emit(UserLoaded(result.value));
+      emit(PharmacyLoaded(result.value));
     } else {
       emit(LoadingFailed(msg: "Error loading pharmacy"));
     }
@@ -103,7 +105,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
   void _deletePharmacy(DeletePharmacy event, Emitter emit) async {
     Return result = await adminRepo.removePharmacy(event.id);
     if (!result.hasError) {
-      emit(UserDeleted(event.id));
+      emit(PharmacyDeleted(event.id));
     } else {
       emit(DeleteFailed(msg: "Error while deleting " + result.error));
     }
@@ -111,12 +113,12 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
   void _updatePharmacy(UpdatePharmacy event, Emitter emit) async {
     emit(Loading());
-    Return result = await adminRepo.updatePharmacy(
-        event.pharmacy.pharmacyId, event.pharmacy);
+    Return result = await adminRepo.updatePharmacy(event.pharmacy);
 
     if (!result.hasError) {
-      emit(UserLoaded(result.value));
+      emit(PharmacyLoaded(result.value));
     } else {
+      print("here");
       emit(UpdateFailed(msg: "Error on update"));
     }
   }

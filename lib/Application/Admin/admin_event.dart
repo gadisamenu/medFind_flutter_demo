@@ -28,7 +28,7 @@ class ChangerRole extends AdminEvent {
 class LoadPharmacies extends AdminEvent {}
 
 class UpdatePharmacy extends AdminEvent {
-  final Pharmacy pharmacy;
+  final APharmacy pharmacy;
   UpdatePharmacy(this.pharmacy);
 }
 

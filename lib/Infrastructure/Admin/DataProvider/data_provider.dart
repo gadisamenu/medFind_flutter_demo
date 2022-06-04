@@ -1,15 +1,15 @@
+import '../../../Domain/Admin/APharamcy.dart';
 import '../../../Domain/Admin/User.dart';
-import '../../../Domain/MedicineSearch/pharmacy.dart';
 
 abstract class AdminProvider {
   Future<List<User>> loadUsers();
   Future<User> loadUser(int id);
-  Future<User> updateUser(int id, User user);
+  Future<User> updateUser(User user);
   Future<bool> deleteUser(int id);
   Future<bool> changeRole(int id, String role);
 
-  Future<List<Pharmacy>> loadPharmacies();
-  Future<Pharmacy> loadPharmacy(int id);
-  Future<Pharmacy> updatePharmacy(int id, Pharmacy pharmacy);
+  Future<List<APharmacy>> loadPharmacies();
+  Future<APharmacy> loadPharmacy(int id);
+  Future<APharmacy> updatePharmacy(APharmacy pharmacy);
   Future<bool> deletePharmacy(int id);
 }
