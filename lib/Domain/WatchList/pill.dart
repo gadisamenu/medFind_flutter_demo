@@ -1,6 +1,6 @@
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
 
-class Pill {
+class Pill{
   int pillId;
 
   MedicineName name;
@@ -29,4 +29,12 @@ class Pill {
       'amount': amount
     };
   }
+
+   @override
+  bool operator ==(Object other) {
+    return other is Pill && other.pillId == pillId;
+  }
+
+  // @override
+  // int get hashCode => Object.hash(object1, object2)
 }

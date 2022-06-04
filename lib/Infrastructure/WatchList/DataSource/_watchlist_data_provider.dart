@@ -11,6 +11,6 @@ abstract class WatchListDataProvider {
   Future<MedPack?> updateMedpack(int medpackId, String tag);
   Future<Pill?> addNewPill(
       int medpackId, MedicineName name, int strength, int amount,{int? pillId});
-  Future<void> removePill(int pillId);
-  Future<Pill?> updatePill(int pillId, int strength, int amount);
+  Future<void> removePill(int medpackId, int pillId);
+  Future<Pill?> updatePill(int medpackId, int pillId, int strength, int amount);
 }

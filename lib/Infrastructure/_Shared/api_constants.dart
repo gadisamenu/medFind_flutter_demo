@@ -1,5 +1,6 @@
 class ApiConstants {
-  static String watchListEndpoint = 'https://localhost:8080/api/watchlist';
+  static String watchListEndpoint =
+      'http://192.168.43.190:8080/api/v1/watchlist';
 
   static String medpackEndpoint = '/medpacks';
   static String pillEndpoint = '/pills';

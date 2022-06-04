@@ -86,7 +86,7 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
   }
 
   Future<void> _removePill(RemovePill event, Emitter emit) async {
-    await wr.removePill(event.pillID);
+    await wr.removePill(event.medpackID, event.pillID);
 
     watchListState.getMedpack().remove(event.pillID);
 
@@ -104,12 +104,12 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
     Pill? updatedPill;
     try {
       updatedPill =
-          await wr.updatePill(event.pillId, event.strength, event.amount);
+          await wr.updatePill(event.medpackId, event.pillId, event.strength, event.amount);
     } catch (error) {}
     
     watchListState.getMedpack().update(event.medpackId, (value) {
       value.updatePill(
-          event.pillId, event.medicineName, event.strength, event.amount);
+          event.pillId, event.strength, event.amount);
       return value;
     });
   }

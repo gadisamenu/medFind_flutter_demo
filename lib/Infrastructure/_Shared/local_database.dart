@@ -31,6 +31,14 @@ class SqliteDBProvider {
     );
   }
 
+  Future<Map<String, Object>?> getById(String table, int id) async {
+    final db = _initializeDB() as Database;
+    List<Map<String, Object>?> queryResult =
+        await db.query(table, where: 'id=$id') as List<Map<String, Object>?>;
+    db.close();
+    return queryResult.first;
+  }
+
   Future<int> insert(String table, Map<String, Object> data) async {
     final db = _initializeDB() as Database;
     int affected = await db.insert('medpacks', data);
@@ -71,8 +79,7 @@ class SqliteDBProvider {
     for (int i = 0; i < field.length; i++) {
       var column = field[i];
       var value = newValue[i];
-      db.rawUpdate(
-          'UPDATE $table SET $column = $value WHERE id = $id');
+      db.rawUpdate('UPDATE $table SET $column = $value WHERE id = $id');
     }
     final List<Map<String, Object?>> queryResult =
         await db.query(table, where: 'id = $id');
