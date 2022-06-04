@@ -42,8 +42,8 @@ InputDecorationTheme getInputDecorationTheme() {
 
 TextTheme getTextTheme() {
   return const TextTheme(
-    bodyText1: TextStyle(color: mTextColor),
-    bodyText2: TextStyle(color: mTextColor),
+    bodyText1: TextStyle(color: mPrimaryColor),
+    bodyText2: TextStyle(color: mPrimaryLightColor),
   );
 }
 

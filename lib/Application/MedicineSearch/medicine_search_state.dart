@@ -2,13 +2,16 @@ import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 
 abstract class MedicineSearchState {
   get result => null;
+  get medicineName => null;
 }
 
 class Loading extends MedicineSearchState {}
 
 class SearchFound extends MedicineSearchState {
   List<Pharmacy> result;
-  SearchFound(this.result);
+  @override
+  String medicineName;
+  SearchFound(this.medicineName, this.result);
 }
 
 class SearchNotFound extends MedicineSearchState {

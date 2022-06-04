@@ -1,11 +1,12 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
-import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_event.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_state.dart';
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
+import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 class SearchResult extends StatefulWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -18,186 +19,174 @@ class _MyWidgetState extends State<SearchResult> {
   int currentIndex = 0;
   bool searchButtonPressed = false;
   final textFieldController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // key: _scaffoldKey,
+        appBar: AppBar(
+          title: Text('medFind'),
+          centerTitle: true,
+        ),
         body: Column(
           children: [
-            Container(
-              height: 100.0,
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    color: Theme.of(context).appBarTheme.backgroundColor,
-                    width: MediaQuery.of(context).size.width,
-                    height: 70.0,
-                    child: Center(
-                      child: Text(
-                        "medFind",
-                        style: TextStyle(
-                            color:
-                                Theme.of(context).appBarTheme.foregroundColor),
-                      ),
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 350,
+                  height: 30,
+                  margin: EdgeInsets.all(5),
+                  child: TextField(
+                    controller: textFieldController,
+                    decoration: const InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                        border: InputBorder.none,
+                        hintText: "type your medicine name here",
+                        hintStyle: TextStyle(fontSize: 15)),
+                    onSubmitted: (value) => handleSubmission(value, context),
                   ),
-                  Positioned(
-                    top: 50.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Container(
-                      height: 30,
-                      margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(1.0)),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(1234523.0),
-                            border: Border.all(
-                                color: Colors.transparent, width: 1.0),
-                            color: Color.fromARGB(255, 255, 255, 255)),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                height: 30,
-                                margin: EdgeInsets.all(1),
-                                child: TextField(
-                                    controller: textFieldController,
-                                    decoration: InputDecoration(
-                                        hintText: "Search",
-                                        hintStyle: TextStyle(fontSize: 15)
-                                        // border: InputBorder(),
-                                        ),
-                                    onSubmitted: (value) =>
-                                        handleSubmission(value, context)),
-                              ),
+                ),
+                getButton(100, 30, Text("Search"), () {})
+              ],
+            ),
+            BlocBuilder<MedicineSearchBloc, MedicineSearchState>(
+                builder: (context, state) {
+              if (state is Loading) {
+                return const Center(
+                    child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: CircularProgressIndicator(),
+                ));
+              }
+              if (state is SearchNotFound) {
+                return Center(child: Text(state.error_message));
+              }
+              return Expanded(
+                  child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50.0,
+                        child: Center(
+                          child: Text(
+                            "Search results for ${state.medicineName}",
+                            style: TextStyle(
+                              color:
+                                  Theme.of(context).textTheme.headline1!.color,
+                              fontWeight: FontWeight.bold,
                             ),
-                            IconButton(
-                              icon: Icon(
-                                Icons.search,
-                                color: Colors.blue,
-                              ),
-                              onPressed: () {
-                                if (textFieldController.text.length > 0) {
-                                  handleSubmission(
-                                      textFieldController.text, context);
-                                }
-                              },
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: BlocBuilder<MedicineSearchBloc, MedicineSearchState>(
-                  builder: (context, state) {
-                if (state is Loading) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                if (state is SearchNotFound) {
-                  return Center(child: Text(state.error_message));
-                }
-                return ListView.builder(
-                  itemCount: state.result.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      // padding: const EdgeInsets.all(10.0),
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor,
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: ListTile(
-                        // tileColor: Colors.blue,
-                        title: Text(state.result[index].name),
-                        subtitle: Text(state.result[index].address),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: getButton(
+                            150, 30, Text("save to watchlist"), () => {}),
                       ),
-                    );
-                  },
-                );
-              }),
-            )
+                    ],
+                  ),
+                  Expanded(
+                      child: ListView.builder(
+                    itemCount: state.result.length,
+                    itemBuilder: (context, index) {
+                      return Stack(
+                        children: [
+                          Container(
+                              height: 150,
+                              margin: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.blue,
+                                      offset: Offset.fromDirection(1.0, 10.0),
+                                      blurRadius: 10,
+                                    )
+                                  ],
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        Color.fromARGB(255, 38, 136, 216),
+                                        Color.fromARGB(255, 205, 230, 230)
+                                      ]),
+                                  borderRadius: BorderRadius.circular(20.0)),
+                              child: Container(
+                                child: Column(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Text(
+                                        state.result[index].pharmacyName,
+                                        style: TextStyle(
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .headline5!
+                                              .color,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.only(left: 10),
+                                          child: Text(
+                                            'Address: ',
+                                            style: TextStyle(
+                                              color: Theme.of(context)
+                                                  .textTheme
+                                                  .headline5!
+                                                  .color,
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            margin: EdgeInsets.only(right: 10),
+                                            child: Text(
+                                              state.result[index].location,
+                                              style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .textTheme
+                                                    .headline5!
+                                                    .color,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )),
+                          Positioned(
+                              bottom: 30.0,
+                              right: 30.0,
+                              // alignment: Alignment.bottomRight,
+                              // height: 10,
+                              // width: 100,
+                              child: Row(
+                                children: [
+                                  getButton(100, 30, Text("reserve"), () => {}),
+                                ],
+                              )),
+                        ],
+                      );
+                    },
+                  )),
+                ],
+              ));
+            })
           ],
         ),
-        bottomNavigationBar: null);
-
-    // return Scaffold(
-    //     appBar: AppBar(
-    //       centerTitle: false,
-    //       title: Text(
-    //         "medFind",
-    //         style: Theme.of(context).primaryTextTheme.headline6,
-    //       ),
-    //       actions: [
-    //         searchButtonPressed
-    //             ? Center(child: Container(width: 300, child: TextInput()))
-    //             : SizedBox(),
-    //         Padding(
-    //           padding: const EdgeInsets.all(8.0),
-    //           child: IconButton(
-    //             icon: Icon(
-    //               Icons.search,
-    //               size: 30,
-    //             ),
-    //             onPressed: () {
-    //               setState(() {
-    //                 searchButtonPressed = !searchButtonPressed;
-    //               });
-    //             },
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //     body: Stack(children: [
-    //       // searchButtonPressed ? TextInput() : SizedBox(),
-    //       Column(
-    //         children: [
-    //           BlocBuilder<medicine_search_bloc, medicine_search_state>(
-    //               builder: (context, state) {
-    //             return Container();
-    //           })
-    //         ],
-    //       ),
-    //     ]),
-    //     bottomNavigationBar: BottomNavigationBar(
-    //         // backgroundColor: Colors.cyanAccent,
-    //         selectedItemColor: Colors.cyan,
-    //         unselectedItemColor: Colors.cyan,
-    //         currentIndex: currentIndex,
-    //         onTap: (index) => setState(() => currentIndex = index),
-    //         items: [
-    //           BottomNavigationBarItem(
-    //             icon: Icon(Icons.search),
-    //             label: "home",
-    //           ),
-    //           BottomNavigationBarItem(
-    //             icon: Icon(Icons.list),
-    //             label: "watchlist",
-    //           ),
-    //           BottomNavigationBarItem(
-    //             icon: Icon(Icons.card_travel),
-    //             label: "reserved",
-    //           ),
-    //           BottomNavigationBarItem(
-    //             icon: Icon(Icons.account_circle),
-    //             label: "profile",
-    //           )
-    //         ]));
-  }
-
-  Set<Set<void>> handleSubmission(String value, BuildContext context) {
-    return {
-      if (value.length > 0)
-        {
-          BlocProvider.of<MedicineSearchBloc>(context).add(
-            Search(9.0474852, 38.7596047, value),
-          ),
-        }
-    };
+        bottomNavigationBar: CustomNavigationBar());
   }
 
   TextInput() => Padding(

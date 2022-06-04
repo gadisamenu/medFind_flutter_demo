@@ -3,14 +3,17 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
+import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 import '../../../Application/MedicineSearch/medicine_search_bloc.dart';
 import '../../../Application/MedicineSearch/medicine_search_event.dart';
 import '../../_Shared/Widgets/bottom_navigation_bar.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
+  Home({Key? key}) : super(key: key);
+  final textFieldController = TextEditingController(text: "Aceon");
   @override
   Widget build(BuildContext context) {
     var currentIndex = 0;
@@ -33,17 +36,14 @@ class Home extends StatelessWidget {
                 children: [
                   Text("med",
                       style: TextStyle(
-                        color: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .backgroundColor,
+                        color: Theme.of(context).textTheme.bodyText2!.color,
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
                       )),
                   Text(
                     "Find",
                     style: TextStyle(
-                      color: Theme.of(context).textTheme.headline6!.color,
+                      color: Theme.of(context).textTheme.bodyText1!.color,
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                     ),
@@ -51,41 +51,25 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Search", hintStyle: TextStyle(fontSize: 15)
-                      // border: InputBorder(),
-                      ),
-                  onSubmitted: (value) => {
-                        if (value.length > 0)
-                          {
-                            context.go("/search"),
-                            BlocProvider.of<MedicineSearchBloc>(context).add(
-                              Search(9.0474852, 38.7596047, value),
-                            ),
-                          }
-                      }),
+            Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(30, 30, 30, 10),
+                  child: TextField(
+                      controller: textFieldController,
+                      decoration: const InputDecoration(
+                          hintText: "Type medicine name here",
+                          hintStyle: TextStyle(fontSize: 15)),
+                      onSubmitted: (value) => {
+                            handleSubmission(textFieldController.text, context)
+                          }),
+                ),
+                getButton(200.0, 50.0, Text("Search"),
+                    () => {handleSubmission(textFieldController.text, context)})
+              ],
             ),
           ],
         )),
         bottomNavigationBar: CustomNavigationBar());
   }
 }
-
-
-// Container(
-//           heigColor.fromARGB(255, 27, 15, 14)/           width: double.infinity,
-//           margin: EdgeInsets.all(20),
-//           decoration: BoxDecoration(
-//               color: Colors.white,
-//               borderRadius: BorderRadius.circular(30),
-//               boxShadow: [
-//                 BoxShadow(
-//                   color: Color.fromARGB(112, 0, 0, 0),
-//                   offset: Offset.fromDirection(0.8, 50.0),
-//                   blurRadius: 50.0,
-//                 )
-//               ]),
-//         ),

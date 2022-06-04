@@ -15,7 +15,7 @@ class MedicineSearchRepository {
       final result = await medicineSearchDataProvider.getPharmacy(
           latitude, longitude, medicineName);
       jsonDecode(result.body).forEach(
-          (p) => pharmacies.add(Pharmacy(p['id'], p['name'], p['address'])));
+          (p) => pharmacies.add(Pharmacy.fromJson(p)));
       return Result(val: pharmacies);
     } catch (e) {
       return Result(error: "cann't find the result");

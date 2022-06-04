@@ -7,7 +7,6 @@ import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_b
 import 'package:medfind_flutter/Presentation/splash_screen.dart';
 
 class MedfindRouter {
-  // ignore: unused_field
   static final GoRouter router = GoRouter(
     routes: <GoRoute>[
       GoRoute(
@@ -17,7 +16,7 @@ class MedfindRouter {
       ),
       GoRoute(
         path: '/home',
-        builder: (BuildContext context, GoRouterState state) => const Home(),
+        builder: (BuildContext context, GoRouterState state) => Home(),
       ),
       GoRoute(
         path: '/search',
