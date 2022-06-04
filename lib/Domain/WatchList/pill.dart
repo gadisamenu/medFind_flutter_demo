@@ -1,7 +1,6 @@
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
-import 'package:medfind_flutter/Domain/_Shared/common.dart';
 
-class Pill {
+class Pill{
   int pillId;
 
   MedicineName name;
@@ -9,15 +8,17 @@ class Pill {
   int amount;
 
   Pill(this.pillId, this.name, this.strength, this.amount);
-
   factory Pill.fromJson(Map<String, dynamic> medpackJson) {
     MedicineName medName = MedicineName(medpackJson['medicine']['name']);
 
-    if (medName.isValid()) {
-      throw InvalidValueError();
-    }
     return Pill(medpackJson['id'], medName, medpackJson['strength'],
         medpackJson['amount']);
+  }
+
+  bool validate() {
+    return name.isValid() &&
+        (strength > 20 && strength < 1000) &&
+        (amount > 10 && amount < 100);
   }
 
   Map<String, Object> toJson() {
@@ -28,4 +29,12 @@ class Pill {
       'amount': amount
     };
   }
+
+   @override
+  bool operator ==(Object other) {
+    return other is Pill && other.pillId == pillId;
+  }
+
+  // @override
+  // int get hashCode => Object.hash(object1, object2)
 }

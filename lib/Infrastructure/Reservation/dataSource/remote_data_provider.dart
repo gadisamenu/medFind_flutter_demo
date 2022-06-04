@@ -24,7 +24,7 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
   }
 
   @override
-  Future<void> deleteMedPack(double medpack_id, double? reservation_id) async {
+  Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     try {
       var url = Uri.parse(ApiConstants.ReservationEndpoint +
           ApiConstants.medpackEndpoint +
@@ -40,7 +40,7 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
   }
 
   @override
-  Future<void> deleteReservation(double reservation_id) async {
+  Future<void> deleteReservation(int reservation_id) async {
     try {
       var url = Uri.parse(ApiConstants.ReservationEndpoint +
           '?reserv_id' +

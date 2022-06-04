@@ -23,37 +23,31 @@ class LocalReservationDataProvider extends SqliteDBProvider
     implements ReservationDataProvider {
   @override
   Future<List<Reservation>> getReservations() async {
-    final db = await initializeDB();
-
-    final List<Map<String, Object?>> queryResult = await db.query('reservations');
+    final List<Map<String, Object?>> queryResult = await get('reservations');
     return queryResult.map((e) => Reservation.fromJson(e)).toList();
   }
-@override
-  Future<List<MedPack>?> getMedPacks() async {
-    final db = await initializeDB();
+// @override
+//   Future<List<MedPack>?> getMedPacks() async {
+//     final db = await initializeDB();
 
-    final List<Map<String, Object?>> queryResult = await db.query('medpacks');
-    return queryResult.map((record) => MedPack.fromJson(record)).toList();
-  }
+//     final List<Map<String, Object?>> queryResult = await db.query('medpacks');
+//     return queryResult.map((record) => MedPack.fromJson(record)).toList();
+//   }
   @override
-  Future<void> deleteMedPack(double medpack_id, double? reservation_id) async {
-    final db = await initializeDB();
-    db.delete('medpacks', where: 'id = ?', whereArgs: [medpack_id]);
+  Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
+    delete('medpacks', medpack_id);
   }
 
-  @override
-  Future<void> addMedPack(MedPack medpack, double reservation_id) async {
-    final db = await initializeDB();
-    db.insert("reservations", {"medpack": medpack.toJson()});
-  }
+  // @override
+  // Future<void> addMedPack(List<MedPack> medpack, int reservation_id) async {
+  //   updateFields("reservations", reservation_id, medPacks, medpack);
+  // }
 
   @override
-  Future<void> deleteReservation(double reservation_id) async {
-    final db = await initializeDB();
-    db.delete("reservations", where: 'id = ?', whereArgs: [reservation_id]);
+  Future<void> deleteReservation(int reservation_id) async {
+    delete("reservations", reservation_id);
   }
-    // Future<void> addMedPack( MedPack medpacks,double reservation_id);
-    // Future<Reservation?> createReservation(List medpacks, int pharmacyId,){}
-
+  // Future<void> addMedPack( MedPack medpacks,double reservation_id);
+  // Future<Reservation?> createReservation(List medpacks, int pharmacyId,){}
 
 }

@@ -6,7 +6,7 @@ class ThemeProvider {}
 
 ThemeData getAppTheme() {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
     fontFamily: "Muli",
     appBarTheme: getAppBarTheme(),
     textTheme: getTextTheme(),
@@ -50,7 +50,7 @@ TextTheme getTextTheme() {
 AppBarTheme getAppBarTheme() {
   return const AppBarTheme(
     centerTitle: true,
-    color: Colors.white,
+    color: Colors.blue,
     elevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle.dark,
     iconTheme: IconThemeData(
@@ -60,5 +60,6 @@ AppBarTheme getAppBarTheme() {
       color: Color(0xFF000000),
       fontSize: 20,
     ),
+    foregroundColor: Colors.white,
   );
 }

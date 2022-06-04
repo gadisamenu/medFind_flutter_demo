@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:medfind_flutter/Presentation/Screens/config/size_config.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
+import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
+import 'package:medfind_flutter/Infrastructure/MedicineSearch/DataSource/medicine_search_data_source.dart';
+import 'package:medfind_flutter/Infrastructure/MedicineSearch/Repository/medicine_search_repository.dart';
 
 import '_Shared/theme.dart';
 import '_Shared/routes.dart';
@@ -13,14 +19,23 @@ class MedFindApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.initialize(context);
-    return MaterialApp.router(
-      routeInformationParser: MedfindRouter.router.routeInformationParser, 
-      routerDelegate: MedfindRouter.router.routerDelegate,
-
-      debugShowCheckedModeBanner: false,
-      title: 'MedFind',
-      theme: getAppTheme(),
+    // SizeConfig.initialize(context);
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MedicineSearchBloc>(
+            create: (BuildContext context) => MedicineSearchBloc(
+                MedicineSearchRepository(MedicineSearchDataSource()))),
+        BlocProvider<NavigationBloc>(
+            create: (BuildContext context) => NavigationBloc()),
+      ],
+      child: MaterialApp.router(
+        routeInformationParser: MedfindRouter.router.routeInformationParser,
+        routerDelegate: MedfindRouter.router.routerDelegate,
+        debugShowCheckedModeBanner: false,
+        title: 'MedFind',
+        theme: getAppTheme(),
+        // builder: (context, child) => const Home(),
+      ),
     );
   }
 }

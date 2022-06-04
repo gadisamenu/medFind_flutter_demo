@@ -8,7 +8,7 @@ class ReservationRepository {
   final ReservationDataProvider localDataProvider =
       LocalReservationDataProvider();
 
-  Future<List<Reservation>> getReservations() async{
+  Future<List<Reservation>> getReservations() async {
     List<Reservation> fromLocal = await localDataProvider.getReservations();
     if (fromLocal == null) {
       var fromRemote = await dataProvider.getReservations();
@@ -17,17 +17,17 @@ class ReservationRepository {
     return fromLocal;
   }
 
-  Future<void> deleteMedPack(double medpack_id, double? reservation_id) async {
+  Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     try {
-     await localDataProvider.deleteMedPack(medpack_id, null);
-     await dataProvider.deleteMedPack(medpack_id, reservation_id);
+      await localDataProvider.deleteMedPack(medpack_id,null);
+      await dataProvider.deleteMedPack(medpack_id, reservation_id);
     } catch (error) {
       return;
     }
   }
 
-  Future<void> deleteReservation(double reservation_id) async {
+  Future<void> deleteReservation(int reservation_id) async {
     await localDataProvider.deleteReservation(reservation_id);
-   await dataProvider.deleteReservation(reservation_id);
+    await dataProvider.deleteReservation(reservation_id);
   }
 }

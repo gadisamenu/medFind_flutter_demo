@@ -33,6 +33,7 @@ dependencies:
   bloc: ^8.0.2
   flutter_bloc: ^8.0.1
   http: ^0.13.4
+  shared_preferences: 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,7 +41,6 @@ dependencies:
   go_router: ^3.1.1
   equatable: ^2.0.0
   sqflite:
-  path:
 
 dev_dependencies:
   flutter_test:
