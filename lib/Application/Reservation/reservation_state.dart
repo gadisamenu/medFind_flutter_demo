@@ -21,20 +21,10 @@ class ReservationLoadSuccess extends ReservationState {
   List<Object> get props => [];
 }
 
-class ReservationLoadFailure extends ReservationState {
-  final String message; 
-  const ReservationLoadFailure(this.message);
+class ReservationFailure extends ReservationState {
+  final String message;
+  const ReservationFailure(this.message);
 
   @override
   List<Object> get props => [message];
 }
-class MedPackLoadSuccess extends ReservationState {}
-
-// class DeleteReservationsFailure extends ReservationState {
-//   final String message;
-//   DeleteReservationsFailure(this.message);
-
-//   @override
-//   List<Object> get props => [message];
-
-// }

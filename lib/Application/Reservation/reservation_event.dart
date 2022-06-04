@@ -12,15 +12,17 @@ class LoadReservation extends ReservationEvent {
   List<Object> get props => [];
 }
 
-class ReservationUpdate extends ReservationEvent {
-  final Reservation reservation;
-  ReservationUpdate(this.reservation);
+class MedPackDelete extends ReservationEvent {
+  final double medpack_id;
+  final double reservation_id;
+  MedPackDelete(this.medpack_id, this.reservation_id);
 
   @override
-  List<Object> get props => [reservation];
+  List<Object> get props => [medpack_id, reservation_id];
 
   @override
-  String toString() => "ReservationUpdate {reservation: $reservation}";
+  String toString() =>
+      "ReservationUpdated with {reservation_id: $reservation_id} by deleting  medpack{medpack_id : $medpack_id";
 }
 
 class ReservationCreate extends ReservationEvent {
@@ -36,20 +38,12 @@ class ReservationCreate extends ReservationEvent {
 }
 
 class DeleteReservation extends ReservationEvent {
-  final Reservation reservation;
+  final double reservation_id;
 
-  DeleteReservation(this.reservation);
+  DeleteReservation(this.reservation_id);
 
-  List<Object> get props => [reservation];
+  List<Object> get props => [reservation_id];
 
   @override
-  String toString() => 'Reservation Deleted {reservation: $reservation}';
+  String toString() => 'Reservation Deleted {reservation_id: $reservation_id}';
 }
-
-// class DeleteMedPack extends ReservationEvent {
-//   final MedPack medPack;
-//   DeleteMedPack(this.medPack);
-
-//   @override
-//   List<MedPack> get props => [medPack];
-// }
