@@ -15,13 +15,13 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("medFind")),
-      body: LoginForm(),
+      body: SignUpForm(),
     );
   }
 }
 
-class LoginForm extends StatelessWidget {
-  LoginForm({Key? key}) : super(key: key);
+class SignUpForm extends StatelessWidget {
+  SignUpForm({Key? key}) : super(key: key);
 
   final TextEditingController emailTextFieldController =
       TextEditingController(text: 'stark@gmail.com');

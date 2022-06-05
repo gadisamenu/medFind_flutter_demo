@@ -9,7 +9,7 @@ class AuthUninitialized extends AuthenticationState {}
 
 class Authenticated extends AuthenticationState {
   String role;
-  Authenticated(this.role);
+  Authenticated({this.role = "USER"});
 }
 
 class UnAuthenticated extends AuthenticationState {}
