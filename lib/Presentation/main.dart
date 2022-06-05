@@ -6,6 +6,7 @@ import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_resul
 import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
 import 'package:medfind_flutter/Infrastructure/MedicineSearch/DataSource/medicine_search_data_source.dart';
 import 'package:medfind_flutter/Infrastructure/MedicineSearch/Repository/medicine_search_repository.dart';
+import 'package:medfind_flutter/Presentation/Screens/config/size_config.dart';
 
 import '_Shared/theme.dart';
 import '_Shared/routes.dart';
@@ -19,7 +20,6 @@ class MedFindApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SizeConfig.initialize(context);
     return MultiBlocProvider(
       providers: [
         BlocProvider<MedicineSearchBloc>(
