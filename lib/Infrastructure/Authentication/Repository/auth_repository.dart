@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:medfind_flutter/Domain/Authentication/User.dart';
 import 'package:medfind_flutter/Infrastructure/Authentication/DataSource/remote_data_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,5 +48,11 @@ class AuthRepository {
     String? token = _refer.getString('token');
     token ??= "";
     return "Bearer $token";
+  }
+
+  Future<User> getUser() async {
+    String token = await getToken();
+    var response = await _dataProvider.getUser(token);
+    return User.fromJson(jsonDecode(response));
   }
 }
