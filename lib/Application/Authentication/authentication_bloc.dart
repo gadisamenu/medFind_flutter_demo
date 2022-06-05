@@ -15,7 +15,7 @@ class AuthenticationBloc
     on<AppStarted>((event, emit) async {
       final bool hasToken = await authRepository.hasToken();
       if (hasToken) {
-        emit(Authenticated());
+        emit(Authenticated("USER"));
       } else {
         emit(UnAuthenticated());
       }
@@ -28,7 +28,8 @@ class AuthenticationBloc
             email: event.email, password: event.password);
         token = jsonDecode(token)["token"];
         await authRepository.persistToken(token);
-        emit(Authenticated());
+        var user = await authRepository.getUser();
+        emit(Authenticated(user.role));
       } catch (e) {
         emit(AuthenticationFailed());
       }
@@ -42,8 +43,13 @@ class AuthenticationBloc
     on<Signup>((event, emit) async {
       emit(SigningUp());
       try {
-        await authRepository.signUp(
-            User(event.firstName, event.lastName, event.email, event.password));
+        await authRepository.signUp(User(
+          event.firstName,
+          event.lastName,
+          event.email,
+          event.password,
+          event.role,
+        ));
         emit(UnAuthenticated());
       } catch (e) {
         emit(SignUpFailed());

@@ -27,6 +27,7 @@ class Signup extends AuthenticationEvent {
   final String lastName;
   final String email;
   final String password;
+  final String role;
 
-  Signup(this.firstName, this.lastName, this.email, this.password);
+  Signup(this.firstName, this.lastName, this.email, this.password, this.role);
 }
