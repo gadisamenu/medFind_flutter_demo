@@ -6,6 +6,7 @@ import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_state.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 class SearchResult extends StatefulWidget {
@@ -75,7 +76,7 @@ class _MyWidgetState extends State<SearchResult> {
                             "Search results for ${state.medicineName}",
                             style: TextStyle(
                               color:
-                                  Theme.of(context).textTheme.headline1!.color,
+                                  Theme.of(context).textTheme.bodyText1!.color,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -94,26 +95,10 @@ class _MyWidgetState extends State<SearchResult> {
                     itemBuilder: (context, index) {
                       return Stack(
                         children: [
-                          Container(
-                              height: 150,
-                              margin: EdgeInsets.all(10.0),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.blue,
-                                      offset: Offset.fromDirection(1.0, 10.0),
-                                      blurRadius: 10,
-                                    )
-                                  ],
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Color.fromARGB(255, 38, 136, 216),
-                                        Color.fromARGB(255, 205, 230, 230)
-                                      ]),
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              child: Container(
+                          getCard(
+                              double.infinity,
+                              150,
+                              Container(
                                 child: Column(
                                   children: [
                                     Padding(
