@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
@@ -12,44 +11,7 @@ import '_watchlist_data_provider.dart';
 
 class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   String token =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0MzQ3NDI2LCJpYXQiOjE2NTQzMjk0MjZ9.08jNICcEMovUKDAdiEUHmudYYvd_LspN_Y8JQCe-0-Iy3crQhpABx80Pk1ADgnAT6e6q5jvAwXd47c9RFm8Pig";
-
-  Future<List<Pharmacy>?> searchMedicines(int medpackId) async {
-    List<Pharmacy>? _pharmacies;
-
-    double userlat = 30.34034;
-    double userlon = 27.02334;
-
-    try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.searchEndpoint +
-          "?medpack_id=" +
-          medpackId.toString());
-
-      var response = await http.post(
-        url,
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': token,
-        },
-        body: jsonEncode(<String, String>{
-          'userlat': userlat.toString(),
-          'userlong': userlon.toString()
-        }),
-      );
-      if (response.statusCode == 200) {
-        List<Pharmacy> _pharmacies = [];
-        List<dynamic> dataList = jsonDecode(response.body);
-        for (dynamic data in dataList) {
-          _pharmacies.add(Pharmacy.fromJson(data));
-        }
-        return _pharmacies;
-      }
-    } catch (error) {
-      print(error.toString());
-    }
-    return _pharmacies;
-  }
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDI4NzY1LCJpYXQiOjE2NTQ0MTA3NjV9.vw7zpaojKxKBoKmO0sTtA8Apm7CM4oEuN0_IqbUyvM2jHXXt-hEtWY_FhXxkWfMTIe-JVJWmGOrYunT8eR9vAA";
 
   @override
   Future<List<MedPack>?> getMedPacks() async {
@@ -61,13 +23,18 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         'Authorization': token,
       });
       if (response.statusCode == 200) {
-        List<dynamic> dataList = jsonDecode(response.body);
+        List<dynamic> dataList = jsonDecode(response.body)["medpacks"];
+        // MedicineName.medicineList = jsonDecode(response.body)["medicines"];
         for (dynamic data in dataList) {
           _medpacks.add(MedPack.fromJson(data));
         }
       }
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
+    }
+
+    if (_medpacks.isEmpty) {
+      throw NoElementFoundException("No Medpacks in your watchlist");
     }
     return _medpacks;
   }
@@ -78,7 +45,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
     try {
       var url = Uri.parse(
           ApiConstants.watchListEndpoint + ApiConstants.medpackEndpoint);
-      print(token);
+
       var response = await http.post(
         url,
         headers: <String, String>{
@@ -94,7 +61,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         _medpack = MedPack.fromJson(data);
       }
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
     return _medpack;
   }
@@ -113,7 +80,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
       });
       if (response.statusCode == 200) {}
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
   }
 
@@ -124,8 +91,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
     Pill? _pill;
     try {
       var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint+
-          ApiConstants.pillEndpoint+
+          ApiConstants.medpackEndpoint +
+          ApiConstants.pillEndpoint +
           "?medpack_id=" +
           medpackId.toString());
 
@@ -146,7 +113,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         _pill = Pill.fromJson(data);
       }
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
     return _pill;
   }
@@ -168,7 +135,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
       });
       if (response.statusCode == 200) {}
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
   }
 
@@ -190,14 +157,13 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         body: jsonEncode(<String, String>{'tag': tag}),
       );
       int status = response.statusCode;
-      print(status);
+
       if (response.statusCode == 200) {
         dynamic data = jsonDecode(response.body);
         _updatedMedpack = MedPack.fromJson(data);
-        print(_updatedMedpack);
       }
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
     return _updatedMedpack;
   }
@@ -231,7 +197,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         _pill = Pill.fromJson(data);
       }
     } catch (error) {
-      print(error.toString());
+      throw DisconnectedException("No internet connection");
     }
     return _pill;
   }
