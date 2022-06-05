@@ -7,7 +7,7 @@ void main() {
   group("medicine search widget testing", () {
     testWidgets("text field widget testing", (tester) async {
       await tester.pumpWidget(Home());
-      expect(find.byType(MaterialApp), findsAtLeastNWidgets(0));
+      // expect(find.byType(MaterialApp), findsAtLeastNWidgets(0));
     });
   });
 }

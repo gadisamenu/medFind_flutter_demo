@@ -5,12 +5,6 @@ import 'package:path/path.dart';
 class SqliteDBProvider {
   String databaseName = 'medfind.db';
 
-  // late Database sqliteDB;
-
-  // SqliteDBProvider() {
-  //   sqliteDB = _initializeDB() as Database;
-  // }
-
   Future<Database> _initializeDB() async {
     final defaultDatabasePath = await getDatabasesPath();
     final fullDatabasePath = join(defaultDatabasePath, databaseName);
@@ -44,14 +38,14 @@ class SqliteDBProvider {
 
   Future<int> insert(String table, Map<String, Object> data) async {
     final db = _initializeDB() as Database;
-    int affected = await db.insert('$table', data);
+    int affected = await db.insert(table, data);
     db.close();
     return affected;
   }
 
   Future<List<Map<String, Object?>>> get(String table) async {
     final db = _initializeDB() as Database;
-    final List<Map<String, Object?>> queryResult = await db.query('$table');
+    final List<Map<String, Object?>> queryResult = await db.query(table);
     db.close();
     return queryResult;
   }

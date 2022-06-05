@@ -7,6 +7,8 @@ import 'package:medfind_flutter/Presentation/Screens/Authentication/login.dart';
 import 'package:medfind_flutter/Presentation/Screens/Authentication/signup.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
+import 'package:medfind_flutter/Presentation/Screens/WatchList/watchlist_screen.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
 
 import 'package:medfind_flutter/Presentation/splash_screen.dart';
 
