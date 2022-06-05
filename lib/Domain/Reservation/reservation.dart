@@ -10,24 +10,24 @@ class Reservation {
   );
 
   final double id;
-  final VOPharmacy pharmacy;
+  final Pharmacy pharmacy;
   List<VOMedPack> medPacks;
 
-  getPharmacyName(Pharmacy pharm) {
-    return pharm.pharmacyName;
-  }
+  // getPharmacyName(Pharmacy pharm) {
+  //   return pharm.pharmacyName;
+  // }
 
-  getMedPacks() {
-    return this.medPacks;
-  }
+  // getMedPacks() {
+  //   return this.medPacks;
+  // }
 
-  addMedpack(VOMedPack medPack) {
-    medPacks.add(medPack);
-  }
+  // addMedpack(VOMedPack medPack) {
+  //   medPacks.add(medPack);
+  // }
 
-  removeMedPhack(VOMedPack medPack) {
-    medPacks.remove(medPack);
-  }
+  // removeMedPhack(VOMedPack medPack) {
+  //   medPacks.remove(medPack);
+  // }
 
   factory Reservation.fromJson(Map<String, dynamic> reservationJson) {
     List<dynamic> medPacks = reservationJson['medPacks'];
@@ -36,7 +36,7 @@ class Reservation {
       VOMedPack parsedVOMedPack = VOMedPack(MedPack.fromJson(medPack));
       medPackss.putIfAbsent(parsedVOMedPack.get().medpackId, () => parsedVOMedPack);
     }
-    VOPharmacy pharm = reservationJson['pharmacy'];
+    Pharmacy pharm = reservationJson['pharmacy'];
     double reservation_id = reservationJson['reservation_id'];
     return Reservation(reservation_id, pharm, medPackss.values.toList());
   }

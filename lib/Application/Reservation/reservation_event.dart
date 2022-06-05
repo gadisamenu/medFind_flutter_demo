@@ -13,8 +13,8 @@ class LoadReservation extends ReservationEvent {
 }
 
 class MedPackDelete extends ReservationEvent {
-  final double medpack_id;
-  final double reservation_id;
+  final int medpack_id;
+  final int reservation_id;
   MedPackDelete(this.medpack_id, this.reservation_id);
 
   @override
@@ -38,7 +38,7 @@ class ReservationCreate extends ReservationEvent {
 }
 
 class DeleteReservation extends ReservationEvent {
-  final double reservation_id;
+  final int reservation_id;
 
   DeleteReservation(this.reservation_id);
 

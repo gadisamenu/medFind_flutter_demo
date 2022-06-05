@@ -19,8 +19,8 @@ class ReservationRepository {
 
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     try {
-      await localDataProvider.deleteMedPack(medpack_id,null);
-      await dataProvider.deleteMedPack(medpack_id, reservation_id);
+      await localDataProvider.deleteMedPack(medpack_id);
+      await dataProvider.deleteMedPack(medpack_id, reservation_id : reservation_id);
     } catch (error) {
       return;
     }

@@ -35,7 +35,7 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
     if (event is MedPackDelete) {
       try {
         await ReservationRepository()
-            .deleteMedPack(event.medpack_id, event.reservation_id);
+            .deleteMedPack(event.medpack_id, reservation_id:event.reservation_id);
         List<Reservation> reservations =
             await ReservationRepository().getReservations();
         yield ReservationLoadSuccess(reservations);
