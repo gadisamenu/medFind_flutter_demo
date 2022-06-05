@@ -1,10 +1,10 @@
 import 'package:medfind_flutter/Domain/Reservation/model.dart';
 
-abstract class ReservationProvider {
-  Future<List<Reservation>?> getReservations();
-  Future<Reservation?> createReservation();
-  Future<MedPack> deleteMedPack(double reservation_id, double medpack_id);
-  Future<MedPack> addMedPack(double reservation_id, double medpack_id);
-  Future<Reservation> DeleteReservation(double reservation_id);
-  
+abstract class ReservationDataProvider {
+  Future<List<Reservation>> getReservations();
+  // Future<Reservation?> createReservation(List medpacks, int pharmacyId,
+  //     {Map<String, dynamic> data});
+  Future<void> deleteMedPack(int medpack_id, {int? reservation_id});
+  // Future<void> addMedPack( MedPack medpacks,int reservation_id);
+  Future<void> deleteReservation(int reservation_id);
 }

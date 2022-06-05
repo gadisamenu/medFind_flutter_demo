@@ -40,7 +40,13 @@ class LocalWatchListDataProvider extends SqliteDBProvider
   }
 
   @override
-  Future<void> removePill(int pillId) async {
+  Future<void> removePill(int medpackId, int pillId) async {
+    Map<String, Object?> data =
+        getById('medpacks', medpackId) as Map<String, Object?>;
+    MedPack updatedMedpack = MedPack.fromJson(data);
+
+    updatedMedpack.removePill(pillId);
+    update('medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson);
     delete('pills', pillId);
   }
 
@@ -53,10 +59,18 @@ class LocalWatchListDataProvider extends SqliteDBProvider
   }
 
   @override
-  Future<Pill?> updatePill(int pillId, int strength, int amount) async {
+  Future<Pill?> updatePill(
+      int medpackId, int pillId, int strength, int amount) async {
     final List<Map<String, Object?>> queryResult = updateFields(
             'pills', pillId, ['strength', 'amount'], [strength, amount])
         as List<Map<String, Object?>>;
+
+    Map<String, Object?> data =
+        getById('medpacks', medpackId) as Map<String, Object?>;
+    MedPack updatedMedpack = MedPack.fromJson(data);
+    updatedMedpack.updatePill(pillId, strength, amount);
+
+    update('medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson());
 
     return queryResult.map((e) => Pill.fromJson(e)).toList().first;
   }
