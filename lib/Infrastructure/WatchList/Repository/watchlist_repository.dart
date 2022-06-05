@@ -24,8 +24,8 @@ class WatchListRepository {
     if (medpacks == null || medpacks.isEmpty) {
       medpacks = await dataProvider.getMedPacks();
       for (MedPack mp in medpacks as List<MedPack>) {
-        localDataProvider.addNewMedpack(mp.description,
-            medpackId: mp.medpackId);
+        // localDataProvider.addNewMedpack(mp.description,
+        //     medpackId: mp.medpackId);
       }
     }
     return medpacks;
@@ -104,9 +104,9 @@ class WatchListRepository {
     return newPill;
   }
 
-  Future<void> removePill(int pillId) async {
+  Future<void> removePill(int medpackId, int pillId) async {
     try {
-      await dataProvider.removePill(pillId);
+      await dataProvider.removePill(medpackId, pillId);
     } catch (error) {
       print(error.toString());
       return;
@@ -114,7 +114,7 @@ class WatchListRepository {
     // await localDataProvider.removePill(pillId);
   }
 
-  Future<Pill?> updatePill(int pillId, int strength, int amount) async {
+  Future<Pill?> updatePill(int medpackId, int pillId, int strength, int amount) async {
     Pill? updatedPill =
         Pill(0, const MedicineName('validation'), strength, amount);
 
@@ -123,7 +123,7 @@ class WatchListRepository {
     }
 
     try {
-      updatedPill = await dataProvider.updatePill(pillId, strength, amount);
+      updatedPill = await dataProvider.updatePill(medpackId, pillId, strength, amount);
     } catch (error) {
       print(error.toString());
     }

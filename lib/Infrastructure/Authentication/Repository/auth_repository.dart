@@ -40,4 +40,11 @@ class AuthRepository {
   Future<SharedPreferences> getSharedPreference() {
     return SharedPreferences.getInstance();
   }
+
+  Future<String> getToken() async {
+    var _refer = await getSharedPreference();
+    String? token = _refer.getString('token');
+    token ??= "";
+    return "Bearer $token";
+  }
 }

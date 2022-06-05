@@ -11,6 +11,8 @@ import 'package:medfind_flutter/Infrastructure/_Shared/api_constants.dart';
 import '_watchlist_data_provider.dart';
 
 class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
+  String token =
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0MzQ3NDI2LCJpYXQiOjE2NTQzMjk0MjZ9.08jNICcEMovUKDAdiEUHmudYYvd_LspN_Y8JQCe-0-Iy3crQhpABx80Pk1ADgnAT6e6q5jvAwXd47c9RFm8Pig";
 
   Future<List<Pharmacy>?> searchMedicines(int medpackId) async {
     List<Pharmacy>? _pharmacies;
@@ -19,8 +21,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
     double userlon = 27.02334;
 
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.searchEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          searchEndpoint +
           "?medpack_id=" +
           medpackId.toString());
 
@@ -28,6 +30,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
         },
         body: jsonEncode(<String, String>{
           'userlat': userlat.toString(),
@@ -52,9 +55,11 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<List<MedPack>?> getMedPacks() async {
     List<MedPack>? _medpacks = [];
     try {
-      var url = Uri.parse(
-          ApiConstants.watchListEndpoint + ApiConstants.medpackEndpoint);
-      var response = await http.get(url);
+      var url = Uri.parse(watchListEndpoint);
+      var response = await http.get(url, headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': token,
+      });
       if (response.statusCode == 200) {
         List<dynamic> dataList = jsonDecode(response.body);
         for (dynamic data in dataList) {
@@ -71,13 +76,13 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<MedPack?> addNewMedpack(String description, {int? medpackId}) async {
     MedPack? _medpack;
     try {
-      var url = Uri.parse(
-          ApiConstants.watchListEndpoint + ApiConstants.medpackEndpoint);
-
+      var url = Uri.parse(watchListEndpoint + medpackEndpoint);
+      print(token);
       var response = await http.post(
         url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
         },
         body: jsonEncode(<String, String>{
           'tag': description,
@@ -96,12 +101,13 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   @override
   Future<void> removeMedpack(int medpackId) async {
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          "?id=" +
-          medpackId.toString());
+      var url = Uri.parse(
+          watchListEndpoint + medpackEndpoint + "?id=" + medpackId.toString());
 
-      var response = await http.delete(url);
+      var response = await http.delete(url, headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': token,
+      });
       if (response.statusCode == 200) {}
     } catch (error) {
       print(error.toString());
@@ -110,11 +116,13 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<Pill?> addNewPill(
-      int medpackId, MedicineName name, int strength, int amount,{int? pillId}) async {
+      int medpackId, MedicineName name, int strength, int amount,
+      {int? pillId}) async {
     Pill? _pill;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?medpack_id=" +
           medpackId.toString());
 
@@ -122,6 +130,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
         },
         body: jsonEncode(<String, String>{
           'medicine_name': name.get(),
@@ -140,15 +149,20 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   }
 
   @override
-  Future<void> removePill(int pillId) async {
+  Future<void> removePill(int medpackId, int pillId) async {
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?pill_id=" +
-          pillId.toString());
+          pillId.toString() +
+          "&medpack_id=" +
+          medpackId.toString());
 
-      var response = await http.delete(url);
+      var response = await http.delete(url, headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': token,
+      });
       if (response.statusCode == 200) {}
     } catch (error) {
       print(error.toString());
@@ -159,21 +173,23 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
     MedPack? _updatedMedpack;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          "?medpack_id=" +
-          medpackId.toString());
+      var url = Uri.parse(
+          watchListEndpoint + medpackEndpoint + "?id=" + medpackId.toString());
 
       var response = await http.put(
         url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
         },
         body: jsonEncode(<String, String>{'tag': tag}),
       );
+      int status = response.statusCode;
+      print(status);
       if (response.statusCode == 200) {
         dynamic data = jsonDecode(response.body);
         _updatedMedpack = MedPack.fromJson(data);
+        print(_updatedMedpack);
       }
     } catch (error) {
       print(error.toString());
@@ -182,19 +198,23 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   }
 
   @override
-  Future<Pill?> updatePill(int pillId, int strength, int amount) async {
+  Future<Pill?> updatePill(
+      int medpackId, int pillId, int strength, int amount) async {
     Pill? _pill;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?pill_id=" +
-          pillId.toString());
+          pillId.toString() +
+          "&medpack_id=" +
+          medpackId.toString());
 
       var response = await http.put(
         url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': token,
         },
         body: jsonEncode(<String, String>{
           'strength': strength.toString(),
