@@ -41,9 +41,11 @@ InputDecorationTheme getInputDecorationTheme() {
 }
 
 TextTheme getTextTheme() {
-  return const TextTheme(
-    bodyText1: TextStyle(color: mTextColor),
-    bodyText2: TextStyle(color: mTextColor),
+  return TextTheme(
+    headline1: TextStyle(color: mPrimaryLightColor),
+    headline2: TextStyle(color: mPrimaryColor),
+    bodyText1: TextStyle(color: mPrimaryColor),
+    bodyText2: TextStyle(color: Colors.black),
   );
 }
 

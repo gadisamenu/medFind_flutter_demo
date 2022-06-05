@@ -8,19 +8,18 @@ import '../../Domain/MedicineSearch/pharmacy.dart';
 
 class MedicineSearchBloc extends Bloc<Search, MedicineSearchState> {
   final MedicineSearchRepository medicineSearchRepository;
-  MedicineSearchBloc(this.medicineSearchRepository) : super(SearchFound([])) {
+  MedicineSearchBloc(this.medicineSearchRepository)
+      : super(SearchFound("", [])) {
     on<Search>(_onSearch);
   }
 
   _onSearch(Search event, Emitter emit) async {
-    // print(
-    //     "--------incoming event: ${event.latitude}, ${event.longitude}, ${event.medicineName}");
     emit(Loading());
     final Result<List<Pharmacy>> pharmacies = await medicineSearchRepository
         .getPharmacies(event.latitude, event.longitude, event.medicineName);
     if (pharmacies.hasError) {
       emit(SearchNotFound(pharmacies.error!));
     }
-    emit(SearchFound(pharmacies.val!));
+    emit(SearchFound(event.medicineName, pharmacies.val!));
   }
 }

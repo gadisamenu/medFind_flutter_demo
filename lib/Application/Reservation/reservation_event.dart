@@ -26,15 +26,15 @@ class MedPackDelete extends ReservationEvent {
 }
 
 class ReservationCreate extends ReservationEvent {
-  final Reservation reservation;
+  final int medpack_id;
+  final int pharmacy_id;
 
-  ReservationCreate(this.reservation);
-
-  @override
-  List<Object> get props => [reservation];
+  ReservationCreate(this.medpack_id, this.pharmacy_id);
 
   @override
-  String toString() => 'Reservation Created {reservation : reservation}';
+  List<Object> get props => [this.medpack_id, this.pharmacy_id];
+  @override
+  String toString() => 'Reservation Created  {medpack_id : $medpack_id, pharmacy_id : $pharmacy_id';
 }
 
 class DeleteReservation extends ReservationEvent {

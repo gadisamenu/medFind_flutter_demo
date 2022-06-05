@@ -11,4 +11,10 @@ class Authenticated extends AuthenticationState {}
 
 class UnAuthenticated extends AuthenticationState {}
 
+class AuthenticationFailed extends AuthenticationState {}
+
 class Authenticating extends AuthenticationState {}
+
+class SigningUp extends AuthenticationState {}
+
+class SignUpFailed extends AuthenticationState {}
