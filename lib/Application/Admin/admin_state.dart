@@ -57,3 +57,8 @@ class DeleteFailed extends AdminState {
 }
 
 class ChangeFailed extends AdminState {}
+
+class ErrorState extends AdminState {
+  String? msg;
+  ErrorState({this.msg});
+}

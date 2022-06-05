@@ -13,6 +13,15 @@ class APharmacy {
         location: pharmacyJson["location"]);
   }
 
+  factory APharmacy.fromQuery(Map<String, Object?> pharmacyJson) {
+    return APharmacy(
+        int.parse(pharmacyJson['id'].toString()),
+        pharmacyJson['name'].toString(),
+        pharmacyJson['owner'].toString(),
+        pharmacyJson['address'].toString(),
+        location: pharmacyJson["location"].toString());
+  }
+
   Map<String, dynamic> toJson() {
     Map<String, dynamic> json = {};
     json.addAll({
@@ -25,5 +34,9 @@ class APharmacy {
       json.addAll({"location": location});
     }
     return json;
+  }
+
+  bool validate() {
+    return ((name.length > 5) && (address.length > 10));
   }
 }

@@ -6,13 +6,16 @@ class ApiConstants {
   static String pillEndpoint = '/pills';
   static String searchEndpoint = '/search';
 
-  static String adminEndpoint = 'http://localhost:8080/api/v1/admin';
+  static String adminEndpoint = 'http://192.168.43.190:8080/api/v1/admin';
 
   static String usersEndpoint = '/users';
   static String pharmacyEndpoint = '/pharmacies';
   static String rolesEndpoint = '/roles';
 
-  static String medsearchEndpoint = "http://localhost:8080/api/v1/search";
+  static String medsearchEndpoint = "http://192.168.43.190:8080/api/v1/search";
 
-  static String ReservationEndpoint = 'http://localhost:8080/api/reservations';
+  static String ReservationEndpoint =
+      'http://192.168.43.190:8080/api/v1/reservations';
+
+  static String registrationEndpoint = 'http://192.168.43.190:8080/v1/register';
 }

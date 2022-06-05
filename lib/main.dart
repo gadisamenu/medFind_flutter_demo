@@ -27,6 +27,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medfind_flutter/Application/Admin/admin_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
+import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/local_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/remote_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/Repository/admin_repository.dart';
 import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
@@ -51,7 +52,7 @@ class MedFindApp extends StatelessWidget {
       providers: [
         BlocProvider<AdminBloc>(
             create: (BuildContext context) =>
-                AdminBloc(AdminRepository(AdminRemoteProvider()))),
+                AdminBloc(AdminRepository(AdminLocalProvider()))),
         BlocProvider<MedicineSearchBloc>(
             create: (BuildContext context) => MedicineSearchBloc(
                 MedicineSearchRepository(MedicineSearchDataSource()))),

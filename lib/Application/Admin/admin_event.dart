@@ -41,3 +41,9 @@ class LoadPharmacy extends AdminEvent {
   final int id;
   LoadPharmacy(this.id);
 }
+
+class Error extends AdminEvent {
+  String? msg;
+  String from;
+  Error({required this.from, this.msg});
+}

@@ -4,6 +4,7 @@ import '../../../Domain/Admin/User.dart';
 abstract class AdminProvider {
   Future<List<User>> loadUsers();
   Future<User> loadUser(int id);
+  Future<User> addUser(User user);
   Future<User> updateUser(User user);
   Future<bool> deleteUser(int id);
   Future<bool> changeRole(int id, String role);
@@ -12,4 +13,5 @@ abstract class AdminProvider {
   Future<APharmacy> loadPharmacy(int id);
   Future<APharmacy> updatePharmacy(APharmacy pharmacy);
   Future<bool> deletePharmacy(int id);
+  Future<bool> deleteAll(String table);
 }

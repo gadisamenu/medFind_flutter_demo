@@ -118,6 +118,7 @@ class AdminScreen extends StatelessWidget {
 
 Widget displayUsers(UsersLoaded state) {
   final users = state.users;
+  // print(users.length);
   return ListView.builder(
     itemCount: users.length,
     itemBuilder: (context, int idx) {

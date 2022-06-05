@@ -18,6 +18,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     on<LoadPharmacy>(_loadPharmacy);
     on<DeletePharmacy>(_deletePharmacy);
     on<UpdatePharmacy>(_updatePharmacy);
+    // on<Error>(_handleError);
   }
 
   //_____________________ users ______________\\
@@ -118,8 +119,13 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     if (!result.hasError) {
       emit(PharmacyLoaded(result.value));
     } else {
-      print("here");
       emit(UpdateFailed(msg: "Error on update"));
     }
   }
+
+  // void _handleError(Error event, Emitter emit) async{
+  //   emit(ErrorState(msg: event.msg));
+  //    await Future.delayed(Duration(seconds: 2));
+  //   event.from == "phr"? emit(LoadPharmacies())
+  // }
 }

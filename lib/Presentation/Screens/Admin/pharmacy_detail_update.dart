@@ -98,17 +98,21 @@ class PharmacyDetailUpdateScreen extends StatelessWidget {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              adminbloc.add(
-                                UpdatePharmacy(
-                                  APharmacy(
-                                      pharmacy.id,
-                                      nameController.text,
-                                      ownerController.text,
-                                      addressController.text,
-                                      location: locationController.text),
-                                ),
-                              );
-                              // print("");
+                              final phar = APharmacy(
+                                  pharmacy.id,
+                                  nameController.text,
+                                  ownerController.text,
+                                  addressController.text,
+                                  location: locationController.text);
+                              if (phar.validate()) {
+                                adminbloc.add(UpdatePharmacy(phar));
+                              }
+                              //  else {
+                              //   adminbloc.add(Error(
+                              //       from: "phr",
+                              //       msg:
+                              //           "name length must be > 5 and address length must be > 10"));
+                              // }
                             },
                             child: const Text("Update"),
                           )

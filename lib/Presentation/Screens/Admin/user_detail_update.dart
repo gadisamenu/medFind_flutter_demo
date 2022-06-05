@@ -122,14 +122,17 @@ class UserDetailUpdateScreen extends StatelessWidget {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              adminbloc.add(UpdateUser(User(
+                              final use = User(
                                   id: user.id,
                                   email: emailController.text,
                                   firstName: firstNameController.text,
                                   lastName: lastNameController.text,
                                   role: user.role,
                                   oldPassword: oldpasswordController.text,
-                                  newPassword: newpasswordController.text)));
+                                  newPassword: newpasswordController.text);
+                              if (user.validate()) {
+                                adminbloc.add(UpdateUser(user));
+                              }
                               // print("");
                             },
                             child: const Text("Update"),

@@ -24,7 +24,6 @@ class AdminRemoteProvider extends AdminProvider {
 
     if (response.statusCode == 200) {
       final respon = jsonDecode(response.body);
-      // print(respon);
 
       List<User> users = [];
       respon.forEach((element) {
@@ -34,7 +33,6 @@ class AdminRemoteProvider extends AdminProvider {
           print("decoding errro " + erro.toString());
         }
       });
-      print('passed');
       return users;
     } else {
       throw Exception(response.body);
@@ -198,5 +196,29 @@ class AdminRemoteProvider extends AdminProvider {
     } else {
       throw Exception(response.body);
     }
+  }
+
+  @override
+  Future<User> addUser(User user) async {
+    final response = await http.post(
+        Uri.parse(ApiConstants.ReservationEndpoint),
+        headers: {
+          "Authorization": Token().token,
+          "Content-Type": "application/json"
+        },
+        body: jsonEncode(user.toJson()));
+
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      return User.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception(response.body);
+    }
+  }
+
+  @override
+  Future<bool> deleteAll(String table) {
+    // TODO: implement deleteAll
+    throw UnimplementedError();
   }
 }
