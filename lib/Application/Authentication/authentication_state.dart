@@ -7,8 +7,17 @@ abstract class AuthenticationState extends Equatable {
 
 class AuthUninitialized extends AuthenticationState {}
 
-class Authenticated extends AuthenticationState {}
+class Authenticated extends AuthenticationState {
+  String role;
+  Authenticated(this.role);
+}
 
 class UnAuthenticated extends AuthenticationState {}
 
+class AuthenticationFailed extends AuthenticationState {}
+
 class Authenticating extends AuthenticationState {}
+
+class SigningUp extends AuthenticationState {}
+
+class SignUpFailed extends AuthenticationState {}

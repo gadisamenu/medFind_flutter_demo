@@ -4,17 +4,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_state.dart';
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
+import 'package:medfind_flutter/Domain/_Shared/common.dart';
+import 'package:medfind_flutter/Infrastructure/WatchList/DataSource/_watchlist_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/WatchList/Repository/watchlist_repository.dart';
 
-class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
+class WatchListBloc extends Bloc<WatchListEvent, State> {
   final WatchListRepository wr = WatchListRepository();
 
-  late WatchListState watchListState;
-
-  WatchListBloc() : super(WatchListState()) {
+  WatchListBloc() : super(NormalState()) {
     on<GetMedPacks>(_getMedpacks);
 
     on<AddMedpack>(_addMedpack);
@@ -29,88 +28,116 @@ class WatchListBloc extends Bloc<WatchListEvent, WatchListState> {
   }
 
   Future<void> _getMedpacks(GetMedPacks event, Emitter emit) async {
-    List<MedPack>? newMedpacks = await wr.getMedPacks();
-
-    watchListState.addAllMedpacks(newMedpacks);
-
-    emit(watchListState);
+    List<MedPack>? newMedpacks;
+    emit(LoadingState("Getting medpacks"));
+    try {
+      newMedpacks = await wr.getMedPacks();
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    } on NoElementFoundException {
+      emit(NoMedPackState());
+      return;
+    }
+    emit(NormalState(medpacks: newMedpacks));
   }
 
-//
-//  OK
   Future<void> _addMedpack(AddMedpack event, Emitter emit) async {
     MedPack? medpack;
-
+    emit(LoadingState("Creating new medpack"));
     try {
       medpack = await wr.addMedPack(event.description);
-    } catch (error) {}
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    } on InvalidValueException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
 
-    watchListState.addMedpack(medpack!);
+    State.medpacks[medpack!.medpackId] = medpack;
 
-    emit(watchListState);
+    emit(SuccessState("Successfully created medpack"));
   }
 
   Future<void> _removeMedpack(RemoveMedpack event, Emitter emit) async {
-    await wr.removeMedPack(event.medpackID);
-
-    watchListState.removeMedpack(event.medpackID);
-
-    emit(watchListState);
+    emit(LoadingState("Removing medpack"));
+    try {
+      await wr.removeMedPack(event.medpackID);
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
+    State.medpacks.remove(event.medpackID);
+    emit(SuccessState("Successfully removed medpack"));
   }
 
-//
-//  OK
   Future<void> _updateMedpackTag(UpdateMedPackTag event, Emitter emit) async {
     MedPack? updatedMedpack;
+
+    emit(LoadingState("Updating medpack"));
     try {
       updatedMedpack = await wr.updateMedpack(event.medpackID, event.newTag);
-    } catch (error) {}
-
-    watchListState.update(event.medpackID, updatedMedpack!);
-
-    emit(watchListState);
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    } on InvalidValueException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
+    State.medpacks[event.medpackID] = updatedMedpack!;
+    emit(SuccessState("Successfully updated medpack tag"));
   }
 
-//
-//  OK
   Future<void> _addPill(AddPill event, Emitter emit) async {
     Pill? newPill;
+    emit(LoadingState("Adding new pill"));
     try {
       newPill = await wr.addPill(
           event.medpackID, event.name, event.strength, event.amount);
-    } catch (error) {}
-
-    watchListState.addPillToMedpack(event.medpackID, newPill!);
-
-    emit(watchListState);
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    } on InvalidValueException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
+    State.medpacks[event.medpackID]?.addPill(newPill!);
+    emit(SuccessState("Successfully added pill"));
   }
 
   Future<void> _removePill(RemovePill event, Emitter emit) async {
-    await wr.removePill(event.medpackID, event.pillID);
-
-    watchListState.getMedpack().remove(event.pillID);
-
-    emit(watchListState);
+    emit(LoadingState("Removing pill"));
+    try {
+      await wr.removePill(event.medpackID, event.pillID);
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
+    State.medpacks[event.medpackID]?.removePill(event.pillID);
+    emit(SuccessState("Successfully removed pill"));
   }
 
   Future<void> _searchMedpack(SearchMedpack event, Emitter emit) async {
-    List<Pharmacy>? pharmacies = await wr.searchMedicines(event.medpackID);
-    GoRouter.of(event.context).push('/search_result', extra: pharmacies);
+    GoRouter.of(event.context).push('/search', extra: event.medpackID);
   }
 
-//
-//
   Future<void> _updatePill(UpdatePill event, Emitter emit) async {
     Pill? updatedPill;
+
+    emit(LoadingState("Updating pill"));
     try {
-      updatedPill =
-          await wr.updatePill(event.medpackId, event.pillId, event.strength, event.amount);
-    } catch (error) {}
-    
-    watchListState.getMedpack().update(event.medpackId, (value) {
-      value.updatePill(
-          event.pillId, event.strength, event.amount);
-      return value;
-    });
+      updatedPill = await wr.updatePill(
+          event.medpackId, event.pillId, event.strength, event.amount);
+    } on DisconnectedException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    } on InvalidValueException catch (error) {
+      emit(FailureState(error.message));
+      return;
+    }
+    State.medpacks[event.medpackId]!
+        .updatePill(event.pillId, event.strength, event.amount);
+    emit(SuccessState("Successfully updated pill"));
   }
 }

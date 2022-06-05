@@ -1,4 +1,3 @@
-import 'package:medfind_flutter/Domain/MedicineSearch/pharmacy.dart';
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
@@ -13,16 +12,12 @@ class WatchListRepository {
 
   final WatchListDataProvider localDataProvider = LocalWatchListDataProvider();
 
-  Future<List<Pharmacy>?> searchMedicines(int medpackId) async {
-    List<Pharmacy>? pharmacies = await dataProvider.searchMedicines(medpackId);
-    return pharmacies;
-  }
-
   Future<List<MedPack>?> getMedPacks() async {
     List<MedPack>? medpacks; //= await localDataProvider.getMedPacks();
 
     if (medpacks == null || medpacks.isEmpty) {
       medpacks = await dataProvider.getMedPacks();
+
       for (MedPack mp in medpacks as List<MedPack>) {
         // localDataProvider.addNewMedpack(mp.description,
         //     medpackId: mp.medpackId);
@@ -33,19 +28,9 @@ class WatchListRepository {
 
   Future<MedPack?> addMedPack(String description) async {
     MedPack? newMedpack = MedPack({});
+    newMedpack.setDescription(description);
 
-    try {
-      newMedpack.setDescription(description);
-    } catch (error) {
-      rethrow;
-    }
-
-    try {
-      newMedpack = await dataProvider.addNewMedpack(description);
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
+    newMedpack = await dataProvider.addNewMedpack(description);
 
     // await localDataProvider.addNewMedpack(description,
     //     medpackId: newMedpack!.medpackId);
@@ -54,30 +39,16 @@ class WatchListRepository {
   }
 
   Future<void> removeMedPack(int medpackId) async {
-    try {
-      await dataProvider.removeMedpack(medpackId);
-    } catch (error) {
-      print(error.toString());
-      return;
-    }
+    await dataProvider.removeMedpack(medpackId);
+
     // await localDataProvider.removeMedpack(medpackId);
   }
 
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
     MedPack? updatedMedpack = MedPack({});
+    updatedMedpack.setDescription(tag);
 
-    try {
-      updatedMedpack.setDescription(tag);
-    } catch (error) {
-      rethrow;
-    }
-
-    try {
-      updatedMedpack = await dataProvider.updateMedpack(medpackId, tag);
-    } catch (error) {
-      print(error.toString());
-      return null;
-    }
+    updatedMedpack = await dataProvider.updateMedpack(medpackId, tag);
 
     // await localDataProvider.updateMedpack(medpackId, tag);
     return updatedMedpack;
@@ -89,44 +60,34 @@ class WatchListRepository {
     Pill? newPill = Pill(0, medName, strength, amount);
 
     if (!newPill.validate()) {
-      throw InvalidValueError();
+      throw InvalidValueException("Invalid inputs to pill");
     }
 
-    try {
-      newPill =
-          await dataProvider.addNewPill(medpackId, medName, strength, amount);
-    } catch (error) {
-      print(error.toString());
-      return null;
-    }
+    newPill =
+        await dataProvider.addNewPill(medpackId, medName, strength, amount);
+
     // await localDataProvider.addNewPill(medpackId, medName, strength, amount);
-
     return newPill;
   }
 
   Future<void> removePill(int medpackId, int pillId) async {
-    try {
-      await dataProvider.removePill(medpackId, pillId);
-    } catch (error) {
-      print(error.toString());
-      return;
-    }
+    await dataProvider.removePill(medpackId, pillId);
+
     // await localDataProvider.removePill(pillId);
   }
 
-  Future<Pill?> updatePill(int medpackId, int pillId, int strength, int amount) async {
+  Future<Pill?> updatePill(
+      int medpackId, int pillId, int strength, int amount) async {
     Pill? updatedPill =
         Pill(0, const MedicineName('validation'), strength, amount);
 
     if (!updatedPill.validate()) {
-      throw InvalidValueError();
+      throw InvalidValueException("Invalid inputs to pill");
     }
 
-    try {
-      updatedPill = await dataProvider.updatePill(medpackId, pillId, strength, amount);
-    } catch (error) {
-      print(error.toString());
-    }
+    updatedPill =
+        await dataProvider.updatePill(medpackId, pillId, strength, amount);
+
     // await localDataProvider.updatePill(pillId, strength, amount);
 
     return updatedPill;

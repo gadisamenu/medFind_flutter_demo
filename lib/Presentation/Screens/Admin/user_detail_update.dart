@@ -25,6 +25,9 @@ class UserDetailUpdateScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("User Detail"),
+        leading: IconButton(
+            onPressed: () => context.go("/admin"),
+            icon: Icon(Icons.arrow_back)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),

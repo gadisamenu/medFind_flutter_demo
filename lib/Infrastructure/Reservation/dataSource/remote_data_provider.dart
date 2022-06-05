@@ -9,7 +9,7 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
   @override
   Future<List<Reservation>> getReservations() async {
     List<Reservation> reservations = [];
-    final url = Uri.parse(ApiConstants.ReservationEndpoint);
+    final url = Uri.parse(ReservationEndpoint);
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -26,8 +26,8 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
   @override
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     try {
-      var url = Uri.parse(ApiConstants.ReservationEndpoint +
-          ApiConstants.medpackEndpoint +
+      var url = Uri.parse(ReservationEndpoint +
+          medpackEndpoint +
           "?medpack_id=" +
           medpack_id.toString() +
           "&reserv_id=" +
@@ -42,9 +42,8 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
   @override
   Future<void> deleteReservation(int reservation_id) async {
     try {
-      var url = Uri.parse(ApiConstants.ReservationEndpoint +
-          '?reserv_id' +
-          reservation_id.toString());
+      var url = Uri.parse(
+          ReservationEndpoint + '?reserv_id' + reservation_id.toString());
       var response = await http.delete(url);
     } catch (error) {
       print(error.toString());

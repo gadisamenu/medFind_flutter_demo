@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/Admin/admin_bloc.dart';
+import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
+import 'package:medfind_flutter/Application/Authentication/authentication_event.dart';
 import 'package:medfind_flutter/Domain/Admin/APharamcy.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/app_bar.dart';
 
 import '../../../Domain/Admin/User.dart';
 
@@ -13,21 +16,10 @@ class AdminScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final adminbloc = BlocProvider.of<AdminBloc>(context)..add(LoadUsers());
     return Scaffold(
-      appBar: AppBar(
-          toolbarHeight: 80,
-          title: Column(children: [
-            const SizedBox(
-              height: 15,
-            ),
-            const Text(
-              "Admin Screen",
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+      appBar: getAppBar(context),
+      body: Column(
+        children: [
+          Column(children: [
             Card(
                 elevation: 3,
                 child: Container(
@@ -76,41 +68,46 @@ class AdminScreen extends StatelessWidget {
                     ))
                   ]),
                 ))
-          ])),
-      body: Center(
-        child: BlocConsumer<AdminBloc, AdminState>(
-          // listenWhen: ((previous, current) => current == UserLoaded),
-          listener: (_, AdminState state) {
-            if (state is UserLoaded) {
-              context.go("/admin/user_details", extra: state.user);
-            }
+          ]),
+          Expanded(
+            child: Center(
+              child: BlocConsumer<AdminBloc, AdminState>(
+                // listenWhen: ((previous, current) => current == UserLoaded),
+                listener: (_, AdminState state) {
+                  if (state is UserLoaded) {
+                    context.go("/admin/user_details", extra: state.user);
+                  }
 
-            if (state is PharmacyLoaded) {
-              context.go("/admin/pharmacy_details", extra: state.pharmacy);
-            }
-          },
-          buildWhen: ((previous, current) => current != UserLoaded),
-          builder: (_, AdminState state) {
-            if (state is Loading) {
-              return const CircularProgressIndicator();
-            }
-            if (state is UsersLoaded) {
-              return displayUsers(state);
-            }
+                  if (state is PharmacyLoaded) {
+                    context.go("/admin/pharmacy_details",
+                        extra: state.pharmacy);
+                  }
+                },
+                buildWhen: ((previous, current) => current != UserLoaded),
+                builder: (_, AdminState state) {
+                  if (state is Loading) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (state is UsersLoaded) {
+                    return displayUsers(state);
+                  }
 
-            if (state is PharmaciesLoaded) {
-              return displayPharmacies(state);
-            }
-            if (state is UpdateFailed) {
-              return Text(state.msg!);
-            }
+                  if (state is PharmaciesLoaded) {
+                    return displayPharmacies(state);
+                  }
+                  if (state is UpdateFailed) {
+                    return Text(state.msg!);
+                  }
 
-            if (state is LoadingFailed) {
-              return Text(state.msg!);
-            }
-            return const Text("should be happend ");
-          },
-        ),
+                  if (state is LoadingFailed) {
+                    return Text(state.msg!);
+                  }
+                  return const Text("should be happend ");
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

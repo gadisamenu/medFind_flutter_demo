@@ -10,16 +10,24 @@ class AppStarted extends AuthenticationEvent {
   String toString() => 'AppStarted';
 }
 
-class LoggedIn extends AuthenticationEvent {
-  final String token;
+class Login extends AuthenticationEvent {
+  final String email;
+  final String password;
 
-  LoggedIn({required this.token});
-
-  @override
-  String toString() => 'Logged In {token: $token}';
+  Login({required this.email, required this.password});
 }
 
-class LoggedOut extends AuthenticationEvent {
+class Logout extends AuthenticationEvent {
   @override
   String toString() => 'Logged Out';
+}
+
+class Signup extends AuthenticationEvent {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
+  final String role;
+
+  Signup(this.firstName, this.lastName, this.email, this.password, this.role);
 }
