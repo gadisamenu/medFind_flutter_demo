@@ -19,6 +19,9 @@ class SqliteDBProvider {
           "CREATE TABLE medpacks(id INTEGER PRIMARY KEY, tag TEXT NULL, medpack_pills TEXT NOT NULL);",
         );
 
+        await database.execute(
+          "CREATE TABLE reservations(id INTEGER PRIMARY KEY,pharmacy TEXT NOT NULL , medPacks TEXT NOT NULL);",
+        );
         // Other tables
       },
       version: 1,

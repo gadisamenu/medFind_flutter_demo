@@ -3,89 +3,117 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
+import 'package:medfind_flutter/Application/Authentication/authentication_event.dart';
+import 'package:medfind_flutter/Application/Authentication/authentication_state.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
+import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/text_field.dart';
+import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 import '../../../Application/MedicineSearch/medicine_search_bloc.dart';
 import '../../../Application/MedicineSearch/medicine_search_event.dart';
 import '../../_Shared/Widgets/bottom_navigation_bar.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
+  Home({Key? key}) : super(key: key);
+  final textFieldController = TextEditingController(text: "Aceon");
   @override
   Widget build(BuildContext context) {
     var currentIndex = 0;
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "medFind",
-            style:
-                TextStyle(color: Theme.of(context).appBarTheme.foregroundColor),
-          ),
-          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        ),
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("med",
+    return BlocListener<AuthenticationBloc, AuthenticationState>(
+      listener: (context, state) {
+        if (state is UnAuthenticated) {
+          context.go("/login");
+        }
+      },
+      child: Scaffold(
+          appBar: AppBar(
+              centerTitle: false,
+              title: Text(
+                "medFind",
+                style: TextStyle(
+                    color: Theme.of(context).appBarTheme.foregroundColor),
+              ),
+              backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+              actions: [
+                BlocBuilder<AuthenticationBloc, AuthenticationState>(
+                    builder: ((context, state) {
+                  if (state is Authenticated) {
+                    return getButton(50, 10, Icon(Icons.logout), () {
+                      BlocProvider.of<AuthenticationBloc>(context)
+                          .add(Logout());
+                    });
+                  } else {
+                    return Row(
+                      children: [
+                        Center(
+                            child: getButton(100, 10, Text("Login"), () {
+                          context.go("/login");
+                        })),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Center(
+                            child: getButton(
+                          100,
+                          10,
+                          Text("Sign Up"),
+                          () {
+                            context.go("/signup");
+                          },
+                        )),
+                      ],
+                    );
+                  }
+                }))
+              ]),
+          body: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("med",
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.headline1!.color,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Text(
+                      "Find",
                       style: TextStyle(
-                        color: Theme.of(context)
-                            .textTheme
-                            .headline6!
-                            .backgroundColor,
+                        color: Theme.of(context).textTheme.headline2!.color,
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
-                      )),
-                  Text(
-                    "Find",
-                    style: TextStyle(
-                      color: Theme.of(context).textTheme.headline6!.color,
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.fromLTRB(30, 30, 30, 10),
+                      child: getTextField(
+                          "Search",
+                          400,
+                          this.textFieldController,
+                          () => handleSubmission(
+                              textFieldController.text, context))),
+                  getButton(
+                      200.0,
+                      50.0,
+                      Text("Search"),
+                      () =>
+                          {handleSubmission(textFieldController.text, context)})
                 ],
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: TextField(
-                  decoration: InputDecoration(
-                      hintText: "Search", hintStyle: TextStyle(fontSize: 15)
-                      // border: InputBorder(),
-                      ),
-                  onSubmitted: (value) => {
-                        if (value.length > 0)
-                          {
-                            context.go("/search"),
-                            BlocProvider.of<MedicineSearchBloc>(context).add(
-                              Search(9.0474852, 38.7596047, value),
-                            ),
-                          }
-                      }),
-            ),
-          ],
-        )),
-        bottomNavigationBar: CustomNavigationBar());
+            ],
+          )),
+          bottomNavigationBar: CustomNavigationBar()),
+    );
   }
 }
-
-
-// Container(
-//           heigColor.fromARGB(255, 27, 15, 14)/           width: double.infinity,
-//           margin: EdgeInsets.all(20),
-//           decoration: BoxDecoration(
-//               color: Colors.white,
-//               borderRadius: BorderRadius.circular(30),
-//               boxShadow: [
-//                 BoxShadow(
-//                   color: Color.fromARGB(112, 0, 0, 0),
-//                   offset: Offset.fromDirection(0.8, 50.0),
-//                   blurRadius: 50.0,
-//                 )
-//               ]),
-//         ),

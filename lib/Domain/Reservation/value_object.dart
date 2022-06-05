@@ -7,4 +7,7 @@ class VOPharmacy extends ValueObject<Pharmacy> {
 
 class VOMedPack extends ValueObject<MedPack> {
   const VOMedPack(MedPack value) : super(value);
+
+  @override
+  MedPack get() => super.get();
 }

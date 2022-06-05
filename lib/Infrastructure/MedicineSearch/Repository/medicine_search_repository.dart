@@ -14,8 +14,19 @@ class MedicineSearchRepository {
     try {
       final result = await medicineSearchDataProvider.getPharmacy(
           latitude, longitude, medicineName);
-      jsonDecode(result.body).forEach(
-          (p) => pharmacies.add(Pharmacy(p['id'], p['name'], p['address'])));
+      // jsonDecode(result.body).forEach((p) => print(p));
+      jsonDecode(result.body).forEach((p) {
+        if (p == null) {
+          print("null value");
+        } else if (p['id'] == null ||
+            p['name'] == null ||
+            p['address'] == null) {
+          print("found null value $p");
+        } else {
+          pharmacies.add(Pharmacy.fromJson(p));
+        }
+      });
+      // print(pharmacies);
       return Result(val: pharmacies);
     } catch (e) {
       return Result(error: "cann't find the result");

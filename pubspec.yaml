@@ -29,8 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences:
-
+  shared_preferences: ^2.0.15
   bloc: ^8.0.2
   flutter_bloc: ^8.0.1
   http: ^0.13.4
@@ -41,6 +40,7 @@ dependencies:
   go_router: ^3.1.1
   equatable: ^2.0.0
   sqflite:
+  path:
 
 dev_dependencies:
   flutter_test:

@@ -17,7 +17,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<List<MedPack>?> getMedPacks() async {
     List<MedPack>? _medpacks = [];
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint);
+      var url = Uri.parse(watchListEndpoint);
       var response = await http.get(url, headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': token,
@@ -44,7 +44,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
     MedPack? _medpack;
     try {
       var url = Uri.parse(
-          ApiConstants.watchListEndpoint + ApiConstants.medpackEndpoint);
+          watchListEndpoint + medpackEndpoint);
 
       var response = await http.post(
         url,
@@ -69,10 +69,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   @override
   Future<void> removeMedpack(int medpackId) async {
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          "?id=" +
-          medpackId.toString());
+      var url = Uri.parse(
+          watchListEndpoint + medpackEndpoint + "?id=" + medpackId.toString());
 
       var response = await http.delete(url, headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
@@ -90,9 +88,9 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
       {int? pillId}) async {
     Pill? _pill;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?medpack_id=" +
           medpackId.toString());
 
@@ -121,9 +119,9 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   @override
   Future<void> removePill(int medpackId, int pillId) async {
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?pill_id=" +
           pillId.toString() +
           "&medpack_id=" +
@@ -143,10 +141,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
     MedPack? _updatedMedpack;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          "?id=" +
-          medpackId.toString());
+      var url = Uri.parse(
+          watchListEndpoint + medpackEndpoint + "?id=" + medpackId.toString());
 
       var response = await http.put(
         url,
@@ -173,9 +169,9 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
       int medpackId, int pillId, int strength, int amount) async {
     Pill? _pill;
     try {
-      var url = Uri.parse(ApiConstants.watchListEndpoint +
-          ApiConstants.medpackEndpoint +
-          ApiConstants.pillEndpoint +
+      var url = Uri.parse(watchListEndpoint +
+          medpackEndpoint +
+          pillEndpoint +
           "?pill_id=" +
           pillId.toString() +
           "&medpack_id=" +
