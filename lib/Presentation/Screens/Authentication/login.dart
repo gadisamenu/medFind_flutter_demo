@@ -40,7 +40,11 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            context.go("/home");
+            if (state.role == "ADMIN") {
+              context.go("/admin");
+            } else {
+              context.go("/home");
+            }
           } else if (state is AuthenticationFailed) {
             setState(() {
               message = "Authentication failed";

@@ -130,7 +130,8 @@ class LoginForm extends StatelessWidget {
                             firstNameTextFieldController.text,
                             lastNameTextFieldController.text,
                             emailTextFieldController.text,
-                            passwordTextFieldController.text));
+                            passwordTextFieldController.text,
+                            "USER"));
                       }
                     }),
                     SizedBox(
