@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_state.dart';
-import 'package:medfind_flutter/Application/Navigation/navigation_event.dart';
-
-import '../../../Application/Navigation/navigation_bloc.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   CustomNavigationBar({Key? key}) : super(key: key);
