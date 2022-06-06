@@ -8,6 +8,7 @@ import 'package:medfind_flutter/Presentation/Screens/Authentication/signup.dart'
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/search_result.dart';
 import 'package:medfind_flutter/Presentation/Screens/WatchList/watchlist_screen.dart';
+import 'package:medfind_flutter/Presentation/Screens/reservation/reservation.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
 
 import 'package:medfind_flutter/Presentation/splash_screen.dart';
@@ -18,7 +19,7 @@ import '../Screens/Admin/user_detail_update.dart';
 class MedfindRouter {
   // ignore: unused_fiel
   static final GoRouter router = GoRouter(
-    initialLocation: "/",
+    initialLocation: "/reservation",
     routes: <GoRoute>[
       GoRoute(
         path: '/',
@@ -47,7 +48,7 @@ class MedfindRouter {
       GoRoute(
         path: '/reservation',
         builder: (BuildContext context, GoRouterState state) =>
-            const SplashScreen(),
+            const ReservationScreen(),
       ),
       GoRoute(
         path: '/profile',
@@ -72,6 +73,11 @@ class MedfindRouter {
             PharmacyDetailUpdateScreen(
           pharmacy: state.extra! as APharmacy,
         ),
+      ),
+      GoRoute(
+        path: '/watch_list',
+        builder: (BuildContext context, GoRouterState state) =>
+            WatchListScreen(),
       ),
     ],
   );

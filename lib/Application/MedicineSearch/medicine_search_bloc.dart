@@ -19,7 +19,8 @@ class MedicineSearchBloc extends Bloc<Search, MedicineSearchState> {
         .getPharmacies(event.latitude, event.longitude, event.medicineName);
     if (pharmacies.hasError) {
       emit(SearchNotFound(pharmacies.error!));
+    } else {
+      emit(SearchFound(event.medicineName, pharmacies.val!));
     }
-    emit(SearchFound(event.medicineName, pharmacies.val!));
   }
 }

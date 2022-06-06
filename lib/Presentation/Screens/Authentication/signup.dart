@@ -6,7 +6,6 @@ import 'package:medfind_flutter/Application/Authentication/authentication_event.
 import 'package:medfind_flutter/Application/Authentication/authentication_state.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/form.dart';
-import 'package:medfind_flutter/Presentation/_Shared/Widgets/text_field.dart';
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -15,24 +14,24 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("medFind")),
-      body: LoginForm(),
+      body: SignUpForm(),
     );
   }
 }
 
-class LoginForm extends StatelessWidget {
-  LoginForm({Key? key}) : super(key: key);
+class SignUpForm extends StatelessWidget {
+  SignUpForm({Key? key}) : super(key: key);
 
   final TextEditingController emailTextFieldController =
-      TextEditingController(text: 'stark@gmail.com');
+      TextEditingController();
   final TextEditingController passwordTextFieldController =
-      TextEditingController(text: '12345678');
+      TextEditingController();
   final TextEditingController checkPasswordTextFieldController =
-      TextEditingController(text: '12345678');
+      TextEditingController();
   final TextEditingController firstNameTextFieldController =
-      TextEditingController(text: 'tony');
+      TextEditingController();
   final TextEditingController lastNameTextFieldController =
-      TextEditingController(text: 'stark');
+      TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

@@ -78,7 +78,8 @@ class _LoginFormState extends State<LoginForm> {
                         height: 20,
                       ),
                       getTextField(
-                          "Password", 50, passwordTextFieldController, () {}),
+                          "Password", 50, passwordTextFieldController, () {},
+                          obsecureText: true),
                       SizedBox(
                         height: 20,
                       ),

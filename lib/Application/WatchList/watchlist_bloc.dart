@@ -32,14 +32,17 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     emit(LoadingState("Getting medpacks"));
     try {
       newMedpacks = await wr.getMedPacks();
+      print(newMedpacks);
     } on DisconnectedException catch (error) {
       emit(FailureState(error.message));
+      print(error.message);
       return;
     } on NoElementFoundException {
       emit(NoMedPackState());
       return;
     }
     emit(NormalState(medpacks: newMedpacks));
+    print('no element');
   }
 
   Future<void> _addMedpack(AddMedpack event, Emitter emit) async {
@@ -57,7 +60,8 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
 
     State.medpacks[medpack!.medpackId] = medpack;
 
-    emit(SuccessState("Successfully created medpack"));
+    emit(SuccessState(
+        "Successfully created medpack", SuccessType.MEDPACK_ADDED));
   }
 
   Future<void> _removeMedpack(RemoveMedpack event, Emitter emit) async {
@@ -69,7 +73,8 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       return;
     }
     State.medpacks.remove(event.medpackID);
-    emit(SuccessState("Successfully removed medpack"));
+    emit(SuccessState(
+        "Successfully removed medpack", SuccessType.MEDPACK_REMOVED));
   }
 
   Future<void> _updateMedpackTag(UpdateMedPackTag event, Emitter emit) async {
@@ -86,7 +91,8 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       return;
     }
     State.medpacks[event.medpackID] = updatedMedpack!;
-    emit(SuccessState("Successfully updated medpack tag"));
+    emit(SuccessState(
+        "Successfully updated medpack tag", SuccessType.MEDPACK_TAG_MODIFIED));
   }
 
   Future<void> _addPill(AddPill event, Emitter emit) async {
@@ -103,7 +109,7 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       return;
     }
     State.medpacks[event.medpackID]?.addPill(newPill!);
-    emit(SuccessState("Successfully added pill"));
+    emit(SuccessState("Successfully added pill", SuccessType.PILL_CREATED));
   }
 
   Future<void> _removePill(RemovePill event, Emitter emit) async {
@@ -115,7 +121,7 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       return;
     }
     State.medpacks[event.medpackID]?.removePill(event.pillID);
-    emit(SuccessState("Successfully removed pill"));
+    emit(SuccessState("Successfully removed pill", SuccessType.PILL_REMOVED));
   }
 
   Future<void> _searchMedpack(SearchMedpack event, Emitter emit) async {
@@ -138,6 +144,6 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     }
     State.medpacks[event.medpackId]!
         .updatePill(event.pillId, event.strength, event.amount);
-    emit(SuccessState("Successfully updated pill"));
+    emit(SuccessState("Successfully updated pill", SuccessType.PILL_UPDATED));
   }
 }

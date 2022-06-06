@@ -23,30 +23,31 @@ class LocalReservationDataProvider extends SqliteDBProvider
     implements ReservationDataProvider {
   @override
   Future<List<Reservation>> getReservations() async {
-    final List<Map<String, Object?>> queryResult = await get('reservations');
+    final List<Map<String, dynamic?>> queryResult = await get('reservations');
     return queryResult.map((e) => Reservation.fromJson(e)).toList();
   }
-// @override
-//   Future<List<MedPack>?> getMedPacks() async {
-//     final db = await initializeDB();
 
-//     final List<Map<String, Object?>> queryResult = await db.query('medpacks');
-//     return queryResult.map((record) => MedPack.fromJson(record)).toList();
-//   }
+  // @override
+  // Future<Reservation> createReservation(
+  //     [int? medpack_id, int? pharmacy_id, Reservation? reservation]) async {
+  //   // insert("reservations", reservation!.toJson());
+  //   return reservation;
+  // }
+ 
   @override
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     await delete('medpacks', medpack_id);
   }
 
+  @override
+  Future<void> deleteReservation(int reservation_id) async {
+    delete("reservations", reservation_id);
+  }
   // @override
   // Future<void> addMedPack(List<MedPack> medpack, int reservation_id) async {
   //   updateFields("reservations", reservation_id, medPacks, medpack);
   // }
 
-  @override
-  Future<void> deleteReservation(int reservation_id) async {
-    delete("reservations", reservation_id);
-  }
   // Future<void> addMedPack( MedPack medpacks,double reservation_id);
   // Future<Reservation?> createReservation(List medpacks, int pharmacyId,){}
 

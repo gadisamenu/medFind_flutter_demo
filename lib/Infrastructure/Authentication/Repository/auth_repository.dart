@@ -19,8 +19,7 @@ class AuthRepository {
   }
 
   Future<void> signUp(User user) async {
-    var result = await _dataProvider.signUp(user);
-    print(result);
+    await _dataProvider.signUp(user);
   }
 
   Future<void> deleteToken() async {

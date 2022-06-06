@@ -5,22 +5,28 @@ import 'package:http/http.dart' as http;
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
 import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
+import 'package:medfind_flutter/Infrastructure/Authentication/DataSource/remote_data_provider.dart';
+import 'package:medfind_flutter/Infrastructure/Authentication/Repository/auth_repository.dart';
 import 'package:medfind_flutter/Infrastructure/_Shared/api_constants.dart';
 
 import '_watchlist_data_provider.dart';
 
 class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
+  final authenRepo = AuthRepository(AuthDataProvider());
   String token =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDI4NzY1LCJpYXQiOjE2NTQ0MTA3NjV9.vw7zpaojKxKBoKmO0sTtA8Apm7CM4oEuN0_IqbUyvM2jHXXt-hEtWY_FhXxkWfMTIe-JVJWmGOrYunT8eR9vAA";
+      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDU2OTMyLCJpYXQiOjE2NTQ0Mzg5MzJ9.btDbTQ33q4v1ytYrAlhcyQA3-UkXTV857OacH3YKCigxLtfg8TDxpvsoI2KbNblPZV9p758cd_kXmzKr7NbZAw";
 
   @override
   Future<List<MedPack>?> getMedPacks() async {
+    String token = await authenRepo.getToken();
+    print(token);
     List<MedPack>? _medpacks = [];
     try {
       var url = Uri.parse(watchListEndpoint);
       var response = await http.get(url, headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': token,
+        "Access-Control-Allow-Origin": "*",
       });
       if (response.statusCode == 200) {
         List<dynamic> dataList = jsonDecode(response.body)["medpacks"];
@@ -30,6 +36,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         }
       }
     } catch (error) {
+      print(error);
       throw DisconnectedException("No internet connection");
     }
 
@@ -41,10 +48,10 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<MedPack?> addNewMedpack(String description, {int? medpackId}) async {
+    String token = await authenRepo.getToken();
     MedPack? _medpack;
     try {
-      var url = Uri.parse(
-          watchListEndpoint + medpackEndpoint);
+      var url = Uri.parse(watchListEndpoint + medpackEndpoint);
 
       var response = await http.post(
         url,
@@ -68,6 +75,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<void> removeMedpack(int medpackId) async {
+    String token = await authenRepo.getToken();
+
     try {
       var url = Uri.parse(
           watchListEndpoint + medpackEndpoint + "?id=" + medpackId.toString());
@@ -86,6 +95,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   Future<Pill?> addNewPill(
       int medpackId, MedicineName name, int strength, int amount,
       {int? pillId}) async {
+    String token = await authenRepo.getToken();
     Pill? _pill;
     try {
       var url = Uri.parse(watchListEndpoint +
@@ -118,6 +128,8 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<void> removePill(int medpackId, int pillId) async {
+    String token = await authenRepo.getToken();
+
     try {
       var url = Uri.parse(watchListEndpoint +
           medpackEndpoint +
@@ -139,6 +151,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
 
   @override
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
+    String token = await authenRepo.getToken();
     MedPack? _updatedMedpack;
     try {
       var url = Uri.parse(
@@ -167,6 +180,7 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   @override
   Future<Pill?> updatePill(
       int medpackId, int pillId, int strength, int amount) async {
+    String token = await authenRepo.getToken();
     Pill? _pill;
     try {
       var url = Uri.parse(watchListEndpoint +

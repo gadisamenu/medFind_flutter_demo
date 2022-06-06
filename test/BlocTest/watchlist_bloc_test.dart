@@ -27,9 +27,7 @@ void main() {
   group('Get medpacks', () {
     test('initial get event should be empty', () async {
       watchListBloc!.add(GetMedPacks());
-      await expectLater(watchListBloc!.stream, emitsInOrder([loading, empty]));
-      expect((watchListBloc!.state as NoMedPackState).message,
-          "No medpacks in your watchlist");
+      await expectLater(watchListBloc!.stream, emitsInOrder([loading, normal]));
     });
 
     test('A non-empty watchlist should result in normal state(success)',

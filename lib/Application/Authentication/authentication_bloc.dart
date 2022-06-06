@@ -15,7 +15,7 @@ class AuthenticationBloc
     on<AppStarted>((event, emit) async {
       final bool hasToken = await authRepository.hasToken();
       if (hasToken) {
-        emit(Authenticated("USER"));
+        emit(Authenticated());
       } else {
         emit(UnAuthenticated());
       }
@@ -26,10 +26,15 @@ class AuthenticationBloc
       try {
         var token = await authRepository.authenticate(
             email: event.email, password: event.password);
+
         token = jsonDecode(token)["token"];
         await authRepository.persistToken(token);
         var user = await authRepository.getUser();
-        emit(Authenticated(user.role));
+        if (user.role == 'ADMIN')
+          emit(Authenticated(role: "ADMIN"));
+        else
+          emit(Authenticated());
+        print('yukyukyukiu');
       } catch (e) {
         emit(AuthenticationFailed());
       }
@@ -40,6 +45,7 @@ class AuthenticationBloc
       await authRepository.deleteToken();
       emit(UnAuthenticated());
     });
+
     on<Signup>((event, emit) async {
       emit(SigningUp());
       try {

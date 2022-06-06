@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 children: [
                   Text("med",
                       style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyText2!.color,
+                        color: Theme.of(context).textTheme.headline1!.color,
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
                       )),
