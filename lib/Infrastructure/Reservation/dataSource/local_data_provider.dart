@@ -23,17 +23,17 @@ class LocalReservationDataProvider extends SqliteDBProvider
     implements ReservationDataProvider {
   @override
   Future<List<Reservation>> getReservations() async {
-    final List<Map<String, Object?>> queryResult = await get('reservations');
+    final List<Map<String, dynamic?>> queryResult = await get('reservations');
     return queryResult.map((e) => Reservation.fromJson(e)).toList();
   }
 
-  @override
-  Future<Reservation> createReservation(
-      [int? medpack_id, int? pharmacy_id, Reservation? reservation]) async {
-    insert("reservations", reservation!.toJson());
-    return reservation;
-  }
-
+  // @override
+  // Future<Reservation> createReservation(
+  //     [int? medpack_id, int? pharmacy_id, Reservation? reservation]) async {
+  //   // insert("reservations", reservation!.toJson());
+  //   return reservation;
+  // }
+ 
   @override
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     delete('medpacks', medpack_id);

@@ -9,11 +9,11 @@ import "package:medfind_flutter/Infrastructure/Reservation/Repository/reservatio
 class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
   final ReservationRepository repo = ReservationRepository();
   late ReservationState reservationState;
-  ReservationBloc() : super(ReservationState()) {
+  ReservationBloc() : super(ReservationLoading()) {
     on<LoadReservation>(_getReservations);
     on<DeleteReservation>(_deleteReservations);
     on<MedPackDelete>(_deleteMedPack);
-    on<ReservationCreate>(_createReservation);
+    // on<ReservationCreate>(_createReservation);
   }
   Future<void> _getReservations(LoadReservation event, Emitter emit) async {
     emit(ReservationLoading());
@@ -35,17 +35,18 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       emit(ReservationFailure("Delete reservation is failed"));
     }
   }
-  Future<void> _createReservation(ReservationCreate event, Emitter emit) async{
-    try{
-        await repo.createReservation(event.medpack_id.toInt(),event.pharmacy_id.toInt());
-        List<Reservation>? reservations = await repo.getReservations();
-         emit(ReservationLoadSuccess(reservations));
 
-    }
-    catch (error) {
-      emit(ReservationFailure("delete medpack is failed"));
-    }
-  }
+  // Future<void> _createReservation(ReservationCreate event, Emitter emit) async {
+  //   try {
+  //     await repo.createReservation(
+  //         event.medpack_id.toInt(), event.pharmacy_id.toInt());
+  //     List<Reservation>? reservations = await repo.getReservations();
+  //     emit(ReservationLoadSuccess(reservations));
+  //   } catch (error) {
+  //     emit(ReservationFailure("delete medpack is failed"));
+  //   }
+  // }
+
   Future<void> _deleteMedPack(MedPackDelete event, Emitter emit) async {
     try {
       await repo.deleteMedPack(event.medpack_id.toInt());
@@ -55,7 +56,6 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       emit(ReservationFailure("delete medpack is failed"));
     }
   }
-
 
   // @override
   // Stream<ReservationState> mapEventToState(ReservationEvent event) async* {

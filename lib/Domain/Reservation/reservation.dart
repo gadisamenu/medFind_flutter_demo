@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'model.dart';
 
 class Reservation {
+  final int id;
+  final String pharmacyName;
+  List<MedPack> medPacks;
   Reservation(
     this.id,
-    @required this.pharmacy,
-    @required this.medPacks,
+    this.pharmacyName,
+    this.medPacks,
   );
-
-  final double id;
-  final Pharmacy pharmacy;
-  List<VOMedPack> medPacks;
 
   // getPharmacyName(Pharmacy pharm) {
   //   return pharm.pharmacyName;
@@ -30,26 +29,24 @@ class Reservation {
   // }
 
   factory Reservation.fromJson(Map<String, dynamic> reservationJson) {
-    List<dynamic> medPacks = reservationJson['medPacks'];
-    Map<int, VOMedPack> medPackss = {};
-    for (dynamic medPack in medPacks) {
-      VOMedPack parsedVOMedPack = VOMedPack(MedPack.fromJson(medPack));
-      medPackss.putIfAbsent(parsedVOMedPack.get().medpackId, () => parsedVOMedPack);
-    }
-    Pharmacy pharm = reservationJson['pharmacy'];
-    double reservation_id = reservationJson['reservation_id'];
-    return Reservation(reservation_id, pharm, medPackss.values.toList());
+    print(reservationJson['id']);
+    print(reservationJson["medPack"]);
+    print(reservationJson["pharmacy"]);
+    return Reservation(
+        reservationJson['id'].toInt(),
+        reservationJson['pharmacy'],
+        reservationJson["medpack"]);
   }
 
-  Map<String, Object> toJson() {
-    List<String> medPackMaps = [];
-    for (VOMedPack medPack in medPacks) {
-      medPackMaps.add(medPack.toString());
-    }
-    return {
-      'id': id,
-      'pharmacy': pharmacy,
-      'medPacks': {medPackMaps.toString()},
-    };
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> json = {};
+    json.addAll({
+      'id': id.toString(),
+      'pharmacy': pharmacyName.toString(),
+      'medPack': medPacks
+    });
+
+    return json;
+//
   }
 }

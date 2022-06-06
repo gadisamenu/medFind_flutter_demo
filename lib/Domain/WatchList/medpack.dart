@@ -46,7 +46,7 @@ class MedPack {
 
   factory MedPack.fromJson(Map<String, dynamic> medpackJson) {
     int id = medpackJson['id'];
-    print(id);
+    // print(id);
     List<dynamic> pillsData = medpackJson['pills'];
     Map<int, Pill> pills = {};
     for (dynamic pill in pillsData) {

@@ -9,17 +9,19 @@ class ReservationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Reservations')),
-        body:
-            BlocBuilder<ReservationBloc, ReservationState>(builder: (_, state) {
+        body: BlocBuilder<ReservationBloc, ReservationState>(
+            builder: (context, state) {
           if (state is ReservationFailure) {
             return Text('Reservation Loading failed');
           }
           if (state is ReservationLoadSuccess) {
             final reservations = state.reservations;
+            // print("object");
+
             return ListView.builder(
                 scrollDirection: Axis.vertical,
                 itemCount: reservations.length,
-                itemBuilder: (_, index) => Container(
+                itemBuilder: (context, index) => Container(
                       child: Container(
                           color: Color.fromARGB(255, 240, 89, 89),
                           child: Column(
@@ -27,13 +29,13 @@ class ReservationScreen extends StatelessWidget {
                             children: [
                               Container(
                                 child: Text(
-                                    "Reserved in ${reservations[index].pharmacy.pharmacyName}"),
+                                    "Reserved in ${reservations[index].pharmacyName}"),
                               ),
                               ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount:
                                       reservations[index].medPacks.length,
-                                  itemBuilder: (_, mIdex) => Container(
+                                  itemBuilder: (context, mIdex) => Container(
                                           child: Container(
                                         child: Column(
                                             mainAxisAlignment:
@@ -41,33 +43,31 @@ class ReservationScreen extends StatelessWidget {
                                             children: [
                                               Container(
                                                   child: Text(
-                                                      '${reservations[index].medPacks[mIdex].get().description}')),
+                                                      '${reservations[index].medPacks[mIdex].description}')),
                                               Container(
                                                   child: ListView.builder(
                                                 scrollDirection: Axis.vertical,
                                                 itemCount: reservations[index]
-                                                    .medPacks[mIdex]
-                                                    .get()
-                                                    .getPills()
+                                                    .medPacks[mIdex].getPills()
                                                     .length,
-                                                itemBuilder: (_, pIdex) =>
+                                                itemBuilder: (context, pIdex) =>
                                                     Column(
                                                   children: [
                                                     Container(
                                                         child: Text(
-                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].get().getPills()[pIdex].name}")),
+                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].getPills()[pIdex].name}")),
                                                     SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
                                                         child: Text(
-                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].get().getPills()[pIdex].strength}")),
+                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].getPills()[pIdex].strength}")),
                                                     SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
                                                         child: Text(
-                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].get().getPills()[pIdex].amount}")),
+                                                            "Medicine Name:   ${reservations[index].medPacks[mIdex].getPills()[pIdex].amount}")),
                                                   ],
                                                 ),
                                               ))
@@ -77,7 +77,9 @@ class ReservationScreen extends StatelessWidget {
                           )),
                     ));
           }
-          return CircularProgressIndicator();
+          BlocProvider.of<ReservationBloc>(context).add(LoadReservation());
+          return SizedBox();
+          // return CircularProgressIndicator();
         }));
   }
 }
