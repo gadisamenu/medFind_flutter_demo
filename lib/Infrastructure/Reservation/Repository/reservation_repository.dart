@@ -12,11 +12,11 @@ class ReservationRepository {
    return await dataProvider.getReservations();
   }
 
-  // Future<void> createReservation(int medpack_id, int pharmacy_id) async {
-  //   Reservation reservation =
-  //       await dataProvider.createReservation(medpack_id, pharmacy_id);
-  //   await localDataProvider.createReservation(  medpack_id,  pharmacy_id , reservation);
-  // }
+  Future<void> createReservation(int medpack_id, int pharmacy_id) async {
+    Reservation reservation =
+        await dataProvider.createReservation(medpack_id, pharmacy_id);
+    await localDataProvider.createReservation(  medpack_id,  pharmacy_id , reservation);
+  }
 
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
     try {

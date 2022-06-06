@@ -12,22 +12,7 @@ class Reservation {
     this.medPacks,
   );
 
-  // getPharmacyName(Pharmacy pharm) {
-  //   return pharm.pharmacyName;
-  // }
-
-  // getMedPacks() {
-  //   return this.medPacks;
-  // }
-
-  // addMedpack(VOMedPack medPack) {
-  //   medPacks.add(medPack);
-  // }
-
-  // removeMedPhack(VOMedPack medPack) {
-  //   medPacks.remove(medPack);
-  // }
-
+ 
   factory Reservation.fromJson(Map<String, dynamic> reservationJson) {
     print(reservationJson['id']);
     print(reservationJson["medPack"]);
