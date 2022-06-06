@@ -62,21 +62,21 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
     }
   }
 
-  // Future<Reservation> createReservation(
-  //     [int? medpack_id, int? pharmacy_id, Reservation? reservation]) async {
-  //   Reservation? reservation;
-  //   var url = Uri.parse(ReservationEndpoint +
-  //       "?medpack_id=" +
-  //       medpack_id.toString() +
-  //       "&pharm_id = " +
-  //       pharmacy_id.toString());
-  //   var response = await http.post(url);
-  //   if (response.statusCode == 200) {
-  //     dynamic data = jsonDecode(response.body);
-  //     reservation = Reservation.fromJson(data);
-  //     return reservation;
-  //   } else {
-  //     throw Exception("create reservation failed");
-  //   }
-  // }
+  Future<Reservation> createReservation(
+      [int? medpack_id, int? pharmacy_id, Reservation? reservation]) async {
+    Reservation? reservation;
+    var url = Uri.parse(ReservationEndpoint +
+        "?medpack_id=" +
+        medpack_id.toString() +
+        "&pharm_id = " +
+        pharmacy_id.toString());
+    var response = await http.post(url);
+    if (response.statusCode == 200) {
+      dynamic data = jsonDecode(response.body);
+      reservation = Reservation.fromJson(data);
+      return reservation;
+    } else {
+      throw Exception("create reservation failed");
+    }
+  }
 }

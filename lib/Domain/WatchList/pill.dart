@@ -18,7 +18,7 @@ class Pill{
   bool validate() {
     return name.isValid() &&
         (strength > 20 && strength < 1000) &&
-        (amount > 10 && amount < 100);
+        (amount > 6 && amount < 100);
   }
 
   Map<String, Object> toJson() {

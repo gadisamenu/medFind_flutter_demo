@@ -53,9 +53,8 @@ class UpdatePill extends WatchListEvent {
   int pillId;
   int medpackId;
 
-  String medicineName;
   int strength;
   int amount;
 
-  UpdatePill(this.pillId, this.medicineName, this.medpackId, this.strength, this.amount);
+  UpdatePill(this.medpackId, this.pillId, this.strength, this.amount);
 }

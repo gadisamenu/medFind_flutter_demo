@@ -14,6 +14,7 @@ TextFormField getTextFormField(String labelText, double width,
     TextEditingController textFieldController, Function validator,
     {bool obsecurity = false, String hintText = ""}) {
   return TextFormField(
+    key: Key("TextFormField"),
     validator: (value) => validator(),
     controller: textFieldController,
     cursorColor: Colors.black,

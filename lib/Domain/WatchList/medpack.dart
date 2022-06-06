@@ -17,13 +17,13 @@ class MedPack {
 
   void setDescription(String description) {
     if (!validateDescription(description)) {
-      throw InvalidValueError();
+      throw InvalidValueException("Invalid description for medpack");
     }
     this.description = description;
   }
 
   bool validateDescription(String description) {
-    if (description.length < 1000) {
+    if (description.length < 100) {
       return true;
     }
     return false;
@@ -35,9 +35,10 @@ class MedPack {
     pills.putIfAbsent(newPill.pillId, () => newPill);
   }
 
-  Pill removePill(int pillId) {
-    return pills.remove(pillId)!;
+  void removePill(int pillId) {
+    pills.remove(pillId);
   }
+  
 
   void updatePill(int pillId, int strength, int amount) {
     pills[pillId]!.strength = strength;
@@ -45,8 +46,6 @@ class MedPack {
   }
 
   factory MedPack.fromJson(Map<String, dynamic> medpackJson) {
-    int id = medpackJson['id'];
-    // print(id);
     List<dynamic> pillsData = medpackJson['pills'];
     Map<int, Pill> pills = {};
     for (dynamic pill in pillsData) {

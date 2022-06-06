@@ -1,11 +1,3 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -42,7 +34,7 @@ getMedpacksTest() async {
 
   List<MedPack>? medpacks = await watchListRepo.getMedPacks();
   await watchListRepo.removeMedPack(addedMedpack.medpackId);
-  print(medpacks);
+  
   bool pass = medpacks!.contains(addedMedpack);
 
   expect(true, pass);
@@ -52,11 +44,14 @@ getMedpacksTest() async {
 removeMepackTest() async {
   MedPack addedMedpack =
       await watchListRepo.addMedPack("Diabetes medicines") as MedPack;
+  MedPack otherAddedMedpack =
+      await watchListRepo.addMedPack("Heart medicines") as MedPack;
 
   await watchListRepo.removeMedPack(addedMedpack.medpackId);
 
   List<MedPack>? medpacks = await watchListRepo.getMedPacks();
   expect(false, medpacks!.contains(addedMedpack));
+  await watchListRepo.removeMedPack(otherAddedMedpack.medpackId);
 }
 
 addPillTest() async {
