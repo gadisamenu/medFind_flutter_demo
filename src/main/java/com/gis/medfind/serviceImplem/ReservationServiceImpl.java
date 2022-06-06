@@ -2,12 +2,10 @@ package com.gis.medfind.serviceImplem;
 
 import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Pharmacy;
-import com.gis.medfind.entity.Pill;
 import com.gis.medfind.entity.Reservation;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.repository.MedPackRepository;
 import com.gis.medfind.repository.PharmacyRepository;
-import com.gis.medfind.repository.PillRepository;
 import com.gis.medfind.repository.ReservationRepository;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.service.ReservationService;
@@ -30,8 +28,6 @@ public class ReservationServiceImpl implements ReservationService{
     @Autowired
     private MedPackRepository medPackRepo;
 
-    @Autowired
-    private PillRepository pillRepo;
 
     public Reservation createReservation(Long user_id , Long pharmacy_id,Long  medpack_id){
 
@@ -79,23 +75,12 @@ public class ReservationServiceImpl implements ReservationService{
    public Reservation addMedpackToReservation (Long reservation_id, Long medpack_id){
 
        Reservation reservation = reservationRepo.getById(reservation_id);
-       List<MedPack> medpacks = reservation.getMedPacks();
-       MedPack medpack = medPackRepo.getById(medpack_id);
-       MedPack copied =  new MedPack();
-       copied.setTag(medpack.getTag());
-       for (Pill p : medpack.getPills()){
-           Pill pill = new Pill();
-           pill.setAmount(p.getAmount());
-           pill.setMedicine(p.getMedicine());
-           pill.setStrength(p.getStrength());
-           pillRepo.save(pill);
-           copied.addPill(pill);
-       }
-       medPackRepo.save(copied);
-       medpacks.add(copied);
-       reservation.setMedPacks(medpacks);
+          MedPack medpack = medPackRepo.getById(medpack_id);
+   
+       reservation.add_medpack(medpack);
        return reservationRepo.save(reservation);
    }
+
 
    public boolean removeMedpackFromReservation(Long reservation_id , Long medpack_id) {
        try{

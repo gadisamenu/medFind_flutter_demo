@@ -94,10 +94,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("*"));
-        config.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        config.addAllowedOriginPattern("*");
+        // config.addAllowedOrigin("*");
+        config.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type","charset","Access-Control-Allow-Origin"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
-        config.addExposedHeader("Authorization");
+        config.addExposedHeader("Authorization");       
         source.registerCorsConfiguration("/**",config);
         return new CorsFilter(source);
     }

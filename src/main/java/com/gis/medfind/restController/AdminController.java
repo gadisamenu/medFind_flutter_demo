@@ -15,9 +15,11 @@ import com.gis.medfind.entity.Role;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.entity.WatchList;
 import com.gis.medfind.repository.PharmacyRepository;
+import com.gis.medfind.repository.ReservationRepository;
 import com.gis.medfind.repository.RoleRepository;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.repository.WatchListRepository;
+import com.gis.medfind.service.ReservationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,6 +50,11 @@ public class AdminController {
     @Autowired
     WatchListRepository watchlistRepo;
 
+    @Autowired
+    ReservationRepository reservationRepo;
+    @Autowired
+    ReservationService reservationServ;
+
     //users
     @RequestMapping(value = "/api/v1/admin/users", method = RequestMethod.GET)
     public ResponseEntity<? > getUser(@RequestParam(required = false, name = "id") String id){
@@ -65,7 +72,10 @@ public class AdminController {
     @RequestMapping(value = "/api/v1/admin/users", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@RequestParam(name = "id") String id){
         try{
+            
+            User user  =  userRepo.findById(Long.parseLong(id)).get();
             WatchList watchlist =  watchlistRepo.findWatchListByUserId(Long.parseLong(id));
+            reservationRepo.deleteAll(reservationRepo.findByUser(user));
             watchlistRepo.deleteById(watchlist.getId());
             return new ResponseEntity<String>("delete success",HttpStatus.OK);
         }
@@ -121,19 +131,15 @@ public class AdminController {
             Optional<Pharmacy> pharmacy = pharmRepo.findById(Long.parseLong(id));
             if (pharmacy.isEmpty())
                 return new ResponseEntity<String>("pharmacy not found",HttpStatus.NOT_FOUND);
-            return new ResponseEntity<Pharmacy>(pharmacy.get(),HttpStatus.OK);
+            return new ResponseEntity<Map<String,String>>(toJson(pharmacy.get(), true),HttpStatus.OK);
         }
+
         List<Pharmacy> pharmacies = pharmRepo.findAll();
         List<Map<String,String>> sizedPharm  = new ArrayList<>();
 
         pharmacies.forEach(
             i->{
-                Map<String,String>  phar = new HashMap<>();
-                phar.put("id", i.getId().toString());
-                phar.put("name",i.getName());
-                phar.put("address",i.getAddress());
-                phar.put("owner",i.getOwner().getFirstName() + i.getOwner().getLastName());
-                sizedPharm.add(phar);
+                sizedPharm.add(toJson(i, false));
             });
     
         return new ResponseEntity<List<Map<String,String>>>(sizedPharm, HttpStatus.OK);
@@ -143,8 +149,7 @@ public class AdminController {
     public ResponseEntity<?> deletePharmacy(@RequestParam(name = "id") String id){
         try{
             pharmRepo.deleteById(Long.parseLong(id));
-            List<Pharmacy> pharmacies = pharmRepo.findAll();
-            return new ResponseEntity<List<Pharmacy>>(pharmacies,HttpStatus.OK);
+            return new ResponseEntity<String>("Delte successful",HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("pharmacy not found",HttpStatus.NOT_FOUND);
@@ -161,9 +166,21 @@ public class AdminController {
             if (body.getName() != null) pharmacy.setName(body.getName());
             if (body.getOwner_id() != null) pharmacy.setOwner(userRepo.getById(Long.parseLong(body.getOwner_id())));
             pharmRepo.save(pharmacy);
-            return new ResponseEntity<Pharmacy>(pharmacy,HttpStatus.OK);
+            return new ResponseEntity<Map<String,String>>(toJson(pharmacy,true),HttpStatus.OK);
         }catch (EntityNotFoundException e){
             return new ResponseEntity<>("pharmacy not found",HttpStatus.NOT_FOUND);
         }
     }
+
+    Map<String,String>  toJson(Pharmacy pharmacy,boolean detail){
+        Map<String,String>  phar = new HashMap<>();
+        phar.put("id", pharmacy.getId().toString());
+        phar.put("name",pharmacy.getName());
+        phar.put("address",pharmacy.getAddress());
+        phar.put("owner",pharmacy.getOwner().getFirstName() +" "+  pharmacy.getOwner().getLastName());
+        if (detail){
+            phar.put("location",pharmacy.getLocation().getCoordinate().toString());
+        }
+        return  phar;
+    };
 }

@@ -10,19 +10,17 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.gis.medfind.Forms.ReservationForm;
 import com.gis.medfind.entity.MedPack;
 import com.gis.medfind.entity.Reservation;
 import com.gis.medfind.entity.Role;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.jwt.JwtTokenUtil;
+import com.gis.medfind.repository.MedPackRepository;
 import com.gis.medfind.repository.PharmacyRepository;
 import com.gis.medfind.repository.ReservationRepository;
 import com.gis.medfind.repository.RoleRepository;
@@ -55,6 +53,10 @@ public class ReservationController {
     @Autowired
     ReservationRepository reservationRepo;
 
+    @Autowired
+    MedPackRepository medpackRepo;
+
+
 
     @RequestMapping(value="/api/v1/reservations", method = RequestMethod.GET)
     public ResponseEntity<?> getReservations(@RequestHeader(name ="Authorization") String token){
@@ -62,24 +64,24 @@ public class ReservationController {
             String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
             User user = userRepo.findByEmail(email);
             Role userRole = roleRepo.findByName("USER");
-
-           
+            Role amdinRole = roleRepo.findByName("ADMIN");
 
             List<Reservation>  reservations ;
 
-            if (user.getRoles().contains(userRole)){
+            if (user.getRoles().contains(userRole) ||user.getRoles().contains(amdinRole) ){
                 reservations = (reservationServ.getAllReservationByUserId(user.getId()));
                 
             }
-            else{
+            
+            else {
                 reservations = reservationServ.getAllReservationByPharmacyId(pharmRepo.findByOwner(user).getId());
             }
-            List<Map<String,String>> reservation = new ArrayList<>();
+            List<Map<String,Object>> reservation = new ArrayList<>();
             reservations.forEach(
                 i->{
-                    Map<String,String>  resr = new HashMap<>();
+                    Map<String,Object>  resr = new HashMap<>();
                     resr.put("id",i.getId().toString());
-                    resr.put("medpack",i.getMedPacks().toString());
+                    resr.put("medpack",i.getMedPacks());
                     resr.put("user",i.getUser().getFirstName());
                     resr.put("pharmacy",i.getPharmacy().getName());
                     i.getPharmacy().getName();
@@ -87,8 +89,7 @@ public class ReservationController {
                 }
             );
             
-            
-            return new ResponseEntity<List<Map<String,String>>>(reservation,HttpStatus.OK);
+                    return new ResponseEntity<List<Map<String,Object>>>(reservation,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found",HttpStatus.NOT_FOUND);
@@ -96,16 +97,23 @@ public class ReservationController {
     }
 
     @RequestMapping(value ="/api/v1/reservations",method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<?> createReservation(@RequestBody List<ReservationForm> reservationFroms ,@RequestParam(name ="pharm_id") String pharm_id, @RequestHeader(name="Authorization") String  token){
+    public ResponseEntity<?> createReservation(@RequestParam(name="medpack_id") String medpack_id ,@RequestParam(name ="pharm_id") String pharm_id, @RequestHeader(name="Authorization") String  token){
         try{
             String email = jwtTokenUtil.getUsernameFromToken(token.substring(7));
             User user = userRepo.findByEmail(email);
-
+            MedPack medp ;
+            try{
+                medp = medpackRepo.getById(Long.parseLong(medpack_id));
+            }
+            catch(EntityNotFoundException e){
+                return new ResponseEntity<String>("medpack not found",HttpStatus.NOT_FOUND);
+            }
+            
             // System.out.println(reservationFroms);
             Reservation reservation = null;
+            MedPack medpk =  reservationServ.createMedPack(medp.getTag());
             if ( !reservationServ.isExistBefore(Long.parseLong(pharm_id), user.getId())){
                 System.out.println("here");
-                MedPack medpk =  reservationServ.createMedPack(reservationFroms.get(0).getTag());
                 reservation = reservationServ.createReservation(user.getId(),Long.parseLong(pharm_id),medpk.getId());
             }
             else {
@@ -113,19 +121,19 @@ public class ReservationController {
                 for (Reservation reser: reservations){
                     if (reser.getPharmacy().getId() == Long.parseLong(pharm_id)){
                         reservation = reser;
+                        reservationServ.addMedpackToReservation(reser.getId(), medpk.getId());
                         break;
                     }
                 }
             }
 
-            if (reservation != null)
-                for(int i  = 1; i<  reservationFroms.size();i++){
-                    MedPack medpk =  reservationServ.createMedPack(reservationFroms.get(i).getTag());
-                    watchlistServ.addPillToMedpack(medpk.getId(), reservationFroms.get(i).getMedicineName(), Integer.parseInt(reservationFroms.get(i).getStrength()),Integer.parseInt(reservationFroms.get(i).getAmount()));
+            // if (reservation != null)
+                 medp.getPills().forEach(i->{
+                     watchlistServ.addPillToMedpack(medpk.getId(), i.getMedicine().getName(), i.getStrength(), i.getAmount());
+                 });
                 
-                    reservationServ.addMedpackToReservation(reservation.getId(), medpk.getId());
-            }
 
+            System.out.println("heresis ");
             return new ResponseEntity<Reservation >(reservation ,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){

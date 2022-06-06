@@ -40,7 +40,8 @@ public class RegistrationController {
 
   
   
-   @RequestMapping(value="/api/v1/register",method = RequestMethod.POST )
+   @RequestMapping(value="/api/v1/register",method = RequestMethod.POST ,consumes = "application/json")
+  //  @RequestMapping(value ="/api/v1/reservations",method = RequestMethod.POST, )
     public ResponseEntity<?> processRegistration(@RequestBody RegistrationForm Form) {  
         String email = Form.getEmail();
         System.out.println(Form.getEmail());

@@ -53,7 +53,7 @@ class SearchController{
                 phar.put("address",i.getAddress());
                 sizedPharm.add(phar);
             }
-        );
+            );
           return new ResponseEntity<List<Map<String,String>>>(sizedPharm, HttpStatus.OK);
     }
 

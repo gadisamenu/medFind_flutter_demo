@@ -13,6 +13,7 @@ import com.gis.medfind.entity.Pharmacy;
 import com.gis.medfind.entity.Pill;
 import com.gis.medfind.entity.User;
 import com.gis.medfind.jwt.JwtTokenUtil;
+import com.gis.medfind.repository.MedicineRepository;
 import com.gis.medfind.repository.UserRepository;
 import com.gis.medfind.service.WatchListService;
 
@@ -37,6 +38,9 @@ public class WatchListController {
 
     @Autowired
     JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    MedicineRepository medicineRepo;
 
     @RequestMapping(value="/api/v1/watchlist/search",method = RequestMethod.POST)
     public ResponseEntity<?> searchMedPack(@RequestParam(name = "medpack_id") String medpack_id,@RequestBody Map<String,String> location){
@@ -70,8 +74,15 @@ public class WatchListController {
             User user = userRepo.findByEmail(email);
             
             List<MedPack> medpacks =  watchListServ.getMedpacksFromWatchlist(user.getId());
+            Map<String,Object> resp = new HashMap<>();
+            List<String> medicines = new ArrayList<>();
+            medicineRepo.findAll().forEach(i->{
+                medicines.add(i.getName());
+            });
+            resp.put("medicines",medicines);
+            resp.put("medpacks",medpacks);
             
-            return new ResponseEntity<List<MedPack>>(medpacks,HttpStatus.OK);
+            return new ResponseEntity<Map<String,Object>>(resp,HttpStatus.OK);
         }
         catch (EntityNotFoundException e){
             return new ResponseEntity<String>("user not found ", HttpStatus.NOT_FOUND);
