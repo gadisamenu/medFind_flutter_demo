@@ -5,7 +5,7 @@ class User {
   String firstName;
   String lastName;
   String email;
-  String role;
+  String? role;
   String? password;
   String? oldPassword;
   String? newPassword;
@@ -14,7 +14,7 @@ class User {
       {required this.email,
       required this.firstName,
       required this.lastName,
-      required this.role,
+      this.role,
       this.id,
       this.oldPassword,
       this.newPassword,
@@ -45,7 +45,8 @@ class User {
       'id': id,
       'firstName': firstName,
       'lastName': lastName,
-      'email': email
+      'email': email,
+      'role': role
     });
 
     if (oldPassword != null && newPassword != null) {
@@ -57,20 +58,35 @@ class User {
     return json;
   }
 
+  Map<String, Object?> toQuery() {
+    Map<String, Object?> query = {};
+    query.addAll({
+      'id': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'role': role
+    });
+    return query;
+  }
+
   bool roleValidate(String role) {
     return ["ADMIN", "PHARMACY", "USER"].contains(role);
   }
 
   bool validate() {
     bool valid = true;
-    valid = (firstName.length > 5) && (lastName.length > 5) && valid;
-    final exp = RegExp(r'^[a-zA-Z0-9-$*!]{5,50}@[a-zA-Z]{3,4}.[a-zA-Z]{3,5}$');
+    valid = (firstName.length == 5) && (lastName.length >= 5) && valid;
+
+    final exp = RegExp("[A-Za-z]@[A-Za-z].[A-Za-z]");
     valid = valid && exp.hasMatch(email);
     if (oldPassword != null && newPassword != null) {
-      final pasExp = RegExp(r'[a-zA-Z0-9-$!#]');
+      print("here valid");
+      final pasExp = RegExp("[a-zA-Z0-9-!#]");
       valid = oldPassword!.contains(pasExp) &&
           newPassword!.contains(pasExp) &&
           valid;
+      valid = valid && (newPassword!.length > 7);
     }
     return valid;
   }

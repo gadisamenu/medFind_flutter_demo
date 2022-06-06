@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 import '../../../Application/Admin/admin_bloc.dart';
 import '../../../Domain/Admin/APharamcy.dart';
 
@@ -54,74 +55,76 @@ class PharmacyDetailUpdateScreen extends StatelessWidget {
               if (state is Loading) {
                 return const CircularProgressIndicator();
               }
+              if (state is ErrorState) {
+                return Center(
+                  child: Text(
+                    "${state.msg}",
+                    style: const TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                );
+              }
+
               if (state is PharmacyLoaded) {
                 pharmacy = state.pharmacy;
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(child: Container()),
-                    Container(
-                      margin: const EdgeInsets.only(top: 40),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromARGB(255, 81, 141, 190),
-                              width: 1.5,
-                              style: BorderStyle.solid),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      height: 400,
-                      width: 300,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          TextFormField(
-                            controller: nameController,
-                            decoration: const InputDecoration(
-                                labelText: "name",
-                                border: UnderlineInputBorder()),
+                    getCard(
+                        300,
+                        400,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              TextFormField(
+                                controller: nameController,
+                                decoration: const InputDecoration(
+                                    labelText: "name",
+                                    border: UnderlineInputBorder()),
+                              ),
+                              TextFormField(
+                                controller: addressController,
+                                decoration: const InputDecoration(
+                                    labelText: "address",
+                                    border: OutlineInputBorder()),
+                              ),
+                              TextFormField(
+                                controller: ownerController,
+                                decoration: const InputDecoration(
+                                    labelText: "owner",
+                                    border: OutlineInputBorder()),
+                              ),
+                              TextFormField(
+                                controller: locationController,
+                                decoration: const InputDecoration(
+                                    labelText: "location",
+                                    border: OutlineInputBorder()),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  final phar = APharmacy(
+                                      pharmacy.id,
+                                      nameController.text,
+                                      ownerController.text,
+                                      addressController.text,
+                                      location: locationController.text);
+                                  if (phar.validate()) {
+                                    adminbloc.add(UpdatePharmacy(phar));
+                                  } else {
+                                    adminbloc.add(Error(
+                                        data: pharmacy,
+                                        msg:
+                                            "name length must be > 5 and address length must be > 10"));
+                                  }
+                                },
+                                child: const Text("Update"),
+                              )
+                            ],
                           ),
-                          TextFormField(
-                            controller: addressController,
-                            decoration: const InputDecoration(
-                                labelText: "address",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            controller: ownerController,
-                            decoration: const InputDecoration(
-                                labelText: "owner",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            controller: locationController,
-                            decoration: const InputDecoration(
-                                labelText: "location",
-                                border: OutlineInputBorder()),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              final phar = APharmacy(
-                                  pharmacy.id,
-                                  nameController.text,
-                                  ownerController.text,
-                                  addressController.text,
-                                  location: locationController.text);
-                              if (phar.validate()) {
-                                adminbloc.add(UpdatePharmacy(phar));
-                              }
-                              //  else {
-                              //   adminbloc.add(Error(
-                              //       from: "phr",
-                              //       msg:
-                              //           "name length must be > 5 and address length must be > 10"));
-                              // }
-                            },
-                            child: const Text("Update"),
-                          )
-                        ],
-                      ),
-                    ),
+                        ),
+                        margin: 40),
                     Expanded(child: Container()),
                   ],
                 );

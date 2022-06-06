@@ -136,9 +136,7 @@ Widget displayUsers(UsersLoaded state) {
               child: Text(user.firstName + " " + user.lastName),
               onTap: () {
                 BlocProvider.of<AdminBloc>(context).add(LoadUser(user.id!));
-              }
-              // context.go("/admin/user_details", extra: user),
-              ),
+              }),
           subtitle: Text(user.email),
         ),
       );
@@ -158,7 +156,7 @@ Widget displayPharmacies(PharmaciesLoaded state) {
         shadowColor: Colors.blueAccent,
         child: ListTile(
           leading: GestureDetector(
-              child: const Icon(Icons.person),
+              child: const Icon(Icons.home),
               onTap: () {
                 BlocProvider.of<AdminBloc>(context).add(LoadUser(pharmacy.id));
               }),
@@ -167,9 +165,7 @@ Widget displayPharmacies(PharmaciesLoaded state) {
               onTap: () {
                 BlocProvider.of<AdminBloc>(context)
                     .add(LoadPharmacy(pharmacy.id));
-              }
-              // context.go("/admin/pharmacy_details", extra: pharmacy),
-              ),
+              }),
           subtitle: Text(pharmacy.address),
         ),
       );

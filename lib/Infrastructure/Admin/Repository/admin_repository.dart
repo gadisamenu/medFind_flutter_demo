@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/remote_data_provider.dart';
 
@@ -16,14 +18,23 @@ class AdminRepository {
   //get list of users
   Future<Return> getUsers() async {
     try {
-      List<User> users = await dataProvider.loadUsers();
-      if (users.isEmpty) {
-        print("here");
+      List<User>? users;
+      try {
+        users = await dataProvider.loadUsers();
+      } catch (exp) {
+        print(exp.toString());
+      }
+
+      if (users!.isEmpty) {
+        print("remote");
         users = await remoteprovider.loadUsers();
+        // users = jsonDecode(users.toString());
+        // return Return(value: users);
         dataProvider.deleteAll("users");
-        users.forEach((element) async {
+        print(users.toString() + "_________________________");
+        users.forEach((element) {
           try {
-            await dataProvider.addUser(element);
+            dataProvider.addUser((element));
           } catch (exp) {
             print(exp.toString());
           }
@@ -39,10 +50,17 @@ class AdminRepository {
   //get a user
   Future<Return> getUser(int id) async {
     try {
-      User user = await dataProvider.loadUser(id);
-      print(user.toString());
+      User? user;
+      try {
+        user = await dataProvider.loadUser(id);
+      } catch (exp) {
+        print(exp.toString());
+      }
+
+      print("Here ______________________________________");
+
       if (user == null) {
-        User user = await remoteprovider.loadUser(id);
+        user = await remoteprovider.loadUser(id);
         dataProvider.updateUser(user);
       }
       print(user.firstName);
@@ -55,10 +73,15 @@ class AdminRepository {
 
   Future<Return> addUser(User user) async {
     try {
-      User created_user = await remoteprovider.addUser(user);
-      if (created_user != null) {
+      User? created_user;
+      created_user = await remoteprovider.addUser(user);
+
+      try {
         dataProvider.addUser(created_user);
+      } catch (exp) {
+        print(exp.toString());
       }
+
       return Return(value: user);
     } catch (exp) {
       print(exp.toString());
@@ -70,7 +93,11 @@ class AdminRepository {
   Future<Return> updateUser(User user) async {
     try {
       User newUser = await remoteprovider.updateUser(user);
-      dataProvider.updateUser(user);
+      try {
+        dataProvider.updateUser(user);
+      } catch (exp) {
+        print("local update failed");
+      }
 
       return Return(value: newUser);
     } catch (exp) {
@@ -83,7 +110,11 @@ class AdminRepository {
     try {
       final bool removed = await remoteprovider.deleteUser(id);
       if (removed) {
-        dataProvider.deleteUser(id);
+        try {
+          dataProvider.deleteUser(id);
+        } catch (exp) {
+          print("local update failed");
+        }
       }
 
       return Return(value: removed);
@@ -97,7 +128,11 @@ class AdminRepository {
     try {
       final bool changed = await remoteprovider.changeRole(id, role);
       if (changed) {
-        dataProvider.changeRole(id, role);
+        try {
+          dataProvider.changeRole(id, role);
+        } catch (exp) {
+          print("local update failed");
+        }
       }
 
       return Return(value: changed);
@@ -127,7 +162,13 @@ class AdminRepository {
   //get a user
   Future<Return> getPharmacy(int id) async {
     try {
-      APharmacy? pharmacy = await dataProvider.loadPharmacy(id);
+      APharmacy? pharmacy;
+      try {
+        pharmacy = await dataProvider.loadPharmacy(id);
+      } catch (exp) {
+        print("local update failed");
+      }
+
       if (pharmacy == null) {
         pharmacy = await remoteprovider.loadPharmacy(id);
         dataProvider.updatePharmacy(pharmacy);
@@ -143,7 +184,12 @@ class AdminRepository {
     try {
       final APharmacy newPharmacy =
           await remoteprovider.updatePharmacy(pharmacy);
-      dataProvider.updatePharmacy(pharmacy);
+      try {
+        dataProvider.updatePharmacy(pharmacy);
+      } catch (exp) {
+        print("local update failed");
+      }
+
       return Return(value: newPharmacy);
     } catch (exp) {
       return Return(error: exp);

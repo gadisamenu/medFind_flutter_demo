@@ -13,7 +13,7 @@ class LocalWatchListDataProvider extends SqliteDBProvider
 
     newMedpack.setMedpackId(medpackId!);
 
-    insert('medpacks', newMedpack.toJson());
+    await insert('medpacks', newMedpack.toJson());
     return newMedpack;
   }
 
@@ -29,48 +29,44 @@ class LocalWatchListDataProvider extends SqliteDBProvider
 
   @override
   Future<List<MedPack>?> getMedPacks() async {
-    final List<Map<String, Object?>> queryResult =
-        get('medpacks') as List<Map<String, Object?>>;
+    final List<Map<String, Object?>> queryResult = await get('medpacks');
     return queryResult.map((record) => MedPack.fromJson(record)).toList();
   }
 
   @override
   Future<void> removeMedpack(int medpackId) async {
-    delete('medpacks', medpackId);
+    await delete('medpacks', medpackId);
   }
 
   @override
   Future<void> removePill(int medpackId, int pillId) async {
-    Map<String, Object?> data =
-        getById('medpacks', medpackId) as Map<String, Object?>;
+    Map<String, Object?> data = await getById('medpacks', medpackId);
     MedPack updatedMedpack = MedPack.fromJson(data);
 
     updatedMedpack.removePill(pillId);
-    update('medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson);
-    delete('pills', pillId);
+    await update('medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson);
+    await delete('pills', pillId);
   }
 
   @override
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
     final List<Map<String, Object?>> queryResult =
-        update<String>('medpacks', medpackId, 'description', tag)
-            as List<Map<String, Object?>>;
+        await update<String>('medpacks', medpackId, 'description', tag);
     return queryResult.map((e) => MedPack.fromJson(e)).toList().first;
   }
 
   @override
   Future<Pill?> updatePill(
       int medpackId, int pillId, int strength, int amount) async {
-    final List<Map<String, Object?>> queryResult = updateFields(
-            'pills', pillId, ['strength', 'amount'], [strength, amount])
-        as List<Map<String, Object?>>;
+    final List<Map<String, Object?>> queryResult = await updateFields(
+        'pills', pillId, ['strength', 'amount'], [strength, amount]);
 
-    Map<String, Object?> data =
-        getById('medpacks', medpackId) as Map<String, Object?>;
+    Map<String, Object?> data = await getById('medpacks', medpackId);
     MedPack updatedMedpack = MedPack.fromJson(data);
     updatedMedpack.updatePill(pillId, strength, amount);
 
-    update('medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson());
+    await update(
+        'medpacks', medpackId, 'medpack_pills', updatedMedpack.toJson());
 
     return queryResult.map((e) => Pill.fromJson(e)).toList().first;
   }

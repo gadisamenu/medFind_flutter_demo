@@ -28,10 +28,10 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailTextFieldController =
-      TextEditingController(text: "kkmichaelstarkk@gmail.com");
+      TextEditingController(text: "amhaznif@gmail.com");
 
   final TextEditingController passwordTextFieldController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "WARMACHINEROX");
 
   String message = "";
 

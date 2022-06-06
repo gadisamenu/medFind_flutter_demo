@@ -22,8 +22,8 @@ class UserDeleted extends AdminState {
 }
 
 class RoleChanged extends AdminState {
-  String role;
-  RoleChanged(this.role);
+  int id;
+  RoleChanged(this.id);
 }
 
 class PharmacyLoaded extends AdminState {
@@ -56,9 +56,14 @@ class DeleteFailed extends AdminState {
   DeleteFailed({this.msg});
 }
 
-class ChangeFailed extends AdminState {}
+class ChangeFailed extends AdminState {
+  int id;
+  ChangeFailed(this.id);
+}
 
 class ErrorState extends AdminState {
   String? msg;
-  ErrorState({this.msg});
+  ErrorState({
+    this.msg,
+  });
 }

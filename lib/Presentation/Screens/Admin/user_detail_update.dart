@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 
 import '../../../Application/Admin/admin_bloc.dart';
 import '../../../Domain/Admin/User.dart';
@@ -53,94 +52,136 @@ class UserDetailUpdateScreen extends StatelessWidget {
             // buildWhen: ,
             builder: (context, state) {
               if (state is Loading) {
-                return const CircularProgressIndicator();
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (state is ErrorState) {
+                return Center(
+                  child: Text(
+                    "${state.msg}",
+                    style: const TextStyle(color: Colors.red, fontSize: 16),
+                  ),
+                );
+              }
+              if (state is RoleChanged) {
+                Future.delayed(const Duration(seconds: 3),
+                    () => adminbloc.add(LoadUser(state.id)));
+
+                return const Center(child: Text("Role change successful"));
+              }
+              if (state is ChangeFailed) {
+                Future.delayed(const Duration(seconds: 3),
+                    () => adminbloc.add(LoadUser(state.id)));
+
+                return const Center(child: Text("Role change failed"));
               }
               if (state is UserLoaded) {
                 user = state.user;
-                final fields = {
-                  "firstName": firstNameController,
-                  "lastName": lastNameController,
-                  "email": emailController,
-                  "role": user.role,
-                  "old password": oldpasswordController,
-                  "new password": newpasswordController
-                };
+
+                final role = ["ADMIN", "USER", "PHARMACY"];
+
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(child: Container()),
-                    Container(
-                      margin: const EdgeInsets.only(top: 40),
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: const Color.fromARGB(255, 81, 141, 190),
-                              width: 1.5,
-                              style: BorderStyle.solid),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      height: 400,
-                      width: 300,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          TextFormField(
-                            controller: firstNameController
-                              ..text = user.firstName,
-                            decoration: const InputDecoration(
-                                labelText: "firstName",
-                                border: UnderlineInputBorder()),
-                          ),
-                          TextFormField(
-                            controller: lastNameController,
-                            decoration: const InputDecoration(
-                                labelText: "lastName",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            controller: emailController,
-                            decoration: const InputDecoration(
-                                labelText: "email",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            initialValue: user.role,
-                            decoration: const InputDecoration(
-                                labelText: "role",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            obscureText: true,
-                            controller: oldpasswordController,
-                            decoration: const InputDecoration(
-                                labelText: "old password",
-                                border: OutlineInputBorder()),
-                          ),
-                          TextFormField(
-                            obscureText: true,
-                            controller: newpasswordController,
-                            decoration: const InputDecoration(
-                                labelText: "new password",
-                                border: OutlineInputBorder()),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              final use = User(
-                                  id: user.id,
-                                  email: emailController.text,
-                                  firstName: firstNameController.text,
-                                  lastName: lastNameController.text,
-                                  role: user.role,
-                                  oldPassword: oldpasswordController.text,
-                                  newPassword: newpasswordController.text);
-                              if (user.validate()) {
-                                adminbloc.add(UpdateUser(user));
-                              }
-                              // print("");
-                            },
-                            child: const Text("Update"),
-                          )
-                        ],
+                    getCard(
+                      300,
+                      650,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            TextFormField(
+                              controller: firstNameController
+                                ..text = user.firstName,
+                              decoration: const InputDecoration(
+                                  labelText: "firstName",
+                                  border: UnderlineInputBorder()),
+                            ),
+                            TextFormField(
+                              controller: lastNameController,
+                              decoration: const InputDecoration(
+                                  labelText: "lastName",
+                                  border: OutlineInputBorder()),
+                            ),
+                            TextFormField(
+                              controller: emailController,
+                              decoration: const InputDecoration(
+                                  labelText: "email",
+                                  border: OutlineInputBorder()),
+                            ),
+                            TextFormField(
+                              initialValue: user.role,
+                              decoration: const InputDecoration(
+                                  labelText: "role",
+                                  border: OutlineInputBorder()),
+                            ),
+                            TextFormField(
+                              obscureText: true,
+                              controller: oldpasswordController,
+                              decoration: const InputDecoration(
+                                  labelText: "old password",
+                                  border: OutlineInputBorder()),
+                            ),
+                            TextFormField(
+                              obscureText: true,
+                              controller: newpasswordController,
+                              decoration: const InputDecoration(
+                                  labelText: "new password",
+                                  border: OutlineInputBorder()),
+                              validator: (String? password) {
+                                if (password!.length < 8) {
+                                  return "password length must be greater 8";
+                                }
+
+                                if (!RegExp("[a-zA-Z0-9#*!;]")
+                                    .hasMatch(password)) {
+                                  return "password include alphanumeric and symbols";
+                                }
+                              },
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                final form = formKey.currentState!.validate();
+                                final use = User(
+                                    id: user.id,
+                                    email: emailController.text,
+                                    firstName: firstNameController.text,
+                                    lastName: lastNameController.text,
+                                    role: user.role,
+                                    oldPassword: oldpasswordController.text,
+                                    newPassword: newpasswordController.text);
+                                if (user.validate()) {
+                                  adminbloc.add(UpdateUser(user));
+                                } else {
+                                  adminbloc.add(Error(
+                                      data: user,
+                                      msg:
+                                          "password length must be > 8 and email from must be 'example@exmap.com'"));
+                                }
+                                // print("");
+                              },
+                              child: const Text("Update"),
+                            ),
+                            Container(
+                              color: Colors.blue,
+                              padding: EdgeInsets.all(5),
+                              height: 35,
+                              width: 170,
+                              child: ListView.builder(
+                                  itemCount: role.length,
+                                  itemBuilder: (_, idx) => GestureDetector(
+                                        child: Text(role[idx],
+                                            style: TextStyle(fontSize: 30),
+                                            textAlign: TextAlign.center),
+                                        onTap: () => {
+                                          adminbloc.add(
+                                              ChangerRole(role[idx], user.id!)),
+                                        },
+                                      )),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(child: Container()),

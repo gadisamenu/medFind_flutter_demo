@@ -53,8 +53,7 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   @override
   Future<APharmacy> loadPharmacy(int id) async {
     try {
-      final pharmacy = APharmacy.fromQuery(
-          getById("pharmacies", id) as Map<String, Object?>);
+      final pharmacy = APharmacy.fromQuery(await getById("pharmacies", id));
       return pharmacy;
     } catch (exp) {
       print("Decoding err " + exp.toString());
@@ -65,7 +64,7 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   @override
   Future<User> loadUser(int id) async {
     try {
-      final user = User.fromQuery(getById('users', id) as Map<String, Object?>);
+      final user = User.fromQuery(await getById('users', id));
       return user;
     } catch (exp) {
       rethrow;
@@ -74,6 +73,7 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
 
   @override
   Future<List<User>> loadUsers() async {
+    print("here local___________________________________");
     try {
       final rawusers = await get("users");
       List<User> users = [];
@@ -93,8 +93,8 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   @override
   Future<APharmacy> updatePharmacy(APharmacy pharmacy) async {
     try {
-      update("pharmacies", pharmacy.id, "name", pharmacy.name);
-      update("pharmacies", pharmacy.id, "address", pharmacy.address);
+      await update("pharmacies", pharmacy.id, "name", pharmacy.name);
+      await update("pharmacies", pharmacy.id, "address", pharmacy.address);
       return APharmacy.fromQuery(jsonDecode(pharmacy.toString()));
     } catch (exp) {
       rethrow;
@@ -104,10 +104,10 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   @override
   Future<User> updateUser(User user) async {
     try {
-      update("users", user.id!, "firstName", user.firstName);
-      update("users", user.id!, "lastName", user.lastName);
-      update("users", user.id!, "email", user.email);
-      update("users", user.id!, "role", user.role);
+      await update("users", user.id!, "firstName", user.firstName);
+      await update("users", user.id!, "lastName", user.lastName);
+      await update("users", user.id!, "email", user.email);
+      await update("users", user.id!, "role", user.role);
     } catch (exp) {
       rethrow;
     }
@@ -116,10 +116,10 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   }
 
   @override
-  Future<User> addUser(User user) {
+  Future<User> addUser(User user) async {
     try {
-      insert('users', user.toJson() as Map<String, Object>);
-      throw Exception("add by remote");
+      await insert('users', user.toQuery());
+      return user;
     } catch (exp) {
       rethrow;
     }
@@ -132,5 +132,16 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
     } catch (err) {
       rethrow;
     }
+  }
+
+  Future<bool> updateAll<M>(
+      String table, int id, List<String> field, List<M> value) async {
+    try {
+      await updateFields(table, id, field, value);
+    } catch (exp) {
+      print(exp.toString());
+    }
+
+    return true;
   }
 }

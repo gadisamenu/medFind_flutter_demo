@@ -35,7 +35,7 @@ class LocalReservationDataProvider extends SqliteDBProvider
 //   }
   @override
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
-    delete('medpacks', medpack_id);
+    await delete('medpacks', medpack_id);
   }
 
   // @override

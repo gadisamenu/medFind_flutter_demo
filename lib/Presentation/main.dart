@@ -4,8 +4,6 @@ import 'package:medfind_flutter/Application/Admin/admin_bloc.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
 import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
-import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
-import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/remote_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/Repository/admin_repository.dart';
 import 'package:medfind_flutter/Infrastructure/Authentication/DataSource/remote_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Authentication/Repository/auth_repository.dart';
@@ -14,10 +12,12 @@ import 'package:medfind_flutter/Infrastructure/MedicineSearch/Repository/medicin
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 import 'package:medfind_flutter/Presentation/_Shared/theme.dart';
 
+import '../Infrastructure/Admin/DataProvider/local_data_provider.dart';
 import '_Shared/theme.dart';
 import '_Shared/routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MedFindApp());
 }
 
@@ -38,7 +38,7 @@ class MedFindApp extends StatelessWidget {
                 AuthenticationBloc(AuthRepository(AuthDataProvider()))),
         BlocProvider<AdminBloc>(
             create: (BuildContext context) =>
-                AdminBloc(AdminRepository(AdminRemoteProvider()))),
+                AdminBloc(AdminRepository(AdminLocalProvider()))),
       ],
       child: MaterialApp.router(
         routeInformationParser: MedfindRouter.router.routeInformationParser,

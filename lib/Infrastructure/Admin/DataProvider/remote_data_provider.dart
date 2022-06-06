@@ -17,7 +17,7 @@ class AdminRemoteProvider extends AdminProvider {
   @override
   Future<List<User>> loadUsers() async {
     String token = await authRepo.getToken();
-    print(token);
+    // print(token);
     final response = await http.get(Uri.parse(adminEndpoint + usersEndpoint),
         headers: {"Authorization": token, "Content-Type": "application/json"});
 
@@ -90,11 +90,11 @@ class AdminRemoteProvider extends AdminProvider {
   @override
   Future<bool> changeRole(int id, String role) async {
     String token = await authRepo.getToken();
-
+    print(adminEndpoint + rolesEndpoint + "?id=$id");
     final response = await http.post(
-        Uri.parse(adminEndpoint + usersEndpoint + "?id=$id"),
+        Uri.parse(adminEndpoint + rolesEndpoint + "?id=$id"),
         headers: {"Authorization": token, "Content-Type": "application/json"},
-        body: {"role": role});
+        body: jsonEncode({"role": role}));
 
     if (response.statusCode == 200) {
       return true;
@@ -176,12 +176,9 @@ class AdminRemoteProvider extends AdminProvider {
 
   @override
   Future<User> addUser(User user) async {
-    final response = await http.post(
-        Uri.parse(registrationEndpoint),
-        headers: {
-          "Authorization": Token().token,
-          "Content-Type": "application/json"
-        },
+    String token = await authRepo.getToken();
+    final response = await http.post(Uri.parse(registrationEndpoint),
+        headers: {"Authorization": token, "Content-Type": "application/json"},
         body: jsonEncode(user.toJson()));
 
     print(response.statusCode);

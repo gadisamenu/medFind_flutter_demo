@@ -18,7 +18,7 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     on<LoadPharmacy>(_loadPharmacy);
     on<DeletePharmacy>(_deletePharmacy);
     on<UpdatePharmacy>(_updatePharmacy);
-    // on<Error>(_handleError);
+    on<Error>(_handleError);
   }
 
   //_____________________ users ______________\\
@@ -71,12 +71,18 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
 
   void _changeRole(ChangerRole event, Emitter emit) async {
     emit(Loading());
-    Return result = await adminRepo.changeRole(event.id, event.role);
+    Return? result;
+    try {
+      result = await adminRepo.changeRole(event.id, event.role);
+    } catch (ex) {
+      print(ex.toString());
+    }
 
-    if (!result.error) {
-      emit(RoleChanged(result.value));
+    if (!result!.hasError) {
+      print("eror__________");
+      emit(RoleChanged(event.id));
     } else {
-      emit(ChangeFailed());
+      emit(ChangeFailed(event.id));
     }
   }
 
@@ -123,9 +129,11 @@ class AdminBloc extends Bloc<AdminEvent, AdminState> {
     }
   }
 
-  // void _handleError(Error event, Emitter emit) async{
-  //   emit(ErrorState(msg: event.msg));
-  //    await Future.delayed(Duration(seconds: 2));
-  //   event.from == "phr"? emit(LoadPharmacies())
-  // }
+  void _handleError(Error event, Emitter emit) async {
+    emit(ErrorState(msg: event.msg));
+    await Future.delayed(Duration(seconds: 2));
+    event.data is APharmacy
+        ? emit(PharmacyLoaded(event.data))
+        : emit(UserLoaded(event.data));
+  }
 }

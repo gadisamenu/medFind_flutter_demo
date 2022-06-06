@@ -44,6 +44,6 @@ class LoadPharmacy extends AdminEvent {
 
 class Error extends AdminEvent {
   String? msg;
-  String from;
-  Error({required this.from, this.msg});
+  dynamic data;
+  Error({required this.data, this.msg});
 }
