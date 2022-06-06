@@ -28,10 +28,10 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailTextFieldController =
-      TextEditingController(text: "kkmichaelstarkk@gmail.com");
+      TextEditingController();
 
   final TextEditingController passwordTextFieldController =
-      TextEditingController(text: "12345678");
+      TextEditingController();
 
   String message = "";
 
@@ -40,7 +40,11 @@ class _LoginFormState extends State<LoginForm> {
     return BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is Authenticated) {
-            context.go("/home");
+            if (state.role == "ADMIN") {
+              context.go("/admin");
+            } else {
+              context.go("/home");
+            }
           } else if (state is AuthenticationFailed) {
             setState(() {
               message = "Authentication failed";
@@ -74,7 +78,8 @@ class _LoginFormState extends State<LoginForm> {
                         height: 20,
                       ),
                       getTextField(
-                          "Password", 50, passwordTextFieldController, () {}),
+                          "Password", 50, passwordTextFieldController, () {},
+                          obsecureText: true),
                       SizedBox(
                         height: 20,
                       ),

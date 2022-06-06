@@ -6,6 +6,7 @@ import 'package:medfind_flutter/Infrastructure/Authentication/Repository/auth_re
 
 class AuthDataProvider {
   static const String _baseUrl = "http://192.168.43.190:8080/api/v1";
+
   Future<String> attemptLogin(String email, String password) async {
     final response = await http.post(Uri.parse("$_baseUrl/authenticate"),
         headers: {
@@ -34,6 +35,17 @@ class AuthDataProvider {
       return response.body;
     } else {
       throw Exception("Registration Failed");
+    }
+  }
+
+  Future<String> getUser(String token) async {
+    final response = await http.get(
+        Uri.parse("http://192.168.43.190:8080/api/v1/user"),
+        headers: {"Authorization": token, "Content-Type": "application/json"});
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      throw Exception(response.body);
     }
   }
 }

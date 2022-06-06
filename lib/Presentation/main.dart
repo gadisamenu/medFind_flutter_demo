@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medfind_flutter/Application/Admin/admin_bloc.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
-import 'package:medfind_flutter/Application/Navigation/navigation_bloc.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_bloc.dart';
-import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/DataProvider/remote_data_provider.dart';
 import 'package:medfind_flutter/Infrastructure/Admin/Repository/admin_repository.dart';
 import 'package:medfind_flutter/Infrastructure/Authentication/DataSource/remote_data_provider.dart';
@@ -32,8 +30,6 @@ class MedFindApp extends StatelessWidget {
         BlocProvider<MedicineSearchBloc>(
             create: (BuildContext context) => MedicineSearchBloc(
                 MedicineSearchRepository(MedicineSearchDataSource()))),
-        BlocProvider<NavigationBloc>(
-            create: (BuildContext context) => NavigationBloc()),
         BlocProvider<AuthenticationBloc>(
             create: (BuildContext context) =>
                 AuthenticationBloc(AuthRepository(AuthDataProvider()))),

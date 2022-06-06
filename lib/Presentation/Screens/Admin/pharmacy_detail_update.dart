@@ -23,6 +23,9 @@ class PharmacyDetailUpdateScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () => context.go("/admin"),
+            icon: Icon(Icons.arrow_back)),
         title: const Text("pharmacy Detail"),
         actions: [
           Padding(

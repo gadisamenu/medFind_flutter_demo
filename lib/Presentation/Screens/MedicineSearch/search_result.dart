@@ -1,10 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_state.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
+import 'package:medfind_flutter/Presentation/_Shared/Widgets/app_bar.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
@@ -24,10 +23,7 @@ class _MyWidgetState extends State<SearchResult> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('medFind'),
-          centerTitle: true,
-        ),
+        appBar: getAppBar(context),
         body: Column(
           children: [
             Row(
@@ -61,7 +57,11 @@ class _MyWidgetState extends State<SearchResult> {
                 ));
               }
               if (state is SearchNotFound) {
-                return Center(child: Text(state.error_message));
+                return Center(
+                    child: Text(
+                  state.error_message,
+                  style: TextStyle(color: Colors.red),
+                ));
               }
               return Expanded(
                   child: Column(
@@ -154,9 +154,6 @@ class _MyWidgetState extends State<SearchResult> {
                           Positioned(
                               bottom: 30.0,
                               right: 30.0,
-                              // alignment: Alignment.bottomRight,
-                              // height: 10,
-                              // width: 100,
                               child: Row(
                                 children: [
                                   getButton(100, 30, Text("reserve"), () => {}),

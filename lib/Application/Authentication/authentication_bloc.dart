@@ -26,9 +26,15 @@ class AuthenticationBloc
       try {
         var token = await authRepository.authenticate(
             email: event.email, password: event.password);
+
         token = jsonDecode(token)["token"];
         await authRepository.persistToken(token);
-        emit(Authenticated());
+        var user = await authRepository.getUser();
+        if (user.role == 'ADMIN')
+          emit(Authenticated(role: "ADMIN"));
+        else
+          emit(Authenticated());
+        print('yukyukyukiu');
       } catch (e) {
         emit(AuthenticationFailed());
       }
@@ -39,11 +45,17 @@ class AuthenticationBloc
       await authRepository.deleteToken();
       emit(UnAuthenticated());
     });
+
     on<Signup>((event, emit) async {
       emit(SigningUp());
       try {
-        await authRepository.signUp(
-            User(event.firstName, event.lastName, event.email, event.password));
+        await authRepository.signUp(User(
+          event.firstName,
+          event.lastName,
+          event.email,
+          event.password,
+          event.role,
+        ));
         emit(UnAuthenticated());
       } catch (e) {
         emit(SignUpFailed());
