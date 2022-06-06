@@ -1,7 +1,7 @@
 import 'package:medfind_flutter/Domain/WatchList/medpack.dart';
 
 class State {
-  static Map<int, MedPack> medpacks={};
+  static Map<int, MedPack> medpacks = {};
 
   State({List<MedPack>? medpacks}) {
     if (medpacks == null) {
@@ -23,9 +23,19 @@ class NormalState extends State {
   NormalState({List<MedPack>? medpacks}) : super(medpacks: medpacks);
 }
 
+enum SuccessType {
+  PILL_CREATED,
+  PILL_UPDATED,
+  PILL_REMOVED,
+  MEDPACK_REMOVED,
+  MEDPACK_ADDED,
+  MEDPACK_TAG_MODIFIED
+}
+
 class SuccessState extends State {
+  SuccessType type;
   String message;
-  SuccessState(this.message, {List<MedPack>? medpacks})
+  SuccessState(this.message, this.type, {List<MedPack>? medpacks})
       : super(medpacks: medpacks);
 }
 

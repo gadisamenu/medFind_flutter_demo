@@ -73,6 +73,11 @@ class MedfindRouter {
           pharmacy: state.extra! as APharmacy,
         ),
       ),
+      GoRoute(
+        path: '/watch_list',
+        builder: (BuildContext context, GoRouterState state) =>
+            WatchListScreen(),
+      ),
     ],
   );
 }

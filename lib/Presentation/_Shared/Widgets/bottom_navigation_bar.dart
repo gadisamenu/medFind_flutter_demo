@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_state.dart';
 import 'package:medfind_flutter/Application/Navigation/navigation_event.dart';
+import 'package:medfind_flutter/Application/WatchList/watchlist_bloc.dart';
+import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 
 import '../../../Application/Navigation/navigation_bloc.dart';
 
@@ -27,6 +29,10 @@ class CustomNavigationBar extends StatelessWidget {
             // BlocProvider.of<NavigationBloc>(context).add(Navigate(path: "/home"));
             if (value == 0) {
               context.go("/home");
+            }
+            if (value == 1) {
+              context.go("/watch_list");
+              BlocProvider.of<WatchListBloc>(context).add(GetMedPacks());
             }
           },
           items: const [
