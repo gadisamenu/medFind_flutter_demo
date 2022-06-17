@@ -19,7 +19,7 @@ import '../Screens/Admin/user_detail_update.dart';
 class MedfindRouter {
   // ignore: unused_fiel
   static final GoRouter router = GoRouter(
-    initialLocation: "/reservation",
+    initialLocation: "/",
     routes: <GoRoute>[
       GoRoute(
         path: '/',
