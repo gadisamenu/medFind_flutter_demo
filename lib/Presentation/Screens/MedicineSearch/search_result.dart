@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
 import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_state.dart';
+import 'package:medfind_flutter/Application/Reservation/reservation_bloc.dart';
+import 'package:medfind_flutter/Application/Reservation/reservation_event.dart';
 import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/_common.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/app_bar.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/bottom_navigation_bar.dart';
@@ -73,7 +76,7 @@ class _MyWidgetState extends State<SearchResult> {
                         height: 50.0,
                         child: Center(
                           child: Text(
-                            state is SearchFound ? "Search results for ${state.medicineName}" : "",
+                            (state is SearchFound && state.medicineName != null) ? "Search results for ${state.medicineName}" : "",
                             style: TextStyle(
                               color:
                                   Theme.of(context).textTheme.bodyText1!.color,
@@ -81,11 +84,6 @@ class _MyWidgetState extends State<SearchResult> {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: getButton(
-                            150, 30, Text("save to watchlist"), () => {}),
                       ),
                     ],
                   ),
@@ -156,7 +154,14 @@ class _MyWidgetState extends State<SearchResult> {
                               right: 30.0,
                               child: Row(
                                 children: [
-                                  getButton(100, 30, Text("reserve"), () => {}),
+                                  getButton(100, 30, Text("reserve"), () => {
+                                    if (state.medPackId != null){
+                                      context.go("/reservation"),
+                                      BlocProvider.of<ReservationBloc>(context).add(
+                                        ReservationCreate(state.medPackId, state.result[index].pharmacyId),
+                                      ),
+                                    }
+                                  }),
                                 ],
                               )),
                         ],

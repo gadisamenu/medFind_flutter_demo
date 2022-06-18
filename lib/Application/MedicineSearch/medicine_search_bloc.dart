@@ -10,7 +10,7 @@ class MedicineSearchBloc
     extends Bloc<MedicineSearchEvent, MedicineSearchState> {
   final MedicineSearchRepository medicineSearchRepository;
   MedicineSearchBloc(this.medicineSearchRepository)
-      : super(SearchFound("", [])) {
+      : super(SearchFound([], medicineName: "")) {
     on<Search>(_onSearch);
     on<SearchMedPack>(_onSearchMedPack);
   }
@@ -22,7 +22,7 @@ class MedicineSearchBloc
     if (pharmacies.hasError) {
       emit(SearchNotFound(pharmacies.error!));
     } else {
-      emit(SearchFound(event.medicineName, pharmacies.val!));
+      emit(SearchFound(pharmacies.val!, medicineName: event.medicineName));
     }
   }
 
@@ -33,7 +33,7 @@ class MedicineSearchBloc
     if (pharmacies.hasError) {
       emit(SearchNotFound(pharmacies.error!));
     } else {
-      emit(MedPackSearchFound(pharmacies.val!));
+      emit(SearchFound(pharmacies.val!, medPackId : event.medPackId));
     }
   }
 }
