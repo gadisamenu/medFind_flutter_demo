@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_bloc.dart';
+import 'package:medfind_flutter/Application/MedicineSearch/medicine_search_event.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_bloc.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_state.dart'
@@ -76,7 +78,10 @@ class MedPackCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 30),
                           child: GestureDetector(
                             child: const Icon(Icons.search),
-                            onTap: () {},
+                            onTap: () {
+                              BlocProvider.of<MedicineSearchBloc>(context).add(
+                                  SearchMedPack(9.0474852, 38.7596047, id));
+                            },
                           ),
                         ),
                       ],

@@ -73,7 +73,7 @@ class _MyWidgetState extends State<SearchResult> {
                         height: 50.0,
                         child: Center(
                           child: Text(
-                            "Search results for ${state.medicineName}",
+                            state is SearchFound ? "Search results for ${state.medicineName}" : "",
                             style: TextStyle(
                               color:
                                   Theme.of(context).textTheme.bodyText1!.color,
