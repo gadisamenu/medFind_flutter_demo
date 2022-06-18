@@ -12,8 +12,8 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
 
   @override
   Future<List<Reservation>> getReservations() async {
-    String token =
-        "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDc2NjE5LCJpYXQiOjE2NTQ0NTg2MTl9.wCLZdntPMQ-KGiZW4WbyjZnpsQdi6iPorSVezA-ti8dakoockDg6K7WRegSDcg3VcSNuZ9qenwb3v2Qcd6oknw";
+    String token = await authRepo.getToken();
+
     // print(token);
     List<Reservation> reservations = [];
     final url = Uri.parse(ReservationEndpoint);
@@ -22,13 +22,23 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
     // print(response.statusCode);
     if (response.statusCode == 200) {
       final dataList = jsonDecode(response.body);
-      // print(dataList);
-      List<MedPack> med = [];
-      dataList.forEach((element) {
-        med.add(MedPack.fromJson(element['medpack'][0]));
-      });
-      reservations.add(Reservation(dataList[0]['id'], dataList[0]['pharmacy'],med));
-      print('here');
+      dataList.forEach(
+        (element) {
+          List<MedPack> med = [];
+          element['medpack'].forEach(
+            (pack) {
+              try {
+                med.add(MedPack.fromJson(pack));
+              } catch (exp) {
+                print("decoding medpack error");
+              }
+            },
+          );
+
+          reservations.add(Reservation(int.parse(element["id"].toString()),
+              element["pharmacy"].toString(), med));
+        },
+      );
       return reservations;
     } else {
       throw Exception("failed to load");
@@ -37,6 +47,7 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
 
   @override
   Future<void> deleteMedPack(int medpack_id, {int? reservation_id}) async {
+    String token = await authRepo.getToken();
     try {
       var url = Uri.parse(ReservationEndpoint +
           medpackEndpoint +
@@ -44,7 +55,10 @@ class HttpRemoteReservationDataProvider implements ReservationDataProvider {
           medpack_id.toString() +
           "&reserv_id=" +
           reservation_id.toString());
-      var response = await http.delete(url);
+      var response = await http.delete(url, headers: {
+        "Authorization": token,
+        "Content-Type": "application/json"
+      });
       if (response.statusCode == 200) {}
     } catch (err) {
       print(err.toString());

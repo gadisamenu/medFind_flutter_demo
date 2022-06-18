@@ -56,6 +56,4 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
       emit(ReservationFailure("delete medpack is failed"));
     }
   }
-
-  
 }
