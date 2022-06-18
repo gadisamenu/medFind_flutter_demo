@@ -27,4 +27,25 @@ class MedicineSearchRepository {
       return Result(error: "No Pharmacy Found");
     }
   }
+
+
+    Future<Result<List<Pharmacy>>> getPharmaciesByMedPack(
+      double latitude, double longitude, int medPackId) async {
+    try {
+      final result = await medicineSearchDataProvider.getPharmacyByMedPack(
+          latitude, longitude, medPackId);
+      jsonDecode(result.body).forEach((p) {
+        if (p == null) {
+        } else if (p['id'] == null ||
+            p['name'] == null ||
+            p['address'] == null) {
+        } else {
+          pharmacies.add(Pharmacy.fromJson(p));
+        }
+      });
+      return Result(val: pharmacies);
+    } catch (e) {
+      return Result(error: "No Pharmacy Found");
+    }
+  }
 }

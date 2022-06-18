@@ -14,6 +14,12 @@ class SearchFound extends MedicineSearchState {
   SearchFound(this.medicineName, this.result);
 }
 
+class MedPackSearchFound extends MedicineSearchState {
+  List<Pharmacy> result;
+  @override
+  MedPackSearchFound(this.result);
+}
+
 class SearchNotFound extends MedicineSearchState {
   String error_message;
   SearchNotFound(this.error_message);

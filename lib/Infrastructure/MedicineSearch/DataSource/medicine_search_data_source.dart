@@ -19,4 +19,19 @@ class MedicineSearchDataSource {
     );
     return result;
   }
+
+  Future<http.Response> getPharmacyByMedPack(
+      double latitude, double longitude, int medPackId) async {
+    http.Response result = await http.post(
+      Uri.parse("${baseUrl}watchlist/search?medPackId=${medPackId}"),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'userlat': "$latitude",
+        'userlong': "$longitude",
+      }),
+    );
+    return result;
+  }
 }
