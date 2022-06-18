@@ -13,14 +13,14 @@ class WatchListRepository {
   final WatchListDataProvider localDataProvider = LocalWatchListDataProvider();
 
   Future<List<MedPack>?> getMedPacks() async {
-    List<MedPack>? medpacks; //= await localDataProvider.getMedPacks();
+    List<MedPack>? medpacks = await localDataProvider.getMedPacks();
 
     if (medpacks == null || medpacks.isEmpty) {
       medpacks = await dataProvider.getMedPacks();
 
       for (MedPack mp in medpacks as List<MedPack>) {
-        // localDataProvider.addNewMedpack(mp.description,
-        //     medpackId: mp.medpackId);
+        localDataProvider.addNewMedpack(mp.description,
+            medpackId: mp.medpackId);
       }
     }
     return medpacks;
@@ -32,8 +32,8 @@ class WatchListRepository {
 
     newMedpack = await dataProvider.addNewMedpack(description);
 
-    // await localDataProvider.addNewMedpack(description,
-    //     medpackId: newMedpack!.medpackId);
+    await localDataProvider.addNewMedpack(description,
+        medpackId: newMedpack!.medpackId);
 
     return newMedpack;
   }
@@ -41,7 +41,7 @@ class WatchListRepository {
   Future<void> removeMedPack(int medpackId) async {
     await dataProvider.removeMedpack(medpackId);
 
-    // await localDataProvider.removeMedpack(medpackId);
+    await localDataProvider.removeMedpack(medpackId);
   }
 
   Future<MedPack?> updateMedpack(int medpackId, String tag) async {
@@ -50,7 +50,7 @@ class WatchListRepository {
 
     updatedMedpack = await dataProvider.updateMedpack(medpackId, tag);
 
-    // await localDataProvider.updateMedpack(medpackId, tag);
+    await localDataProvider.updateMedpack(medpackId, tag);
     return updatedMedpack;
   }
 
@@ -66,14 +66,14 @@ class WatchListRepository {
     newPill =
         await dataProvider.addNewPill(medpackId, medName, strength, amount);
 
-    // await localDataProvider.addNewPill(medpackId, medName, strength, amount);
+    await localDataProvider.addNewPill(medpackId, medName, strength, amount);
     return newPill;
   }
 
   Future<void> removePill(int medpackId, int pillId) async {
     await dataProvider.removePill(medpackId, pillId);
 
-    // await localDataProvider.removePill(pillId);
+    await localDataProvider.removePill(medpackId, pillId);
   }
 
   Future<Pill?> updatePill(
@@ -88,7 +88,7 @@ class WatchListRepository {
     updatedPill =
         await dataProvider.updatePill(medpackId, pillId, strength, amount);
 
-    // await localDataProvider.updatePill(pillId, strength, amount);
+    await localDataProvider.updatePill(medpackId, pillId, strength, amount);
 
     return updatedPill;
   }

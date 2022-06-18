@@ -7,7 +7,7 @@ import 'package:medfind_flutter/Application/WatchList/watchlist_state.dart'
     as wl;
 
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
-import 'package:medfind_flutter/Domain/WatchList/value_objects.dart';
+import 'package:medfind_flutter/Presentation/Screens/WatchList/watchlist_screen.dart';
 import 'package:medfind_flutter/Presentation/Screens/config/size_config.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/card.dart';
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
@@ -37,11 +37,26 @@ class MedPackCard extends StatelessWidget {
           children: [
             BlocBuilder<WatchListBloc, wl.State>(
               builder: (context, state) {
+                pills = wl.State.medpacks[id]!.getPills();
+                Widget messageWidget = SuccessMessage(message: '');
+
                 if (state is wl.SuccessState &&
-                        state.type == wl.SuccessType.PILL_CREATED ||
-                    state is wl.SuccessState &&
-                        state.type == wl.SuccessType.PILL_REMOVED) {
-                  pills = wl.State.medpacks[id]!.getPills();
+                    state.type == wl.SuccessType.PILL_CREATED) {
+                  messageWidget =
+                      SuccessMessage(message: 'Successfully created new pill');
+                } else if (state is wl.SuccessState &&
+                    state.type == wl.SuccessType.PILL_REMOVED) {
+                  messageWidget = SuccessMessage(
+                    message: 'Successfully removed the pill!',
+                  );
+                } else if (state is wl.SuccessState &&
+                    state.type == wl.SuccessType.PILL_UPDATED) {
+                  messageWidget = SuccessMessage(
+                    message: 'Successfully updated the pill!',
+                  );
+                } else if (state is wl.FailureState) {
+                  messageWidget =
+                      FailureMessage(message: 'Invalid input try again!');
                 }
                 return Column(
                   children: [
@@ -66,20 +81,25 @@ class MedPackCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: height - 80),
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: pills.length,
-                          itemBuilder: (context, index) {
-                            return PillTile(
-                                id: pills[index].pillId,
-                                parentId: id,
-                                name: pills[index].name.get(),
-                                strength: pills[index].strength,
-                                amount: pills[index].amount);
-                          }),
+                    Column(
+                      children: [
+                        messageWidget,
+                        ConstrainedBox(
+                          constraints: BoxConstraints(maxHeight: height - 100),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: pills.length,
+                              itemBuilder: (context, index) {
+                                return PillTile(
+                                    id: pills[index].pillId,
+                                    parentId: id,
+                                    name: pills[index].name.get(),
+                                    strength: pills[index].strength,
+                                    amount: pills[index].amount);
+                              }),
+                        ),
+                      ],
                     ),
                   ],
                 );
@@ -169,12 +189,6 @@ class MedPackCard extends StatelessWidget {
                                     BlocProvider.of<WatchListBloc>(context).add(
                                         AddPill(id, newMedicineName!,
                                             newStrength!, newAmount!));
-                                    Pill newPill = Pill(
-                                        id,
-                                        MedicineName(newMedicineName!),
-                                        newStrength!,
-                                        newAmount!);
-                                    wl.State.medpacks[id]!.addPill(newPill);
                                     GoRouter.of(context).navigator!.pop();
                                   }),
                                   getButton(100, 50, Text("Cancel"), () {
@@ -189,7 +203,6 @@ class MedPackCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child:
                           getButton(150, 30, const Text("Remove medpack"), () {
-                        wl.State.medpacks.remove(id);
                         BlocProvider.of<WatchListBloc>(context)
                             .add(RemoveMedpack(id));
                       }),

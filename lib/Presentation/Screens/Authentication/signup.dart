@@ -160,7 +160,7 @@ class SignUpForm extends StatelessWidget {
                       } else if (state is SignUpFailed) {
                         return Center(
                           child: Padding(
-                            padding: EdgeInsets.all(10),
+                            padding: EdgeInsets.all(5),
                             child: Text(
                               "Signup failed",
                               style: TextStyle(color: Colors.red),

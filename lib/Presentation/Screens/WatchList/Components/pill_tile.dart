@@ -6,18 +6,19 @@ import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_state.dart'
     as wl;
 import 'package:medfind_flutter/Domain/WatchList/pill.dart';
+import 'package:medfind_flutter/Presentation/Screens/WatchList/watchlist_screen.dart';
 import 'package:medfind_flutter/Presentation/Screens/config/size_config.dart';
 
 import 'package:medfind_flutter/Presentation/_Shared/index.dart';
 
 class PillTile extends StatelessWidget {
-  int id;
+  final int id;
 
-  String name;
+  final String name;
   int amount;
   int strength;
 
-  int parentId;
+  final int parentId;
 
   PillTile({
     Key? key,
@@ -32,11 +33,19 @@ class PillTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WatchListBloc, wl.State>(
       builder: (context, state) {
+        Widget messageWidget = SuccessMessage(message: '');
+
         if (state is wl.SuccessState &&
             state.type == wl.SuccessType.PILL_UPDATED) {
-          Pill updatedPill = wl.State.medpacks[parentId]!.pills[id]!;
-          strength = updatedPill.strength;
-          amount = updatedPill.amount;
+          // Pill updatedPill = wl.State.medpacks[parentId]!.pills[id]!;
+          // strength = updatedPill.strength;
+          // amount = updatedPill.amount;
+
+          messageWidget = SuccessMessage(message: 'Successfully updated pill!');
+        } else if (state is wl.FailureState &&
+            state.type == wl.FailureType.PILL_FAILURE) {
+          // messageWidget =
+          //     FailureMessage(message: 'Failed to update pill. Invalid input');
         }
 
         return ListTile(
@@ -76,32 +85,38 @@ class PillTile extends StatelessWidget {
                                 children: <Widget>[
                                   Column(
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 5),
-                                        child: TextFormField(
-                                          initialValue: strength.toString(),
-                                          decoration: const InputDecoration(
-                                            border: UnderlineInputBorder(),
-                                            labelText: 'Strength',
+                                      SizedBox(
+                                        width: getProportionateWidth(150),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 5),
+                                          child: TextFormField(
+                                            initialValue: strength.toString(),
+                                            decoration: const InputDecoration(
+                                              border: UnderlineInputBorder(),
+                                              labelText: 'Strength',
+                                            ),
+                                            onChanged: (value) {
+                                              newStrength = int.parse(value);
+                                            },
                                           ),
-                                          onChanged: (value) {
-                                            newStrength = int.parse(value);
-                                          },
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 5),
-                                        child: TextFormField(
-                                          initialValue: amount.toString(),
-                                          decoration: const InputDecoration(
-                                            border: UnderlineInputBorder(),
-                                            labelText: 'Amount',
+                                      SizedBox(
+                                        width: getProportionateWidth(150),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 5),
+                                          child: TextFormField(
+                                            initialValue: amount.toString(),
+                                            decoration: const InputDecoration(
+                                              border: UnderlineInputBorder(),
+                                              labelText: 'Amount',
+                                            ),
+                                            onChanged: (value) {
+                                              newAmount = int.parse(value);
+                                            },
                                           ),
-                                          onChanged: (value) {
-                                            newAmount = int.parse(value);
-                                          },
                                         ),
                                       ),
                                     ],
@@ -113,9 +128,6 @@ class PillTile extends StatelessWidget {
                                   BlocProvider.of<WatchListBloc>(context).add(
                                       UpdatePill(parentId, id, newStrength!,
                                           newAmount!));
-
-                                  wl.State.medpacks[parentId]!
-                                      .updatePill(id, newStrength!, newAmount!);
 
                                   GoRouter.of(context).navigator!.pop();
                                 }),
@@ -131,7 +143,6 @@ class PillTile extends StatelessWidget {
                   GestureDetector(
                     child: Icon(Icons.remove),
                     onTap: () {
-                      wl.State.medpacks[parentId]!.removePill(id);
                       BlocProvider.of<WatchListBloc>(context)
                           .add(RemovePill(parentId, id));
                     },
