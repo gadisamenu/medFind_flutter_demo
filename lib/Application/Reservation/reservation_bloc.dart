@@ -48,6 +48,7 @@ class ReservationBloc extends Bloc<ReservationEvent, ReservationState> {
   }
 
   Future<void> _deleteMedPack(MedPackDelete event, Emitter emit) async {
+    print("here");
     try {
       await repo.deleteMedPack(event.medpack_id.toInt());
       List<Reservation>? reservations = await repo.getReservations();
