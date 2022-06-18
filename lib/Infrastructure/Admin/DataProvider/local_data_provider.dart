@@ -34,8 +34,10 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
 
   @override
   Future<List<APharmacy>> loadPharmacies() async {
+    print("here local___________________________________");
     try {
       final rawpharmacies = await get("pharmacies");
+
       List<APharmacy> pharmacies = [];
       rawpharmacies.forEach((element) {
         try {
@@ -52,6 +54,7 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
 
   @override
   Future<APharmacy> loadPharmacy(int id) async {
+    print("here local___________________________________");
     try {
       final pharmacy = APharmacy.fromQuery(await getById("pharmacies", id));
       return pharmacy;
@@ -63,6 +66,7 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
 
   @override
   Future<User> loadUser(int id) async {
+    print("here local___________________________________");
     try {
       final user = User.fromQuery(await getById('users', id));
       return user;
@@ -111,7 +115,6 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
     } catch (exp) {
       rethrow;
     }
-
     return user;
   }
 
@@ -126,9 +129,19 @@ class AdminLocalProvider extends SqliteDBProvider implements AdminProvider {
   }
 
   @override
-  Future<bool> deleteAll(String table) {
+  Future<bool> addPharmacy(APharmacy pharmacy) async {
     try {
-      return clearTable(table);
+      await insert('pharmacies', pharmacy.toJson());
+      return true;
+    } catch (exp) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<bool> deleteAll(String table) async {
+    try {
+      return await clearTable(table);
     } catch (err) {
       rethrow;
     }

@@ -37,6 +37,6 @@ class APharmacy {
   }
 
   bool validate() {
-    return ((name.length > 5) && (address.length > 10));
+    return ((name.length >= 5) && (address.length > 10));
   }
 }

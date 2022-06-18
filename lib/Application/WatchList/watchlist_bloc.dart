@@ -34,7 +34,7 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       newMedpacks = await wr.getMedPacks();
       print(newMedpacks);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.CONNECTION_FAILURE));
       print(error.message);
       return;
     } on NoElementFoundException {
@@ -51,10 +51,10 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     try {
       medpack = await wr.addMedPack(event.description);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.CONNECTION_FAILURE));
       return;
     } on InvalidValueException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.MEDPACK_FAILURE));
       return;
     }
 
@@ -69,7 +69,7 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     try {
       await wr.removeMedPack(event.medpackID);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.MEDPACK_FAILURE));
       return;
     }
     State.medpacks.remove(event.medpackID);
@@ -84,10 +84,10 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     try {
       updatedMedpack = await wr.updateMedpack(event.medpackID, event.newTag);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.CONNECTION_FAILURE));
       return;
     } on InvalidValueException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.MEDPACK_FAILURE));
       return;
     }
     State.medpacks[event.medpackID] = updatedMedpack!;
@@ -102,10 +102,10 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       newPill = await wr.addPill(
           event.medpackID, event.name, event.strength, event.amount);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.CONNECTION_FAILURE));
       return;
     } on InvalidValueException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.PILL_FAILURE));
       return;
     }
     State.medpacks[event.medpackID]?.addPill(newPill!);
@@ -117,7 +117,7 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
     try {
       await wr.removePill(event.medpackID, event.pillID);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.PILL_FAILURE));
       return;
     }
     State.medpacks[event.medpackID]?.removePill(event.pillID);
@@ -136,10 +136,10 @@ class WatchListBloc extends Bloc<WatchListEvent, State> {
       updatedPill = await wr.updatePill(
           event.medpackId, event.pillId, event.strength, event.amount);
     } on DisconnectedException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.CONNECTION_FAILURE));
       return;
     } on InvalidValueException catch (error) {
-      emit(FailureState(error.message));
+      emit(FailureState(error.message, FailureType.PILL_FAILURE));
       return;
     }
     State.medpacks[event.medpackId]!

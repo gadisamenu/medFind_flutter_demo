@@ -5,7 +5,6 @@ class State {
 
   State({List<MedPack>? medpacks}) {
     if (medpacks == null) {
-      // State.medpacks = {};
     } else {
       for (MedPack mp in medpacks) {
         State.medpacks[mp.medpackId] = mp;
@@ -39,9 +38,13 @@ class SuccessState extends State {
       : super(medpacks: medpacks);
 }
 
+enum FailureType { PILL_FAILURE, MEDPACK_FAILURE, CONNECTION_FAILURE }
+
 class FailureState extends State {
   String message;
-  FailureState(this.message);
+  FailureType type;
+
+  FailureState(this.message, this.type);
 }
 
 class NoMedPackState extends State {

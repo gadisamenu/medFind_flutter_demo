@@ -194,4 +194,10 @@ class AdminRemoteProvider extends AdminProvider {
     // TODO: implement deleteAll
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool> addPharmacy(APharmacy pharmacy) async {
+    // TODO: implement deleteAll
+    throw UnimplementedError();
+  }
 }
