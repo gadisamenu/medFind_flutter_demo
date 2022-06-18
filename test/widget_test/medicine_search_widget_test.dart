@@ -23,3 +23,7 @@ void main() {
     );
   });
 }
+
+findsAtLeastNWidgets(int m) {
+  return m >= 1;
+}

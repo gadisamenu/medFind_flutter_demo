@@ -130,7 +130,7 @@ class UserDetailUpdateScreen extends StatelessWidget {
                                   labelText: "new password",
                                   border: OutlineInputBorder()),
                               validator: (String? password) {
-                                if (password!.length < 8) {
+                                if (password == null || password.length < 8) {
                                   return "password length must be greater 8";
                                 }
 
@@ -142,22 +142,28 @@ class UserDetailUpdateScreen extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                final form = formKey.currentState!.validate();
-                                final use = User(
+                                // final form = formKey.currentState!.validate();
+                                final n_user = User(
                                     id: user.id,
                                     email: emailController.text,
                                     firstName: firstNameController.text,
                                     lastName: lastNameController.text,
                                     role: user.role,
-                                    oldPassword: oldpasswordController.text,
-                                    newPassword: newpasswordController.text);
-                                if (user.validate()) {
-                                  adminbloc.add(UpdateUser(user));
+                                    oldPassword:
+                                        oldpasswordController.text != ""
+                                            ? oldpasswordController.text
+                                            : null,
+                                    newPassword:
+                                        newpasswordController.text != ""
+                                            ? newpasswordController.text
+                                            : null);
+                                if (n_user.validate()) {
+                                  adminbloc.add(UpdateUser(n_user));
                                 } else {
                                   adminbloc.add(Error(
-                                      data: user,
+                                      data: n_user,
                                       msg:
-                                          "password length must be > 8 and email from must be 'example@exmap.com'"));
+                                          "name length password length must be > 8 and email from must be 'example@exmap.com'"));
                                 }
                                 // print("");
                               },
