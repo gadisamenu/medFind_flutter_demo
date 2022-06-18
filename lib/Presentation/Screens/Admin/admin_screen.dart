@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/Admin/admin_bloc.dart';
-import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
-import 'package:medfind_flutter/Application/Authentication/authentication_event.dart';
 import 'package:medfind_flutter/Domain/Admin/APharamcy.dart';
 import 'package:medfind_flutter/Presentation/_Shared/Widgets/app_bar.dart';
 
@@ -158,7 +156,8 @@ Widget displayPharmacies(PharmaciesLoaded state) {
           leading: GestureDetector(
               child: const Icon(Icons.home),
               onTap: () {
-                BlocProvider.of<AdminBloc>(context).add(LoadUser(pharmacy.id));
+                BlocProvider.of<AdminBloc>(context)
+                    .add(LoadPharmacy(pharmacy.id));
               }),
           title: GestureDetector(
               child: Text(pharmacy.name),

@@ -34,7 +34,17 @@ class ReservationCreate extends ReservationEvent {
   @override
   List<Object> get props => [this.medpack_id, this.pharmacy_id];
   @override
-  String toString() => 'Reservation Created  {medpack_id : $medpack_id, pharmacy_id : $pharmacy_id';
+  String toString() =>
+      'Reservation Created  {medpack_id : $medpack_id, pharmacy_id : $pharmacy_id';
+}
+
+class CreateMedPackId extends ReservationEvent {
+  String? medicineName;
+  int? medPackId;
+  CreateMedPackId({this.medicineName, this.medPackId});
+
+  @override
+  List<Object?> get props => [];
 }
 
 class DeleteReservation extends ReservationEvent {

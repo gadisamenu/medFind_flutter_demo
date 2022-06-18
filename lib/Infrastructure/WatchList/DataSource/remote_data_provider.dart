@@ -13,8 +13,8 @@ import '_watchlist_data_provider.dart';
 
 class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
   final authenRepo = AuthRepository(AuthDataProvider());
-  String token =
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDU2OTMyLCJpYXQiOjE2NTQ0Mzg5MzJ9.btDbTQ33q4v1ytYrAlhcyQA3-UkXTV857OacH3YKCigxLtfg8TDxpvsoI2KbNblPZV9p758cd_kXmzKr7NbZAw";
+  // String token =
+  //     "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJra21pY2hhZWxzdGFya2tAZ21haWwuY29tIiwiZXhwIjoxNjU0NDU2OTMyLCJpYXQiOjE2NTQ0Mzg5MzJ9.btDbTQ33q4v1ytYrAlhcyQA3-UkXTV857OacH3YKCigxLtfg8TDxpvsoI2KbNblPZV9p758cd_kXmzKr7NbZAw";
 
   @override
   Future<List<MedPack>?> getMedPacks() async {
@@ -26,7 +26,6 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
       var response = await http.get(url, headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': token,
-        "Access-Control-Allow-Origin": "*",
       });
       if (response.statusCode == 200) {
         List<dynamic> dataList = jsonDecode(response.body)["medpacks"];
@@ -36,7 +35,6 @@ class HttpRemoteWatchListDataProvider implements WatchListDataProvider {
         }
       }
     } catch (error) {
-      print(error);
       throw DisconnectedException("No internet connection");
     }
 

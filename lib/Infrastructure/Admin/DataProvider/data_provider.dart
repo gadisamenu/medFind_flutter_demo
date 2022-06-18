@@ -12,6 +12,7 @@ abstract class AdminProvider {
   Future<List<APharmacy>> loadPharmacies();
   Future<APharmacy> loadPharmacy(int id);
   Future<APharmacy> updatePharmacy(APharmacy pharmacy);
+  Future<bool> addPharmacy(APharmacy pharmacy);
   Future<bool> deletePharmacy(int id);
   Future<bool> deleteAll(String table);
 }

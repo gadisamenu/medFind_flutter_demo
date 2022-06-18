@@ -6,11 +6,13 @@ import 'package:medfind_flutter/Infrastructure/MedicineSearch/Repository/medicin
 
 import '../../Domain/MedicineSearch/pharmacy.dart';
 
-class MedicineSearchBloc extends Bloc<Search, MedicineSearchState> {
+class MedicineSearchBloc
+    extends Bloc<MedicineSearchEvent, MedicineSearchState> {
   final MedicineSearchRepository medicineSearchRepository;
   MedicineSearchBloc(this.medicineSearchRepository)
-      : super(SearchFound("", [])) {
+      : super(SearchFound([], medicineName: "")) {
     on<Search>(_onSearch);
+    on<SearchMedPack>(_onSearchMedPack);
   }
 
   _onSearch(Search event, Emitter emit) async {
@@ -20,7 +22,18 @@ class MedicineSearchBloc extends Bloc<Search, MedicineSearchState> {
     if (pharmacies.hasError) {
       emit(SearchNotFound(pharmacies.error!));
     } else {
-      emit(SearchFound(event.medicineName, pharmacies.val!));
+      emit(SearchFound(pharmacies.val!, medicineName: event.medicineName));
+    }
+  }
+
+  _onSearchMedPack(SearchMedPack event, Emitter emit) async {
+    emit(Loading());
+        final Result<List<Pharmacy>> pharmacies = await medicineSearchRepository
+        .getPharmaciesByMedPack(event.latitude, event.longitude, event.medPackId);
+    if (pharmacies.hasError) {
+      emit(SearchNotFound(pharmacies.error!));
+    } else {
+      emit(SearchFound(pharmacies.val!, medPackId : event.medPackId));
     }
   }
 }

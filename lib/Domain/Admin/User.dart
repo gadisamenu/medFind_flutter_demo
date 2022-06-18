@@ -76,12 +76,12 @@ class User {
 
   bool validate() {
     bool valid = true;
-    valid = (firstName.length == 5) && (lastName.length >= 5) && valid;
+    valid = (firstName.length > 0) && (lastName.length > 0) && valid;
 
     final exp = RegExp("[A-Za-z]@[A-Za-z].[A-Za-z]");
     valid = valid && exp.hasMatch(email);
     if (oldPassword != null && newPassword != null) {
-      print("here valid");
+      print("password change");
       final pasExp = RegExp("[a-zA-Z0-9-!#]");
       valid = oldPassword!.contains(pasExp) &&
           newPassword!.contains(pasExp) &&

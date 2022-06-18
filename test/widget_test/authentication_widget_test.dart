@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:medfind_flutter/Presentation/Screens/Authentication/login.dart';
 import 'package:medfind_flutter/Presentation/Screens/Authentication/signup.dart';
-import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
+// import 'package:medfind_flutter/Presentation/Screens/MedicineSearch/home.dart';
 import 'package:medfind_flutter/main.dart';
 
 class MyWidget extends StatelessWidget {
@@ -12,6 +12,10 @@ class MyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(body: TextField());
   }
+}
+
+int findsAtLeastNWidgets(int i) {
+  return 0;
 }
 
 void main() {
@@ -71,8 +75,4 @@ void main() {
       expect(find.byType(ElevatedButton), findsAtLeastNWidgets(1));
     });
   });
-}
-
-findsAtLeastNWidgets(int count) {
-  return count >= 1;
 }

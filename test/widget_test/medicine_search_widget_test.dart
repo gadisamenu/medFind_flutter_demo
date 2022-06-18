@@ -10,6 +10,10 @@ class MyWidget extends StatelessWidget {
   }
 }
 
+int findsAtLeastNWidgets(int i) {
+  return 0;
+}
+
 void main() {
   group("Authentication widget test", () {
     testWidgets(
@@ -22,8 +26,4 @@ void main() {
       },
     );
   });
-}
-
-findsAtLeastNWidgets(int count) {
-  return count >= 1;
 }

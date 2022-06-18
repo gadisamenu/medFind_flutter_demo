@@ -25,16 +25,13 @@ class AdminRepository {
         print(exp.toString());
       }
 
-      if (users!.isEmpty) {
+      if (users == null || users.isEmpty) {
         print("remote");
         users = await remoteprovider.loadUsers();
-        // users = jsonDecode(users.toString());
-        // return Return(value: users);
         dataProvider.deleteAll("users");
-        print(users.toString() + "_________________________");
-        users.forEach((element) {
+        users.forEach((element) async {
           try {
-            dataProvider.addUser((element));
+            await dataProvider.addUser((element));
           } catch (exp) {
             print(exp.toString());
           }
@@ -47,7 +44,6 @@ class AdminRepository {
     }
   }
 
-  //get a user
   Future<Return> getUser(int id) async {
     try {
       User? user;
@@ -145,15 +141,21 @@ class AdminRepository {
   // get list of pharmacies
   Future<Return> getPharmacies() async {
     try {
-      List<APharmacy> users = await dataProvider.loadPharmacies();
-      if (users.isEmpty) {
-        users = await remoteprovider.loadPharmacies();
-        users.forEach((element) {
-          dataProvider.updatePharmacy(element);
+      List<APharmacy>? pharmacies;
+      try {
+        pharmacies = await dataProvider.loadPharmacies();
+      } catch (exp) {
+        print("local loading failed" + exp.toString());
+      }
+      if (pharmacies == null || pharmacies.isEmpty) {
+        pharmacies = await remoteprovider.loadPharmacies();
+        print("remote");
+        dataProvider.deleteAll("pharmacies");
+        pharmacies.forEach((element) async {
+          await dataProvider.addPharmacy(element);
         });
       }
-
-      return Return(value: users);
+      return Return(value: pharmacies);
     } catch (exp) {
       return Return(error: exp);
     }
@@ -166,12 +168,12 @@ class AdminRepository {
       try {
         pharmacy = await dataProvider.loadPharmacy(id);
       } catch (exp) {
-        print("local update failed");
+        print("local fetch failed");
       }
 
       if (pharmacy == null) {
         pharmacy = await remoteprovider.loadPharmacy(id);
-        dataProvider.updatePharmacy(pharmacy);
+        await dataProvider.updatePharmacy(pharmacy);
       }
       return Return(value: pharmacy);
     } catch (exp) {

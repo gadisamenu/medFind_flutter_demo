@@ -8,3 +8,10 @@ class Search extends MedicineSearchEvent {
   String medicineName;
   Search(this.latitude, this.longitude, this.medicineName);
 }
+
+class SearchMedPack extends MedicineSearchEvent {
+  double latitude;
+  double longitude;
+  int medPackId;
+  SearchMedPack(this.latitude, this.longitude, this.medPackId);
+}
