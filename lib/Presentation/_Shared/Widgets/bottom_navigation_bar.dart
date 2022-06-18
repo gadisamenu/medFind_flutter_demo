@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_bloc.dart';
 import 'package:medfind_flutter/Application/Authentication/authentication_state.dart';
+import 'package:medfind_flutter/Application/Reservation/reservation_event.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_bloc.dart';
 import 'package:medfind_flutter/Application/WatchList/watchlist_event.dart';
 
+import '../../../Application/Reservation/reservation_bloc.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   CustomNavigationBar({Key? key}) : super(key: key);
@@ -29,6 +31,10 @@ class CustomNavigationBar extends StatelessWidget {
             if (value == 1) {
               context.go("/watch_list");
               BlocProvider.of<WatchListBloc>(context).add(GetMedPacks());
+            }
+            if (value == 2) {
+              context.go("/reservation");
+              BlocProvider.of<ReservationBloc>(context)..add(LoadReservation());
             }
           },
           items: const [

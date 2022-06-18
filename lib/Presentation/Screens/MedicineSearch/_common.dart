@@ -10,7 +10,7 @@ Set<Set<void>> handleSubmission(String value, BuildContext context) {
       {
         context.push("/search"),
         BlocProvider.of<MedicineSearchBloc>(context).add(
-          Search(9123412.0474852, 38.7596047, value),
+          Search(9.0474852, 38.7596047, value),
         ),
       }
   };
