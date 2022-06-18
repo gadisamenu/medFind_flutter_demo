@@ -5,12 +5,6 @@ import 'package:path/path.dart';
 class SqliteDBProvider {
   String databaseName = 'medfind.db';
 
-  // late Database sqliteDB;
-
-  // SqliteDBProvider() {
-  //   sqliteDB =  _initializeDB() as Database;
-  // }
-
   Future<Database> _initializeDB() async {
     final defaultDatabasePath = await getDatabasesPath();
     final fullDatabasePath = join(defaultDatabasePath, databaseName);

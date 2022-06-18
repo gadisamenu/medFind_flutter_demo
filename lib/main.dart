@@ -31,7 +31,7 @@ class MedFindApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // SizeConfig.initialize(context);
+
     return MultiBlocProvider(
       providers: [
         BlocProvider<WatchListBloc>(
